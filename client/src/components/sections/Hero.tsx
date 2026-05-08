@@ -75,6 +75,7 @@ export default function Hero() {
           src={WREN_VIDEOS.luminousFloats}
           glow={true}
           objectPosition="40% center"
+          fadeDir="right"
         />
       </div>
 

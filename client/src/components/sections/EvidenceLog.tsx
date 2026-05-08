@@ -47,7 +47,7 @@ export default function EvidenceLog() {
         position: "absolute", right: 0, top: 0,
         width: "60vw", height: "100%", pointerEvents: "none", zIndex: 1, overflow: "hidden",
       }}>
-        <WrenVideo src={WREN_VIDEOS.blobJournal} glow={true} objectPosition="center center" />
+        <WrenVideo src={WREN_VIDEOS.blobJournal} glow={true} objectPosition="center center" fadeDir="right" />
       </div>
 
       {/* TEXT — left side */}

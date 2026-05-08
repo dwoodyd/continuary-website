@@ -60,6 +60,7 @@ export default function NothingBroken() {
           src={WREN_VIDEOS.premium3d}
           glow={true}
           objectPosition="center center"
+          fadeDir="left"
         />
       </div>
 
