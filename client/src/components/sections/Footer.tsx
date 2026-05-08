@@ -1,187 +1,144 @@
 /**
  * Footer — Section 10
- * Final CTA: "Your story is already happening."
- * Wren: trail of checkpoints (full center, large)
- * Footer: minimal links + logo
+ *
+ * MERL-STYLE: Wren LEFT side, massive, bleeds off left edge.
+ * Final CTA + footer links RIGHT. Alternating.
+ * Background: #080f26 — Wren's world.
  */
 
+import { useRef } from "react";
 import WrenVideo from "../WrenVideo";
-import { WREN_VIDEOS, WREN_STILLS, LOGOS } from "../../assets";
+import { LOGOS, WREN_VIDEOS } from "../../assets";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 
 export default function Footer() {
-  const ref = useScrollReveal();
+  const sectionRef = useRef<HTMLElement>(null);
+  useScrollReveal(sectionRef);
 
   return (
-    <>
-      {/* Final CTA section */}
-      <section
-        id="cta-final"
-        ref={ref as React.RefObject<HTMLElement>}
-        style={{
-          padding: "10rem 0 6rem",
-          background: "linear-gradient(180deg, oklch(0.18 0.045 255) 0%, oklch(0.13 0.05 258) 100%)",
-          position: "relative",
-          overflow: "hidden",
-          textAlign: "center",
-        }}
-      >
-        {/* Ambient glow */}
-        <div aria-hidden style={{
-          position: "absolute",
-          top: "30%",
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: "700px",
-          height: "700px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, oklch(0.78 0.16 65 / 0.09) 0%, transparent 65%)",
-          pointerEvents: "none",
-        }} />
+    <footer
+      ref={sectionRef}
+      id="footer"
+      style={{
+        position: "relative",
+        minHeight: "100vh",
+        background: "#080f26",
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+      }}
+    >
+      {/* Amber glow — left side */}
+      <div aria-hidden style={{
+        position: "absolute", top: "50%", left: "-5%", transform: "translateY(-50%)",
+        width: "60vw", height: "80vh",
+        background: "radial-gradient(ellipse at center, rgba(232,160,48,0.1) 0%, rgba(232,160,48,0.03) 45%, transparent 70%)",
+        pointerEvents: "none",
+      }} />
 
-        <div className="container" style={{ position: "relative", zIndex: 1 }}>
-          {/* Wren — trail of checkpoints */}
-          <div className="reveal" style={{ display: "flex", justifyContent: "center", marginBottom: "2rem" }}>
-            <WrenVideo
-              src={WREN_VIDEOS.amberGold}
-              poster={WREN_STILLS.trailCheckpoints}
-              style={{ width: "min(380px, 80vw)", aspectRatio: "1" }}
-            />
-          </div>
+      {/* WREN — left half of viewport, full height. Flipped so Wren faces right. */}
+      <div style={{
+        position: "absolute", left: 0, top: 0,
+        width: "55vw", height: "100%", pointerEvents: "none", zIndex: 1, overflow: "hidden",
+      }}>
+        <WrenVideo src={WREN_VIDEOS.fliesHome} glow={true} flip={true} />
+      </div>
+
+      {/* FINAL CTA — right side */}
+      <div className="container" style={{ position: "relative", zIndex: 2, paddingTop: "6rem", paddingBottom: "6rem" }}>
+        <div style={{ marginLeft: "auto", maxWidth: "480px" }}>
+          {/* Logo */}
+          <img
+            src={LOGOS.stackedDark}
+            alt="Continuary"
+            className="reveal"
+            style={{ height: "3rem", marginBottom: "2.5rem", display: "block" }}
+          />
 
           <h2
             className="reveal reveal-delay-1"
             style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(2.5rem, 5vw, 5rem)",
-              fontWeight: 700,
-              lineHeight: 1.05,
-              color: "oklch(0.96 0.02 80)",
-              maxWidth: "700px",
-              margin: "0 auto 1.25rem",
-              letterSpacing: "-0.02em",
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontSize: "clamp(2.5rem, 4vw, 4.5rem)",
+              fontWeight: 700, lineHeight: 1.0, letterSpacing: "-0.02em",
+              color: "#f0e8d8", marginBottom: "1.5rem",
             }}
           >
-            Your story is
+            The thread
             <br />
-            <em style={{ color: "oklch(0.78 0.16 65)", fontStyle: "italic" }}>already happening.</em>
+            <em style={{ color: "#e8a030", fontStyle: "italic" }}>is still there.</em>
           </h2>
 
           <p
             className="reveal reveal-delay-2"
             style={{
               fontFamily: "'DM Sans', sans-serif",
-              fontSize: "1.125rem",
-              lineHeight: 1.7,
-              color: "oklch(0.65 0.02 80)",
-              maxWidth: "480px",
-              margin: "0 auto 3rem",
+              fontSize: "clamp(1rem, 1.3vw, 1.125rem)",
+              lineHeight: 1.75, color: "rgba(168,180,204,0.9)", marginBottom: "2.5rem",
             }}
           >
-            Wren is ready when you are. No setup. No pressure. Just a quiet
-            place to begin — or continue.
+            Start free. Come back when you're ready. Wren will be here.
           </p>
 
-          <div
-            className="reveal reveal-delay-3"
-            style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}
-          >
-            <a href="#" className="btn-amber" style={{ fontSize: "1rem", padding: "1rem 2.25rem" }}>
-              Start Free — No credit card
+          <div className="reveal reveal-delay-3" style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "4rem" }}>
+            <a href="#" className="btn-amber" style={{ fontSize: "1rem", padding: "0.875rem 2rem" }}>
+              Start for free
             </a>
-            <a href="#book" className="btn-ghost" style={{ fontSize: "1rem", padding: "1rem 2.25rem" }}>
-              Get the book
+            <a href="#pricing" className="btn-ghost" style={{ fontSize: "1rem", padding: "0.875rem 2rem" }}>
+              See pricing
             </a>
           </div>
 
-          <p
-            className="reveal reveal-delay-4"
+          {/* Footer links */}
+          <div
+            className="reveal"
             style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: "0.8125rem",
-              color: "oklch(0.45 0.02 80)",
-              marginTop: "1.5rem",
+              borderTop: "1px solid rgba(255,255,255,0.06)",
+              paddingTop: "2rem",
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "1.5rem",
+              justifyContent: "space-between",
+              alignItems: "center",
             }}
           >
-            Free forever. Upgrade when you're ready.
-          </p>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer style={{
-        background: "oklch(0.12 0.04 258)",
-        borderTop: "1px solid oklch(1 0 0 / 8%)",
-        padding: "3rem 0",
-      }}>
-        <div className="container">
-          <div style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            gap: "2rem",
-          }}>
-            {/* Logo */}
-            <img
-              src={LOGOS.stackedDark}
-              alt="Continuary"
-              style={{ height: "1.75rem", width: "auto" }}
-            />
-
-            {/* Links */}
-            <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap" }}>
-              {[
-                { label: "Privacy", href: "#" },
-                { label: "Terms", href: "#" },
-                { label: "Support", href: "#" },
-                { label: "About", href: "#" },
-                { label: "Book", href: "#book" },
-              ].map(({ label, href }) => (
+            <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.8125rem", color: "rgba(168,180,204,0.4)" }}>
+              © {new Date().getFullYear()} Continuary. All rights reserved.
+            </div>
+            <div style={{ display: "flex", gap: "1.5rem" }}>
+              {["Privacy", "Terms", "Contact"].map((link) => (
                 <a
-                  key={label}
-                  href={href}
+                  key={link}
+                  href="#"
                   style={{
                     fontFamily: "'DM Sans', sans-serif",
                     fontSize: "0.8125rem",
-                    color: "oklch(0.50 0.02 80)",
+                    color: "rgba(168,180,204,0.5)",
                     textDecoration: "none",
-                    transition: "color 0.15s ease",
+                    transition: "color 0.2s ease",
                   }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "oklch(0.75 0.02 80)"; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "oklch(0.50 0.02 80)"; }}
-                >
-                  {label}
-                </a>
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "#e8a030")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(168,180,204,0.5)")}
+                >{link}</a>
               ))}
-            </div>
-
-            {/* Copyright */}
-            <div style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: "0.8125rem",
-              color: "oklch(0.40 0.02 80)",
-            }}>
-              © {new Date().getFullYear()} Continuary. All rights reserved.
             </div>
           </div>
         </div>
-      </footer>
+      </div>
 
       {/* Mobile sticky CTA */}
       <div style={{
         position: "fixed",
-        bottom: 0,
-        left: 0,
-        right: 0,
+        bottom: 0, left: 0, right: 0,
         padding: "0.875rem 1.25rem",
-        background: "oklch(0.16 0.04 255 / 92%)",
+        background: "rgba(8,15,38,0.92)",
         backdropFilter: "blur(16px)",
-        borderTop: "1px solid oklch(1 0 0 / 10%)",
+        borderTop: "1px solid rgba(255,255,255,0.08)",
         zIndex: 40,
         display: "none",
       }} id="mobile-cta">
-        <a href="#pricing" className="btn-amber" style={{ width: "100%", justifyContent: "center" }}>
+        <a href="#pricing" className="btn-amber" style={{ width: "100%", textAlign: "center", display: "block" }}>
           Start Free — No credit card
         </a>
       </div>
@@ -189,15 +146,9 @@ export default function Footer() {
       <style>{`
         @media (max-width: 640px) {
           #mobile-cta { display: block !important; }
-          footer { padding-bottom: 5rem; }
-        }
-        @media (max-width: 768px) {
-          footer .container > div {
-            flex-direction: column;
-            align-items: flex-start;
-          }
+          #footer { padding-bottom: 5rem; }
         }
       `}</style>
-    </>
+    </footer>
   );
 }

@@ -1,129 +1,133 @@
 /**
  * NothingBroken — Section 2
- * "Nothing broken here."
- * Wren: chirping / alive (right side, smaller)
- * Layout: Copy left, Wren right — emotional reframe section
+ *
+ * MERL-STYLE: Wren is absolutely positioned LEFT side, massive, bleeds off left edge.
+ * Text sits RIGHT. Alternating direction from Hero.
+ * Background: #080f26 — Wren's world. No box.
  */
 
+import { useRef } from "react";
 import WrenVideo from "../WrenVideo";
-import { WREN_VIDEOS, WREN_STILLS } from "../../assets";
+import { WREN_VIDEOS } from "../../assets";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 
 export default function NothingBroken() {
-  const ref = useScrollReveal();
+  const sectionRef = useRef<HTMLElement>(null);
+  useScrollReveal(sectionRef);
 
   return (
     <section
+      ref={sectionRef}
       id="how-it-works"
-      ref={ref as React.RefObject<HTMLElement>}
       style={{
-        padding: "8rem 0",
-        background: "oklch(0.18 0.045 255)",
         position: "relative",
+        minHeight: "100vh",
+        background: "#080f26",
         overflow: "hidden",
+        display: "flex",
+        alignItems: "center",
       }}
     >
-      {/* Subtle top edge fade */}
-      <div aria-hidden style={{
-        position: "absolute", top: 0, left: 0, right: 0, height: "6rem",
-        background: "linear-gradient(to bottom, oklch(0.16 0.04 255), transparent)",
-        pointerEvents: "none",
-      }} />
+      {/* Amber glow — left side, behind Wren */}
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "-5%",
+          transform: "translateY(-50%)",
+          width: "60vw",
+          height: "80vh",
+          background: "radial-gradient(ellipse at center, rgba(232,160,48,0.09) 0%, rgba(232,160,48,0.03) 45%, transparent 70%)",
+          pointerEvents: "none",
+        }}
+      />
 
-      <div className="container">
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          alignItems: "center",
-          gap: "5rem",
-        }}>
-          {/* Left — Copy */}
-          <div>
-            <div className="eyebrow reveal" style={{ marginBottom: "1rem" }}>
-              The honest truth
-            </div>
-            <h2
-              className="reveal reveal-delay-1"
-              style={{
-                fontFamily: "'Playfair Display', serif",
-                fontSize: "clamp(2.25rem, 3.5vw, 3.5rem)",
-                fontWeight: 700,
-                lineHeight: 1.1,
-                color: "oklch(0.96 0.02 80)",
-                marginBottom: "1.5rem",
-              }}
-            >
-              Nothing broken here.
-              <br />
-              <span style={{ color: "oklch(0.78 0.16 65)" }}>Just a lot going on.</span>
-            </h2>
+      {/* WREN — left half of viewport, full height. Flipped so Wren faces right. */}
+      <div
+        style={{
+          position: "absolute",
+          left: 0,
+          top: 0,
+          width: "55vw",
+          height: "100%",
+          pointerEvents: "none",
+          zIndex: 1,
+          overflow: "hidden",
+        }}
+      >
+        <WrenVideo
+          src={WREN_VIDEOS.chirping}
+          glow={true}
+          flip={true}
+        />
+      </div>
 
-            <p
-              className="reveal reveal-delay-2"
-              style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: "1.0625rem",
-                lineHeight: 1.75,
-                color: "oklch(0.72 0.02 80)",
-                marginBottom: "1.5rem",
-                maxWidth: "460px",
-              }}
-            >
-              You don't need another app that judges your streaks. You need a
-              place that holds your story without conditions — one that shows up
-              the same whether you journaled every day this week or haven't
-              opened it in three.
-            </p>
+      {/* TEXT — right side */}
+      <div
+        className="container"
+        style={{ position: "relative", zIndex: 2, paddingTop: "6rem", paddingBottom: "6rem" }}
+      >
+        <div style={{ marginLeft: "auto", maxWidth: "480px" }}>
+          <div className="reveal eyebrow" style={{ marginBottom: "1.25rem" }}>The honest truth</div>
 
-            <p
-              className="reveal reveal-delay-3"
-              style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: "1.0625rem",
-                lineHeight: 1.75,
-                color: "oklch(0.72 0.02 80)",
-                maxWidth: "460px",
-              }}
-            >
-              Continuary doesn't track your consistency. It tracks your
-              continuity — the thread that runs through all of it, even the
-              gaps.
-            </p>
+          <h2
+            className="reveal reveal-delay-1"
+            style={{
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontSize: "clamp(2.5rem, 4.5vw, 5rem)",
+              fontWeight: 700,
+              lineHeight: 1.0,
+              letterSpacing: "-0.02em",
+              color: "#f0e8d8",
+              marginBottom: "1.5rem",
+            }}
+          >
+            Nothing broken here.
+            <br />
+            <em style={{ color: "#e8a030", fontStyle: "italic" }}>Just a gap.</em>
+          </h2>
 
-            {/* Feature bullets */}
-            <div className="reveal reveal-delay-4" style={{ marginTop: "2.5rem", display: "flex", flexDirection: "column", gap: "1rem" }}>
-              {[
-                { icon: "✦", text: "No streaks. No shame. No score." },
-                { icon: "✦", text: "Pick up exactly where you left off." },
-                { icon: "✦", text: "Wren remembers even when you forget." },
-              ].map(({ icon, text }) => (
-                <div key={text} style={{ display: "flex", alignItems: "flex-start", gap: "0.875rem" }}>
-                  <span style={{ color: "oklch(0.78 0.16 65)", fontSize: "0.875rem", marginTop: "0.2rem", flexShrink: 0 }}>{icon}</span>
-                  <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.9375rem", color: "oklch(0.80 0.02 80)", lineHeight: 1.5 }}>{text}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+          <p
+            className="reveal reveal-delay-2"
+            style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: "clamp(1rem, 1.3vw, 1.125rem)",
+              lineHeight: 1.75,
+              color: "rgba(168,180,204,0.9)",
+              marginBottom: "1.5rem",
+            }}
+          >
+            You don't need another app that judges your streaks. You need a place that holds your story without conditions — one that shows up the same whether you journaled every day this week or haven't opened it in three.
+          </p>
 
-          {/* Right — Wren chirping */}
-          <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-            <WrenVideo
-              src={WREN_VIDEOS.chirping}
-              poster={WREN_STILLS.neutral}
-              style={{ width: "min(420px, 100%)", aspectRatio: "1" }}
-            />
+          <p
+            className="reveal reveal-delay-3"
+            style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: "clamp(1rem, 1.3vw, 1.125rem)",
+              lineHeight: 1.75,
+              color: "rgba(168,180,204,0.9)",
+              marginBottom: "2.5rem",
+            }}
+          >
+            Continuary doesn't track your consistency. It tracks your continuity — the thread that runs through all of it, even the gaps.
+          </p>
+
+          <div className="reveal reveal-delay-4" style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+            {[
+              { label: "No streaks. No shame. No score." },
+              { label: "Pick up exactly where you left off." },
+              { label: "Wren remembers even when you forget." },
+            ].map(({ label }) => (
+              <div key={label} style={{ display: "flex", alignItems: "flex-start", gap: "0.875rem" }}>
+                <span style={{ color: "#e8a030", fontSize: "0.6875rem", marginTop: "0.35rem", flexShrink: 0 }}>✦</span>
+                <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.9375rem", color: "rgba(240,232,216,0.85)", lineHeight: 1.6 }}>{label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 768px) {
-          #how-it-works .container > div {
-            grid-template-columns: 1fr !important;
-            gap: 3rem !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

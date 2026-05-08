@@ -1,183 +1,175 @@
 /**
  * Hero — Section 1
- * Layout: Full-viewport dark navy. Wren floats right (60% width), copy left.
- * Wren video: Bird_floating_through_air (ambient idle loop)
- * Headline: "Your story, kept."
- * Sub: "Continuary is the quiet companion that remembers what matters..."
+ *
+ * MERL-STYLE ARCHITECTURE:
+ * - Background: #080f26 — matches Wren's video bg exactly → zero box visible
+ * - Wren is ABSOLUTELY POSITIONED, right side, massive (58vw), bleeds off edge
+ * - Text is LEFT-ALIGNED, takes up left 45% of viewport
+ * - No grid columns — Wren is a scene element, not a layout element
+ * - Amber radial glow anchors Wren to the space
  */
 
+import { useEffect, useRef } from "react";
 import WrenVideo from "../WrenVideo";
-import { WREN_VIDEOS, WREN_STILLS } from "../../assets";
+import { WREN_VIDEOS } from "../../assets";
 
 export default function Hero() {
+  const textRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = textRef.current;
+    if (!el) return;
+    const children = el.querySelectorAll<HTMLElement>("[data-reveal]");
+    children.forEach((child, i) => {
+      child.style.opacity = "0";
+      child.style.transform = "translateY(24px)";
+      setTimeout(() => {
+        child.style.transition = "opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1)";
+        child.style.opacity = "1";
+        child.style.transform = "translateY(0)";
+      }, 180 + i * 110);
+    });
+  }, []);
+
   return (
     <section
       id="hero"
       style={{
+        position: "relative",
         minHeight: "100vh",
+        background: "#080f26",
+        overflow: "hidden",
         display: "flex",
         alignItems: "center",
-        position: "relative",
-        overflow: "hidden",
-        background: "linear-gradient(135deg, oklch(0.14 0.05 258) 0%, oklch(0.18 0.04 252) 50%, oklch(0.16 0.04 255) 100%)",
-        paddingTop: "5rem",
       }}
     >
-      {/* Ambient background glow */}
+      {/* Amber atmospheric glow — right side, behind Wren */}
       <div
         aria-hidden
         style={{
           position: "absolute",
-          top: "20%",
-          right: "10%",
-          width: "600px",
-          height: "600px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, oklch(0.78 0.16 65 / 0.08) 0%, transparent 70%)",
+          top: "50%",
+          right: "-5%",
+          transform: "translateY(-50%)",
+          width: "65vw",
+          height: "80vh",
+          background: "radial-gradient(ellipse at center, rgba(232,160,48,0.10) 0%, rgba(232,160,48,0.04) 45%, transparent 70%)",
           pointerEvents: "none",
         }}
       />
+
+      {/* WREN — right half of viewport, full height. objectFit:cover crops to Wren's body. */}
       <div
-        aria-hidden
         style={{
           position: "absolute",
-          bottom: "10%",
-          left: "5%",
-          width: "400px",
-          height: "400px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, oklch(0.78 0.16 65 / 0.04) 0%, transparent 70%)",
+          right: 0,
+          top: 0,
+          width: "58vw",
+          height: "100%",
           pointerEvents: "none",
+          zIndex: 1,
+          overflow: "hidden",
         }}
-      />
+      >
+        <WrenVideo
+          src={WREN_VIDEOS.floating}
+          glow={true}
+          objectPosition="left center"
+        />
+      </div>
 
-      <div className="container" style={{ position: "relative", zIndex: 1 }}>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            alignItems: "center",
-            gap: "3rem",
-            minHeight: "80vh",
-          }}
-        >
-          {/* Left — Copy */}
-          <div style={{ paddingRight: "2rem" }}>
-            <div className="eyebrow reveal" style={{ marginBottom: "1.25rem" }}>
-              Silicon Wren · Your memory companion
-            </div>
-
-            <h1
-              className="reveal reveal-delay-1"
-              style={{
-                fontFamily: "'Playfair Display', serif",
-                fontSize: "clamp(3rem, 5vw, 5rem)",
-                fontWeight: 700,
-                lineHeight: 1.05,
-                letterSpacing: "-0.03em",
-                color: "oklch(0.96 0.02 80)",
-                marginBottom: "1.5rem",
-              }}
-            >
-              Your story,
-              <br />
-              <em style={{ color: "oklch(0.78 0.16 65)", fontStyle: "italic" }}>kept.</em>
-            </h1>
-
-            <p
-              className="reveal reveal-delay-2"
-              style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: "1.125rem",
-                lineHeight: 1.7,
-                color: "oklch(0.75 0.02 80)",
-                maxWidth: "480px",
-                marginBottom: "2.5rem",
-              }}
-            >
-              Continuary is the quiet companion that remembers what matters —
-              your rituals, your wins, your almost-moments — so nothing important
-              gets lost between the days.
-            </p>
-
-            {/* Trust chips */}
-            <div
-              className="reveal reveal-delay-3"
-              style={{ display: "flex", flexWrap: "wrap", gap: "0.625rem", marginBottom: "2.5rem" }}
-            >
-              {["No shame spirals", "ADHD-friendly", "Built for real life"].map((chip) => (
-                <span key={chip} className="trust-chip">{chip}</span>
-              ))}
-            </div>
-
-            {/* CTAs */}
-            <div
-              className="reveal reveal-delay-4"
-              style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}
-            >
-              <a href="#pricing" className="btn-amber">
-                Start Free — No credit card
-              </a>
-              <a href="#how-it-works" className="btn-ghost">
-                See how it works
-              </a>
-            </div>
+      {/* TEXT — left side, in front of glow */}
+      <div
+        className="container"
+        style={{ position: "relative", zIndex: 2, paddingTop: "6rem", paddingBottom: "6rem" }}
+      >
+        <div ref={textRef} style={{ maxWidth: "500px" }}>
+          <div
+            data-reveal
+            className="eyebrow"
+            style={{ marginBottom: "1.5rem", display: "flex", alignItems: "center", gap: "0.75rem" }}
+          >
+            <span style={{ display: "inline-block", width: "24px", height: "1px", background: "var(--amber)", opacity: 0.5 }} />
+            Silicon Wren · Your memory companion
           </div>
 
-          {/* Right — Wren */}
-          <div
+          <h1
+            data-reveal
             style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              position: "relative",
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontSize: "clamp(3.5rem, 7vw, 7.5rem)",
+              fontWeight: 700,
+              lineHeight: 0.95,
+              letterSpacing: "-0.03em",
+              color: "#f0e8d8",
+              marginBottom: "0.2rem",
             }}
           >
-            <WrenVideo
-              src={WREN_VIDEOS.floating}
-              poster={WREN_STILLS.neutral}
-              className="float-anim"
-              style={{
-                width: "min(520px, 100%)",
-                aspectRatio: "1",
-              }}
-            />
+            Your story,
+          </h1>
+          <h1
+            data-reveal
+            style={{
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontSize: "clamp(3.5rem, 7vw, 7.5rem)",
+              fontWeight: 700,
+              fontStyle: "italic",
+              lineHeight: 0.95,
+              letterSpacing: "-0.03em",
+              color: "#e8a030",
+              marginBottom: "2.25rem",
+            }}
+          >
+            kept.
+          </h1>
+
+          <p
+            data-reveal
+            style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: "clamp(1rem, 1.3vw, 1.125rem)",
+              lineHeight: 1.75,
+              color: "rgba(168,180,204,0.9)",
+              maxWidth: "400px",
+              marginBottom: "2.5rem",
+            }}
+          >
+            Continuary is the quiet companion that remembers what matters — your rituals, your wins, your almost-moments — so nothing important gets lost between the days.
+          </p>
+
+          <div data-reveal style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "2rem" }}>
+            <a href="#pricing" className="btn-amber">Start Free — No credit card</a>
+            <a href="#rituals" className="btn-ghost">See how it works</a>
+          </div>
+
+          <div data-reveal style={{ display: "flex", gap: "0.625rem", flexWrap: "wrap" }}>
+            {["No shame spirals", "ADHD-friendly", "Built for real life"].map((label) => (
+              <span key={label} className="chip">{label}</span>
+            ))}
           </div>
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <div
-        style={{
-          position: "absolute",
-          bottom: "2rem",
-          left: "50%",
-          transform: "translateX(-50%)",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "0.5rem",
-          opacity: 0.4,
-        }}
-      >
-        <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem", letterSpacing: "0.1em", color: "oklch(0.75 0.02 80)", textTransform: "uppercase" }}>Scroll</span>
-        <div style={{ width: "1px", height: "2.5rem", background: "linear-gradient(to bottom, oklch(0.75 0.02 80), transparent)" }} />
+      <div style={{
+        position: "absolute", bottom: "2.5rem", left: "50%", transform: "translateX(-50%)",
+        display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem",
+        opacity: 0.35, zIndex: 2,
+      }}>
+        <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.625rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "#a8b4cc" }}>Scroll</span>
+        <div style={{ width: "1px", height: "36px", background: "linear-gradient(to bottom, rgba(168,180,204,0.6), transparent)" }} />
       </div>
 
       <style>{`
         @media (max-width: 768px) {
-          #hero > .container > div {
-            grid-template-columns: 1fr !important;
-            text-align: center;
+          #hero [style*="position: absolute"][style*="right"] {
+            position: relative !important;
+            right: auto !important;
+            top: auto !important;
+            transform: none !important;
+            width: 100% !important;
+            margin-top: 2rem;
           }
-          #hero > .container > div > div:first-child {
-            padding-right: 0 !important;
-            order: 2;
-          }
-          #hero > .container > div > div:last-child {
-            order: 1;
-          }
-          #hero .reveal { display: flex; flex-direction: column; align-items: center; }
         }
       `}</style>
     </section>

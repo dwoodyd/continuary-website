@@ -1,11 +1,14 @@
 /**
  * Pricing — Section 8
- * Three tiers: Free, Pro ($9/mo), Keeper ($19/mo)
- * Wren: cartwheels above pricing cards (delight)
+ *
+ * MERL-STYLE: Wren LEFT side, massive, bleeds off left edge.
+ * Pricing cards RIGHT. Alternating.
+ * Background: #080f26 — Wren's world.
  */
 
+import { useRef } from "react";
 import WrenVideo from "../WrenVideo";
-import { WREN_VIDEOS, WREN_STILLS } from "../../assets";
+import { WREN_VIDEOS } from "../../assets";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 
 const PLANS = [
@@ -65,181 +68,126 @@ const PLANS = [
 ];
 
 export default function Pricing() {
-  const ref = useScrollReveal();
+  const sectionRef = useRef<HTMLElement>(null);
+  useScrollReveal(sectionRef);
 
   return (
     <section
+      ref={sectionRef}
       id="pricing"
-      ref={ref as React.RefObject<HTMLElement>}
       style={{
-        padding: "8rem 0",
-        background: "oklch(0.16 0.04 255)",
         position: "relative",
+        minHeight: "100vh",
+        background: "#080f26",
         overflow: "hidden",
+        display: "flex",
+        alignItems: "center",
       }}
     >
-      <div className="container">
-        {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: "1rem" }}>
-          <div className="eyebrow reveal" style={{ marginBottom: "1rem" }}>
-            Simple, honest pricing
-          </div>
+      {/* Amber glow — left side */}
+      <div aria-hidden style={{
+        position: "absolute", top: "50%", left: "-5%", transform: "translateY(-50%)",
+        width: "60vw", height: "80vh",
+        background: "radial-gradient(ellipse at center, rgba(232,160,48,0.09) 0%, rgba(232,160,48,0.03) 45%, transparent 70%)",
+        pointerEvents: "none",
+      }} />
+
+      {/* WREN — left half of viewport, full height. Flipped so Wren faces right. */}
+      <div style={{
+        position: "absolute", left: 0, top: 0,
+        width: "55vw", height: "100%", pointerEvents: "none", zIndex: 1, overflow: "hidden",
+      }}>
+        <WrenVideo src={WREN_VIDEOS.cartwheels} glow={true} flip={true} />
+      </div>
+
+      {/* PRICING — right side */}
+      <div className="container" style={{ position: "relative", zIndex: 2, paddingTop: "6rem", paddingBottom: "6rem" }}>
+        <div style={{ marginLeft: "auto", maxWidth: "520px" }}>
+          <div className="reveal eyebrow" style={{ marginBottom: "1.25rem" }}>Simple pricing</div>
+
           <h2
             className="reveal reveal-delay-1"
             style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(2.25rem, 3.5vw, 3.5rem)",
-              fontWeight: 700,
-              lineHeight: 1.1,
-              color: "oklch(0.96 0.02 80)",
-              marginBottom: "1rem",
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontSize: "clamp(2.5rem, 4vw, 4rem)",
+              fontWeight: 700, lineHeight: 1.0, letterSpacing: "-0.02em",
+              color: "#f0e8d8", marginBottom: "2.5rem",
             }}
           >
-            Start free.{" "}
-            <em style={{ color: "oklch(0.78 0.16 65)", fontStyle: "italic" }}>Stay</em>{" "}
-            because it works.
+            Start free.
+            <br />
+            <em style={{ color: "#e8a030", fontStyle: "italic" }}>Stay as long as you like.</em>
           </h2>
-          <p
-            className="reveal reveal-delay-2"
-            style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: "1.0625rem",
-              color: "oklch(0.65 0.02 80)",
-              maxWidth: "440px",
-              margin: "0 auto",
-              lineHeight: 1.7,
-            }}
-          >
-            No annual lock-in. No hidden fees. Cancel any time — and your
-            entries are always yours.
-          </p>
-        </div>
 
-        {/* Wren cartwheels above cards */}
-        <div className="reveal reveal-delay-2" style={{ display: "flex", justifyContent: "center", margin: "0 0 -2rem" }}>
-          <WrenVideo
-            src={WREN_VIDEOS.cartwheels}
-            poster={WREN_STILLS.neutral}
-            style={{ width: "160px", aspectRatio: "1" }}
-          />
-        </div>
+          {/* Pricing cards — stacked vertically on right side */}
+          <div className="reveal reveal-delay-2" style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+            {PLANS.map(({ name, price, period, tagline, features, cta, ctaHref, featured, badge }) => (
+              <div
+                key={name}
+                style={{
+                  background: featured ? "rgba(232,160,48,0.08)" : "rgba(17,28,66,0.6)",
+                  border: featured ? "1px solid rgba(232,160,48,0.35)" : "1px solid rgba(255,255,255,0.06)",
+                  borderRadius: "1rem",
+                  padding: "1.5rem",
+                  backdropFilter: "blur(8px)",
+                  position: "relative",
+                }}
+              >
+                {badge && (
+                  <div style={{
+                    position: "absolute", top: "-1px", left: "50%", transform: "translateX(-50%) translateY(-50%)",
+                    background: "#e8a030", color: "#080f26",
+                    fontFamily: "'DM Sans', sans-serif", fontSize: "0.6875rem", fontWeight: 700,
+                    letterSpacing: "0.1em", textTransform: "uppercase",
+                    padding: "0.25rem 0.875rem", borderRadius: "9999px",
+                  }}>{badge}</div>
+                )}
 
-        {/* Pricing cards */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gap: "1.25rem",
-          alignItems: "start",
-        }}>
-          {PLANS.map((plan, i) => (
-            <div
-              key={plan.name}
-              className={`pricing-card ${plan.featured ? "featured" : ""} reveal reveal-delay-${i + 1}`}
-            >
-              {plan.badge && (
-                <div style={{
-                  position: "absolute",
-                  top: "-1px",
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  background: "oklch(0.78 0.16 65)",
-                  color: "oklch(0.16 0.04 255)",
-                  fontFamily: "'DM Sans', sans-serif",
-                  fontSize: "0.6875rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                  padding: "0.25rem 0.875rem",
-                  borderRadius: "0 0 0.5rem 0.5rem",
-                }}>
-                  {plan.badge}
-                </div>
-              )}
-
-              <div style={{ marginTop: plan.badge ? "1rem" : 0 }}>
-                <div style={{
-                  fontFamily: "'DM Sans', sans-serif",
-                  fontSize: "0.8125rem",
-                  fontWeight: 600,
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  color: plan.featured ? "oklch(0.78 0.16 65)" : "oklch(0.60 0.02 80)",
-                  marginBottom: "0.75rem",
-                }}>{plan.name}</div>
-
-                <div style={{ display: "flex", alignItems: "baseline", gap: "0.375rem", marginBottom: "0.375rem" }}>
-                  <span style={{
-                    fontFamily: "'Playfair Display', serif",
-                    fontSize: "2.75rem",
-                    fontWeight: 700,
-                    color: "oklch(0.96 0.02 80)",
-                    lineHeight: 1,
-                  }}>{plan.price}</span>
-                  <span style={{
-                    fontFamily: "'DM Sans', sans-serif",
-                    fontSize: "0.875rem",
-                    color: "oklch(0.55 0.02 80)",
-                  }}>/{plan.period}</span>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1rem" }}>
+                  <div>
+                    <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "0.875rem", color: featured ? "#e8a030" : "rgba(168,180,204,0.8)", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.25rem" }}>{name}</div>
+                    <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.8125rem", color: "rgba(168,180,204,0.6)" }}>{tagline}</div>
+                  </div>
+                  <div style={{ textAlign: "right" }}>
+                    <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.75rem", fontWeight: 700, color: "#f0e8d8", lineHeight: 1 }}>{price}</div>
+                    <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem", color: "rgba(168,180,204,0.5)" }}>/{period}</div>
+                  </div>
                 </div>
 
-                <p style={{
-                  fontFamily: "'DM Sans', sans-serif",
-                  fontSize: "0.875rem",
-                  color: "oklch(0.62 0.02 80)",
-                  marginBottom: "1.75rem",
-                  lineHeight: 1.5,
-                }}>{plan.tagline}</p>
-
-                <a
-                  href={plan.ctaHref}
-                  className={plan.featured ? "btn-amber" : "btn-ghost"}
-                  style={{ width: "100%", marginBottom: "1.75rem" }}
-                >
-                  {plan.cta}
-                </a>
-
-                <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-                  {plan.features.map((feature) => (
-                    <div key={feature} style={{ display: "flex", alignItems: "flex-start", gap: "0.625rem" }}>
-                      <span style={{ color: "oklch(0.78 0.16 65)", fontSize: "0.75rem", marginTop: "0.2rem", flexShrink: 0 }}>✦</span>
-                      <span style={{
-                        fontFamily: "'DM Sans', sans-serif",
-                        fontSize: "0.875rem",
-                        color: "oklch(0.72 0.02 80)",
-                        lineHeight: 1.5,
-                      }}>{feature}</span>
+                <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginBottom: "1.25rem" }}>
+                  {features.map((f) => (
+                    <div key={f} style={{ display: "flex", gap: "0.625rem", alignItems: "flex-start" }}>
+                      <span style={{ color: "#e8a030", fontSize: "0.625rem", marginTop: "0.3rem", flexShrink: 0 }}>✦</span>
+                      <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.8125rem", color: "rgba(240,232,216,0.8)", lineHeight: 1.5 }}>{f}</span>
                     </div>
                   ))}
                 </div>
+
+                <a
+                  href={ctaHref}
+                  style={{
+                    display: "block",
+                    textAlign: "center",
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontWeight: 600,
+                    fontSize: "0.875rem",
+                    padding: "0.75rem 1.5rem",
+                    borderRadius: "0.5rem",
+                    textDecoration: "none",
+                    background: featured ? "#e8a030" : "transparent",
+                    color: featured ? "#080f26" : "#e8a030",
+                    border: featured ? "none" : "1px solid rgba(232,160,48,0.35)",
+                  }}
+                >{cta}</a>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          <p className="reveal" style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.8125rem", color: "rgba(168,180,204,0.4)", marginTop: "1.5rem", textAlign: "center" }}>
+            14-day free trial on Pro. No credit card required.
+          </p>
         </div>
-
-        {/* Guarantee note */}
-        <p
-          className="reveal"
-          style={{
-            textAlign: "center",
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: "0.875rem",
-            color: "oklch(0.50 0.02 80)",
-            marginTop: "2.5rem",
-          }}
-        >
-          All plans include a 14-day free trial of Pro. No credit card required to start.
-        </p>
       </div>
-
-      <style>{`
-        @media (max-width: 900px) {
-          #pricing .container > div:nth-child(3) {
-            grid-template-columns: 1fr !important;
-            max-width: 420px;
-            margin: 0 auto;
-          }
-        }
-      `}</style>
     </section>
   );
 }

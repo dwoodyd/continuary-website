@@ -1,11 +1,23 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, RefObject } from "react";
 
 /**
  * useScrollReveal — attaches IntersectionObserver to a container ref
- * and adds the "in-view" class to all .reveal children when they enter viewport.
+ * and adds the "visible" class to all .reveal children when they enter viewport.
+ *
+ * Usage:
+ *   const ref = useScrollReveal();
+ *   <section ref={ref as RefObject<HTMLElement>}>...</section>
+ *
+ * OR pass an existing ref:
+ *   const sectionRef = useRef<HTMLElement>(null);
+ *   useScrollReveal(sectionRef);
  */
-export function useScrollReveal(threshold = 0.15) {
-  const containerRef = useRef<HTMLElement>(null);
+export function useScrollReveal(
+  externalRef?: RefObject<HTMLElement | null>,
+  threshold = 0.1
+) {
+  const internalRef = useRef<HTMLElement>(null);
+  const containerRef = externalRef ?? internalRef;
 
   useEffect(() => {
     const container = containerRef.current;
@@ -17,8 +29,9 @@ export function useScrollReveal(threshold = 0.15) {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("in-view");
-            observer.unobserve(entry.target); // fire once
+            entry.target.classList.add("visible");
+            entry.target.classList.add("in-view"); // legacy support
+            observer.unobserve(entry.target);
           }
         });
       },

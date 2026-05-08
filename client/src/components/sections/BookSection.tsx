@@ -1,199 +1,114 @@
 /**
  * BookSection — Section 7
- * "Permission to Start" — companion book by DeWayne Woods
- * Wren: journaling book still (placeholder until Wren-with-book video is ready)
- * Layout: Book cover left (prominent), copy right
+ *
+ * MERL-STYLE: Wren RIGHT side, massive, bleeds off right edge.
+ * Text LEFT. Alternating.
+ * Background: #080f26 — Wren's world.
  */
 
-import { BOOK, WREN_STILLS } from "../../assets";
+import { useRef } from "react";
+import WrenVideo from "../WrenVideo";
+import { BOOK } from "../../assets";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 
 export default function BookSection() {
-  const ref = useScrollReveal();
+  const sectionRef = useRef<HTMLElement>(null);
+  useScrollReveal(sectionRef);
 
   return (
     <section
+      ref={sectionRef}
       id="book"
-      ref={ref as React.RefObject<HTMLElement>}
       style={{
-        padding: "8rem 0",
-        background: "oklch(0.15 0.045 257)",
         position: "relative",
+        minHeight: "100vh",
+        background: "#080f26",
         overflow: "hidden",
+        display: "flex",
+        alignItems: "center",
       }}
     >
-      {/* Warm amber wash behind book */}
+      {/* Warm amber glow — right side */}
       <div aria-hidden style={{
-        position: "absolute",
-        top: "50%",
-        left: "0",
-        transform: "translateY(-50%)",
-        width: "50%",
-        height: "120%",
-        background: "radial-gradient(ellipse at left, oklch(0.78 0.16 65 / 0.06) 0%, transparent 70%)",
+        position: "absolute", top: "50%", right: "-5%", transform: "translateY(-50%)",
+        width: "65vw", height: "85vh",
+        background: "radial-gradient(ellipse at center, rgba(232,160,48,0.14) 0%, rgba(200,120,30,0.05) 45%, transparent 70%)",
         pointerEvents: "none",
       }} />
 
-      <div className="container" style={{ position: "relative", zIndex: 1 }}>
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "6rem",
-          alignItems: "center",
-        }}>
-          {/* Left — Book cover */}
-          <div className="reveal" style={{ display: "flex", justifyContent: "center", position: "relative" }}>
-            {/* Wren peeking above book — placeholder still until video is ready */}
+      {/* WREN — right half of viewport, full height. */}
+      <div style={{
+        position: "absolute", right: 0, top: 0,
+        width: "55vw", height: "100%", pointerEvents: "none", zIndex: 1, overflow: "hidden",
+      }}>
+        <WrenVideo src={BOOK.wrenPerched} glow={true} objectPosition="left center" />
+      </div>
+
+      {/* TEXT — left side */}
+      <div className="container" style={{ position: "relative", zIndex: 2, paddingTop: "6rem", paddingBottom: "6rem" }}>
+        <div style={{ maxWidth: "500px" }}>
+          <div className="reveal eyebrow" style={{ marginBottom: "1.25rem" }}>The companion book</div>
+
+          <h2
+            className="reveal reveal-delay-1"
+            style={{
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontSize: "clamp(2.5rem, 4.5vw, 5rem)",
+              fontWeight: 700, lineHeight: 1.0, letterSpacing: "-0.02em",
+              color: "#f0e8d8", marginBottom: "1.5rem",
+            }}
+          >
+            Permission
+            <br />
+            <em style={{ color: "#e8a030", fontStyle: "italic" }}>to Start.</em>
+          </h2>
+
+          <p
+            className="reveal reveal-delay-2"
+            style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: "clamp(1rem, 1.3vw, 1.125rem)",
+              lineHeight: 1.75, color: "rgba(168,180,204,0.9)", marginBottom: "1.5rem",
+            }}
+          >
+            A practice guide for creatives who keep almost starting. Written by DeWayne Woods, designed to sit alongside your Continuary practice — not replace it.
+          </p>
+
+          <p
+            className="reveal reveal-delay-3"
+            style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: "clamp(1rem, 1.3vw, 1.125rem)",
+              lineHeight: 1.75, color: "rgba(168,180,204,0.9)", marginBottom: "2.5rem",
+            }}
+          >
+            The book gives you the philosophy. Continuary gives you the practice. Together, they hold the thread.
+          </p>
+
+          {/* Book cover + CTA */}
+          <div className="reveal reveal-delay-4" style={{ display: "flex", gap: "2rem", alignItems: "flex-start", marginBottom: "2rem" }}>
             <img
-              src={WREN_STILLS.journalingBook}
-              alt="Silicon Wren with journal"
+              src={BOOK.cover}
+              alt="Permission to Start book cover"
               style={{
-                position: "absolute",
-                top: "-80px",
-                right: "-20px",
-                width: "140px",
-                filter: "drop-shadow(0 0 24px oklch(0.78 0.16 65 / 0.5))",
-                zIndex: 2,
+                width: "120px",
+                borderRadius: "0.5rem",
+                boxShadow: "0 8px 40px rgba(232,160,48,0.2), 0 2px 8px rgba(0,0,0,0.5)",
+                flexShrink: 0,
               }}
             />
-            {/* Book cover */}
-            <div style={{
-              position: "relative",
-              borderRadius: "0.5rem",
-              overflow: "hidden",
-              boxShadow: "0 32px 80px oklch(0 0 0 / 0.6), 0 0 0 1px oklch(1 0 0 / 8%)",
-              maxWidth: "320px",
-              width: "100%",
-            }}>
-              <img
-                src={BOOK.cover}
-                alt="Permission to Start — A Practice for Creatives Who Keep Almost Starting by DeWayne Woods"
-                style={{ width: "100%", display: "block" }}
-              />
-              {/* Placeholder badge */}
-              <div style={{
-                position: "absolute",
-                bottom: "1rem",
-                left: "1rem",
-                right: "1rem",
-                background: "oklch(0.78 0.16 65 / 90%)",
-                borderRadius: "0.375rem",
-                padding: "0.5rem 0.875rem",
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: "0.75rem",
-                fontWeight: 600,
-                color: "oklch(0.16 0.04 255)",
-                textAlign: "center",
-                backdropFilter: "blur(8px)",
-              }}>
-                Available with Continuary Pro
-              </div>
+            <div>
+              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.125rem", fontWeight: 600, color: "#f0e8d8", marginBottom: "0.25rem" }}>Permission to Start</div>
+              <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.875rem", color: "rgba(168,180,204,0.7)", marginBottom: "0.375rem" }}>DeWayne Woods</div>
+              <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem", fontWeight: 600, color: "rgba(232,160,48,0.8)", letterSpacing: "0.08em", textTransform: "uppercase" }}>Included with Continuary Pro</div>
             </div>
           </div>
 
-          {/* Right — Copy */}
-          <div>
-            <div className="eyebrow reveal" style={{ marginBottom: "1rem" }}>
-              The companion book
-            </div>
-            <h2
-              className="reveal reveal-delay-1"
-              style={{
-                fontFamily: "'Playfair Display', serif",
-                fontSize: "clamp(2rem, 3vw, 3rem)",
-                fontWeight: 700,
-                lineHeight: 1.1,
-                color: "oklch(0.96 0.02 80)",
-                marginBottom: "0.75rem",
-              }}
-            >
-              Permission to Start
-            </h2>
-            <p
-              className="reveal reveal-delay-1"
-              style={{
-                fontFamily: "'Playfair Display', serif",
-                fontSize: "1.125rem",
-                fontStyle: "italic",
-                color: "oklch(0.78 0.16 65)",
-                marginBottom: "1.5rem",
-              }}
-            >
-              A Practice for Creatives Who Keep Almost Starting
-            </p>
-
-            <p
-              className="reveal reveal-delay-2"
-              style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: "1.0625rem",
-                lineHeight: 1.75,
-                color: "oklch(0.70 0.02 80)",
-                marginBottom: "1.25rem",
-                maxWidth: "460px",
-              }}
-            >
-              The book that started it all. DeWayne Woods wrote{" "}
-              <em>Permission to Start</em> for the creatives who have everything
-              they need — except the moment they actually begin.
-            </p>
-
-            <p
-              className="reveal reveal-delay-3"
-              style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: "1.0625rem",
-                lineHeight: 1.75,
-                color: "oklch(0.70 0.02 80)",
-                maxWidth: "460px",
-                marginBottom: "2.5rem",
-              }}
-            >
-              Continuary is the living practice that grows alongside the book.
-              Wren keeps the thread while you do the work.
-            </p>
-
-            {/* Feature list */}
-            <div className="reveal reveal-delay-4" style={{ display: "flex", flexDirection: "column", gap: "0.875rem", marginBottom: "2.5rem" }}>
-              {[
-                "Guided prompts drawn directly from the book",
-                "Wren tracks your practice alongside your reading",
-                "Included with Continuary Pro — no separate purchase",
-              ].map((item) => (
-                <div key={item} style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem" }}>
-                  <span style={{ color: "oklch(0.78 0.16 65)", marginTop: "0.15rem", flexShrink: 0 }}>✦</span>
-                  <span style={{
-                    fontFamily: "'DM Sans', sans-serif",
-                    fontSize: "0.9375rem",
-                    color: "oklch(0.75 0.02 80)",
-                    lineHeight: 1.5,
-                  }}>{item}</span>
-                </div>
-              ))}
-            </div>
-
-            <div className="reveal reveal-delay-4" style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-              <a href="#pricing" className="btn-amber">Get the book + app</a>
-              <a href="#" className="btn-ghost">Learn more about the book</a>
-            </div>
+          <div className="reveal reveal-delay-4">
+            <a href="#pricing" className="btn-amber">Get the book + app</a>
           </div>
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 768px) {
-          #book .container > div {
-            grid-template-columns: 1fr !important;
-            gap: 3rem !important;
-          }
-          #book .container > div > div:first-child {
-            order: 2;
-          }
-          #book .container > div > div:last-child {
-            order: 1;
-          }
-        }
-      `}</style>
     </section>
   );
 }

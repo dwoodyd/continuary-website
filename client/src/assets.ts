@@ -50,6 +50,9 @@ export const WREN_VIDEOS = {
 
 export const BOOK = {
   cover: '/manus-storage/Permission_to_Start_front_cover_6x9_with_bleed_300dpi_5dcf8505.webp',
-  // Replace wrenVideo with the Wren-with-book MP4 when ready
-  wrenVideo: null as string | null,
+  // Wren perched on the glowing book — primary book section video
+  wrenPerched: '/manus-storage/Bird_perched_on_luminous_book_202605080740_f2154b47.mp4',
+  // Wren looking at open book — two variants
+  wrenLooking1: '/manus-storage/Bird_looking_at_open_book_202605080758_43457ffb.mp4',
+  wrenLooking2: '/manus-storage/Bird_looking_at_open_book_202605080801_073dd275.mp4',
 };

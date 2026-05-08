@@ -1,148 +1,107 @@
 /**
  * ReEntry — Section 5
- * "The return is the practice."
- * Wren: sparkle wings spread (full-width cinematic moment)
- * Layout: Full-bleed dark section, centered copy, Wren large center
+ *
+ * MERL-STYLE: Wren RIGHT side, massive, bleeds off right edge.
+ * Text LEFT. Alternating.
+ * Background: #080f26 — Wren's world.
  */
 
+import { useRef } from "react";
 import WrenVideo from "../WrenVideo";
-import { WREN_VIDEOS, WREN_STILLS } from "../../assets";
+import { WREN_VIDEOS } from "../../assets";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 
 export default function ReEntry() {
-  const ref = useScrollReveal();
+  const sectionRef = useRef<HTMLElement>(null);
+  useScrollReveal(sectionRef);
 
   return (
     <section
+      ref={sectionRef}
       id="re-entry"
-      ref={ref as React.RefObject<HTMLElement>}
       style={{
-        padding: "10rem 0",
-        background: "oklch(0.14 0.05 258)",
         position: "relative",
+        minHeight: "100vh",
+        background: "#080f26",
         overflow: "hidden",
-        textAlign: "center",
+        display: "flex",
+        alignItems: "center",
       }}
     >
-      {/* Large ambient glow behind Wren */}
+      {/* Amber glow — right side, brighter for the sparkle moment */}
       <div aria-hidden style={{
-        position: "absolute",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-        width: "800px",
-        height: "800px",
-        borderRadius: "50%",
-        background: "radial-gradient(circle, oklch(0.78 0.16 65 / 0.10) 0%, transparent 65%)",
+        position: "absolute", top: "50%", right: "-5%", transform: "translateY(-50%)",
+        width: "60vw", height: "80vh",
+        background: "radial-gradient(ellipse at center, rgba(232,160,48,0.12) 0%, rgba(232,160,48,0.04) 45%, transparent 70%)",
         pointerEvents: "none",
       }} />
 
-      <div className="container" style={{ position: "relative", zIndex: 1 }}>
-        <div className="eyebrow reveal" style={{ marginBottom: "1.25rem" }}>
-          The re-entry ritual
-        </div>
-
-        <h2
-          className="reveal reveal-delay-1"
-          style={{
-            fontFamily: "'Playfair Display', serif",
-            fontSize: "clamp(2.5rem, 4.5vw, 4.5rem)",
-            fontWeight: 700,
-            lineHeight: 1.08,
-            color: "oklch(0.96 0.02 80)",
-            maxWidth: "700px",
-            margin: "0 auto 1.5rem",
-          }}
-        >
-          The return{" "}
-          <em style={{ color: "oklch(0.78 0.16 65)", fontStyle: "italic" }}>is</em>
-          <br />
-          the practice.
-        </h2>
-
-        <p
-          className="reveal reveal-delay-2"
-          style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: "1.125rem",
-            lineHeight: 1.75,
-            color: "oklch(0.68 0.02 80)",
-            maxWidth: "520px",
-            margin: "0 auto 4rem",
-          }}
-        >
-          Every time you come back — after a week, a month, a hard season —
-          Wren is already there. No catch-up required. No explanation needed.
-          Just: welcome back. Let's continue.
-        </p>
-
-        {/* Wren — sparkle wings */}
-        <div className="reveal reveal-delay-3" style={{ display: "flex", justifyContent: "center", marginBottom: "4rem" }}>
-          <WrenVideo
-            src={WREN_VIDEOS.sparkleWings}
-            poster={WREN_STILLS.flyingFast}
-            style={{ width: "min(480px, 90vw)", aspectRatio: "1" }}
-          />
-        </div>
-
-        {/* Three-column promise */}
-        <div
-          className="reveal reveal-delay-4"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "2rem",
-            maxWidth: "800px",
-            margin: "0 auto",
-          }}
-        >
-          {[
-            {
-              title: "No guilt",
-              body: "Wren never asks where you've been. Only: what's happening now?",
-            },
-            {
-              title: "Instant context",
-              body: "Your last entry, your last week, your last thread — all right there.",
-            },
-            {
-              title: "Soft landing",
-              body: "Re-entry is a one-question prompt. That's it. That's enough.",
-            },
-          ].map(({ title, body }) => (
-            <div key={title} style={{
-              background: "oklch(0.21 0.05 255 / 60%)",
-              border: "1px solid oklch(1 0 0 / 10%)",
-              borderRadius: "0.875rem",
-              padding: "1.75rem 1.5rem",
-              backdropFilter: "blur(8px)",
-            }}>
-              <h3 style={{
-                fontFamily: "'Playfair Display', serif",
-                fontSize: "1.125rem",
-                fontWeight: 600,
-                color: "oklch(0.88 0.12 70)",
-                marginBottom: "0.625rem",
-              }}>{title}</h3>
-              <p style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: "0.875rem",
-                lineHeight: 1.65,
-                color: "oklch(0.65 0.02 80)",
-                margin: 0,
-              }}>{body}</p>
-            </div>
-          ))}
-        </div>
+      {/* WREN — right half of viewport, full height. */}
+      <div style={{
+        position: "absolute", right: 0, top: 0,
+        width: "55vw", height: "100%", pointerEvents: "none", zIndex: 1, overflow: "hidden",
+      }}>
+        <WrenVideo src={WREN_VIDEOS.sparkleWings} glow={true} objectPosition="left center" />
       </div>
 
-      <style>{`
-        @media (max-width: 640px) {
-          #re-entry .container > div:last-child {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
+      {/* TEXT — left side */}
+      <div className="container" style={{ position: "relative", zIndex: 2, paddingTop: "6rem", paddingBottom: "6rem" }}>
+        <div style={{ maxWidth: "500px" }}>
+          <div className="reveal eyebrow" style={{ marginBottom: "1.25rem" }}>The return</div>
+
+          <h2
+            className="reveal reveal-delay-1"
+            style={{
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontSize: "clamp(2.5rem, 4.5vw, 5rem)",
+              fontWeight: 700, lineHeight: 1.0, letterSpacing: "-0.02em",
+              color: "#f0e8d8", marginBottom: "1.5rem",
+            }}
+          >
+            She remembers
+            <br />
+            <em style={{ color: "#e8a030", fontStyle: "italic" }}>everything.</em>
+          </h2>
+
+          <p
+            className="reveal reveal-delay-2"
+            style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: "clamp(1rem, 1.3vw, 1.125rem)",
+              lineHeight: 1.75, color: "rgba(168,180,204,0.9)", marginBottom: "1.5rem",
+            }}
+          >
+            When you come back after a week, a month, or longer — Wren doesn't ask where you've been. She just shows you where you left off, what you were feeling, and what you said you wanted to do next.
+          </p>
+
+          <p
+            className="reveal reveal-delay-3"
+            style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: "clamp(1rem, 1.3vw, 1.125rem)",
+              lineHeight: 1.75, color: "rgba(168,180,204,0.9)", marginBottom: "2.5rem",
+            }}
+          >
+            The re-entry is gentle. The context is preserved. The story continues.
+          </p>
+
+          <div className="reveal reveal-delay-4" style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+            {[
+              { step: "01", label: "Wren greets you back", desc: "A warm, non-judgmental welcome. No streak broken. No shame." },
+              { step: "02", label: "Your last thread", desc: "She shows you exactly where you left off — mood, entry, intention." },
+              { step: "03", label: "One small step", desc: "She asks one gentle question to ease you back in." },
+            ].map(({ step, label, desc }) => (
+              <div key={step} style={{ display: "flex", gap: "1.25rem", alignItems: "flex-start" }}>
+                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.875rem", fontWeight: 700, color: "rgba(232,160,48,0.5)", letterSpacing: "0.05em", marginTop: "0.1rem", flexShrink: 0, width: "2rem" }}>{step}</div>
+                <div>
+                  <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: "0.9375rem", color: "#f0e8d8", marginBottom: "0.25rem" }}>{label}</div>
+                  <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.875rem", color: "rgba(168,180,204,0.8)", lineHeight: 1.6 }}>{desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

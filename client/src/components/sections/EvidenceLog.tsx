@@ -1,211 +1,119 @@
 /**
  * EvidenceLog — Section 4
- * "The record that holds."
- * Wren: flies and returns home (right side)
- * Layout: Asymmetric — large copy left, Wren + mock journal entries right
+ *
+ * MERL-STYLE: Wren LEFT side, massive, bleeds off left edge.
+ * Text RIGHT. Alternating.
+ * Background: #080f26 — Wren's world.
  */
 
+import { useRef } from "react";
 import WrenVideo from "../WrenVideo";
-import { WREN_VIDEOS, WREN_STILLS } from "../../assets";
+import { WREN_VIDEOS } from "../../assets";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 
-const MOCK_ENTRIES = [
-  {
-    date: "Tuesday, May 6",
-    tag: "Morning",
-    text: "Actually made coffee before opening my laptop. Small win. Wren noticed.",
-    mood: "🌤",
-  },
-  {
-    date: "Wednesday, May 7",
-    tag: "Capture",
-    text: "That idea about the newsletter structure — saved it before it disappeared.",
-    mood: "💡",
-  },
-  {
-    date: "Thursday, May 8",
-    tag: "Evening",
-    text: "Harder day. Wrote it down anyway. That's the whole point.",
-    mood: "🌙",
-  },
+const ENTRIES = [
+  { date: "Tuesday, 3:42pm", text: "Finished the chapter. Didn't think I would. Wren reminded me I said the same thing last month." },
+  { date: "Friday, 8:11am", text: "Mood: 6/10. Tired but okay. The coffee helped. The quiet helped more." },
+  { date: "Sunday, 9:55pm", text: "Grateful for: the call with Mom, the rain, finishing something small." },
 ];
 
 export default function EvidenceLog() {
-  const ref = useScrollReveal();
+  const sectionRef = useRef<HTMLElement>(null);
+  useScrollReveal(sectionRef);
 
   return (
     <section
+      ref={sectionRef}
       id="evidence"
-      ref={ref as React.RefObject<HTMLElement>}
       style={{
-        padding: "8rem 0",
-        background: "oklch(0.19 0.045 254)",
         position: "relative",
+        minHeight: "100vh",
+        background: "#080f26",
         overflow: "hidden",
+        display: "flex",
+        alignItems: "center",
       }}
     >
-      {/* Decorative amber line */}
+      {/* Amber glow — left side */}
       <div aria-hidden style={{
-        position: "absolute",
-        top: 0,
-        left: "50%",
-        width: "1px",
-        height: "100%",
-        background: "linear-gradient(to bottom, transparent, oklch(0.78 0.16 65 / 0.12), transparent)",
+        position: "absolute", top: "50%", left: "-5%", transform: "translateY(-50%)",
+        width: "60vw", height: "80vh",
+        background: "radial-gradient(ellipse at center, rgba(232,160,48,0.09) 0%, rgba(232,160,48,0.03) 45%, transparent 70%)",
         pointerEvents: "none",
       }} />
 
-      <div className="container">
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "5rem",
-          alignItems: "center",
-        }}>
-          {/* Left — Copy */}
-          <div>
-            <div className="eyebrow reveal" style={{ marginBottom: "1rem" }}>
-              Your evidence log
-            </div>
-            <h2
-              className="reveal reveal-delay-1"
-              style={{
-                fontFamily: "'Playfair Display', serif",
-                fontSize: "clamp(2.25rem, 3.5vw, 3.5rem)",
-                fontWeight: 700,
-                lineHeight: 1.1,
-                color: "oklch(0.96 0.02 80)",
-                marginBottom: "1.5rem",
-              }}
-            >
-              The record
-              <br />
-              that{" "}
-              <em style={{ color: "oklch(0.78 0.16 65)", fontStyle: "italic" }}>holds.</em>
-            </h2>
+      {/* WREN — left half of viewport, full height. Flipped so Wren faces right. */}
+      <div style={{
+        position: "absolute", left: 0, top: 0,
+        width: "55vw", height: "100%", pointerEvents: "none", zIndex: 1, overflow: "hidden",
+      }}>
+        <WrenVideo src={WREN_VIDEOS.fliesHome} glow={true} flip={true} />
+      </div>
 
-            <p
-              className="reveal reveal-delay-2"
-              style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: "1.0625rem",
-                lineHeight: 1.75,
-                color: "oklch(0.72 0.02 80)",
-                marginBottom: "1.25rem",
-                maxWidth: "440px",
-              }}
-            >
-              On the days you feel like you've done nothing, Continuary shows
-              you the receipts. The small wins. The hard moments you showed up
-              for anyway. The ideas you caught before they vanished.
-            </p>
+      {/* TEXT — right side */}
+      <div className="container" style={{ position: "relative", zIndex: 2, paddingTop: "6rem", paddingBottom: "6rem" }}>
+        <div style={{ marginLeft: "auto", maxWidth: "480px" }}>
+          <div className="reveal eyebrow" style={{ marginBottom: "1.25rem" }}>Your evidence log</div>
 
-            <p
-              className="reveal reveal-delay-3"
-              style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: "1.0625rem",
-                lineHeight: 1.75,
-                color: "oklch(0.72 0.02 80)",
-                maxWidth: "440px",
-                marginBottom: "2.5rem",
-              }}
-            >
-              This is your evidence log. Proof that you're still in it, even
-              when it doesn't feel like it.
-            </p>
+          <h2
+            className="reveal reveal-delay-1"
+            style={{
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontSize: "clamp(2.5rem, 4.5vw, 5rem)",
+              fontWeight: 700, lineHeight: 1.0, letterSpacing: "-0.02em",
+              color: "#f0e8d8", marginBottom: "1.5rem",
+            }}
+          >
+            The record
+            <br />
+            <em style={{ color: "#e8a030", fontStyle: "italic" }}>that holds.</em>
+          </h2>
 
-            <div className="reveal reveal-delay-4" style={{ display: "flex", gap: "3rem" }}>
-              {[
-                { num: "3", label: "captures per day, avg." },
-                { num: "94%", label: "feel more grounded after 30 days" },
-              ].map(({ num, label }) => (
-                <div key={label}>
-                  <div style={{
-                    fontFamily: "'Playfair Display', serif",
-                    fontSize: "2.5rem",
-                    fontWeight: 700,
-                    color: "oklch(0.78 0.16 65)",
-                    lineHeight: 1,
-                    marginBottom: "0.375rem",
-                  }}>{num}</div>
-                  <div style={{
-                    fontFamily: "'DM Sans', sans-serif",
-                    fontSize: "0.8125rem",
-                    color: "oklch(0.60 0.02 80)",
-                    lineHeight: 1.4,
-                    maxWidth: "100px",
-                  }}>{label}</div>
-                </div>
-              ))}
-            </div>
+          <p
+            className="reveal reveal-delay-2"
+            style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: "clamp(1rem, 1.3vw, 1.125rem)",
+              lineHeight: 1.75, color: "rgba(168,180,204,0.9)", marginBottom: "2.5rem",
+            }}
+          >
+            On the days you feel like you've done nothing, Continuary shows you the receipts. The small wins. The hard moments you showed up for anyway. The ideas you caught before they vanished.
+          </p>
+
+          {/* Mock journal entries */}
+          <div className="reveal reveal-delay-3" style={{ display: "flex", flexDirection: "column", gap: "0.875rem", marginBottom: "2rem" }}>
+            {ENTRIES.map(({ date, text }) => (
+              <div
+                key={date}
+                style={{
+                  background: "rgba(17,28,66,0.7)",
+                  border: "1px solid rgba(255,255,255,0.06)",
+                  borderLeft: "2px solid rgba(232,160,48,0.4)",
+                  borderRadius: "0 0.75rem 0.75rem 0",
+                  padding: "1.125rem 1.375rem",
+                  backdropFilter: "blur(8px)",
+                }}
+              >
+                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.6875rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(232,160,48,0.7)", marginBottom: "0.5rem" }}>{date}</div>
+                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.9375rem", color: "rgba(240,232,216,0.85)", lineHeight: 1.65 }}>{text}</div>
+              </div>
+            ))}
           </div>
 
-          {/* Right — Mock journal + Wren */}
-          <div style={{ position: "relative" }}>
-            {/* Wren floating above entries */}
-            <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "-2rem", position: "relative", zIndex: 2 }}>
-              <WrenVideo
-                src={WREN_VIDEOS.fliesHome}
-                poster={WREN_STILLS.lookingDown}
-                style={{ width: "200px", aspectRatio: "1" }}
-              />
-            </div>
-
-            {/* Mock journal entries */}
-            <div className="reveal reveal-delay-2" style={{ display: "flex", flexDirection: "column", gap: "0.875rem" }}>
-              {MOCK_ENTRIES.map((entry, i) => (
-                <div
-                  key={entry.date}
-                  className={`reveal reveal-delay-${i + 1}`}
-                  style={{
-                    background: "oklch(0.21 0.05 255)",
-                    border: "1px solid oklch(1 0 0 / 10%)",
-                    borderRadius: "0.75rem",
-                    padding: "1.125rem 1.375rem",
-                    position: "relative",
-                  }}
-                >
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "0.5rem" }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: "0.625rem" }}>
-                      <span style={{ fontSize: "1rem" }}>{entry.mood}</span>
-                      <span style={{
-                        fontFamily: "'DM Sans', sans-serif",
-                        fontSize: "0.75rem",
-                        fontWeight: 600,
-                        color: "oklch(0.78 0.16 65)",
-                        letterSpacing: "0.06em",
-                        textTransform: "uppercase",
-                      }}>{entry.tag}</span>
-                    </div>
-                    <span style={{
-                      fontFamily: "'DM Sans', sans-serif",
-                      fontSize: "0.75rem",
-                      color: "oklch(0.50 0.02 80)",
-                    }}>{entry.date}</span>
-                  </div>
-                  <p style={{
-                    fontFamily: "'DM Sans', sans-serif",
-                    fontSize: "0.9375rem",
-                    lineHeight: 1.6,
-                    color: "oklch(0.80 0.02 80)",
-                    margin: 0,
-                  }}>{entry.text}</p>
-                </div>
-              ))}
-            </div>
+          {/* Stats */}
+          <div className="reveal reveal-delay-4" style={{ display: "flex", gap: "3rem" }}>
+            {[
+              { num: "3", label: "captures per day, avg." },
+              { num: "94%", label: "feel more grounded after 30 days" },
+            ].map(({ num, label }) => (
+              <div key={label}>
+                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.25rem", fontWeight: 700, color: "#e8a030", lineHeight: 1, marginBottom: "0.375rem" }}>{num}</div>
+                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.8125rem", color: "rgba(168,180,204,0.7)", lineHeight: 1.4, maxWidth: "100px" }}>{label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 768px) {
-          #evidence .container > div {
-            grid-template-columns: 1fr !important;
-            gap: 3rem !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }
