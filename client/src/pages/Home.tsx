@@ -1,24 +1,54 @@
-import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { Streamdown } from 'streamdown';
-
 /**
- * All content in this page are only for example, replace with your own feature implementation
- * When building pages, remember your instructions in Frontend Best Practices, Design Guide and Common Pitfalls
+ * Home — Continuary landing page
+ * Assembles all 10 sections in order
  */
+
+import { useEffect } from "react";
+import Nav from "../components/Nav";
+import Hero from "../components/sections/Hero";
+import NothingBroken from "../components/sections/NothingBroken";
+import Rituals from "../components/sections/Rituals";
+import EvidenceLog from "../components/sections/EvidenceLog";
+import ReEntry from "../components/sections/ReEntry";
+import ADHDSection from "../components/sections/ADHDSection";
+import BookSection from "../components/sections/BookSection";
+import Pricing from "../components/sections/Pricing";
+import TrustRow from "../components/sections/TrustRow";
+import Footer from "../components/sections/Footer";
+
 export default function Home() {
-  // If theme is switchable in App.tsx, we can implement theme toggling like this:
-  // const { theme, toggleTheme } = useTheme();
+  // Bootstrap scroll reveals for sections that don't use the hook
+  useEffect(() => {
+    const reveals = document.querySelectorAll(".reveal:not(.in-view)");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    reveals.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div style={{ minHeight: "100vh", background: "oklch(0.16 0.04 255)" }}>
+      <Nav />
       <main>
-        {/* Example: lucide-react for icons */}
-        <Loader2 className="animate-spin" />
-        Example Page
-        {/* Example: Streamdown for markdown rendering */}
-        <Streamdown>Any **markdown** content</Streamdown>
-        <Button variant="default">Example Button</Button>
+        <Hero />
+        <NothingBroken />
+        <Rituals />
+        <EvidenceLog />
+        <ReEntry />
+        <ADHDSection />
+        <BookSection />
+        <Pricing />
+        <TrustRow />
+        <Footer />
       </main>
     </div>
   );

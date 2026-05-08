@@ -1,49 +1,88 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { AlertCircle, Home } from "lucide-react";
 import { useLocation } from "wouter";
+import { WREN_STILLS, LOGOS } from "../assets";
 
 export default function NotFound() {
   const [, setLocation] = useLocation();
 
-  const handleGoHome = () => {
-    setLocation("/");
-  };
-
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
-      <Card className="w-full max-w-lg mx-4 shadow-lg border-0 bg-white/80 backdrop-blur-sm">
-        <CardContent className="pt-8 pb-8 text-center">
-          <div className="flex justify-center mb-6">
-            <div className="relative">
-              <div className="absolute inset-0 bg-red-100 rounded-full animate-pulse" />
-              <AlertCircle className="relative h-16 w-16 text-red-500" />
-            </div>
-          </div>
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "oklch(0.16 0.04 255)",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "2rem",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      {/* Ambient glow */}
+      <div aria-hidden style={{
+        position: "absolute",
+        top: "40%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        width: "600px",
+        height: "600px",
+        borderRadius: "50%",
+        background: "radial-gradient(circle, oklch(0.78 0.16 65 / 0.06) 0%, transparent 70%)",
+        pointerEvents: "none",
+      }} />
 
-          <h1 className="text-4xl font-bold text-slate-900 mb-2">404</h1>
+      {/* Logo */}
+      <a href="/" style={{ marginBottom: "3rem", position: "relative", zIndex: 1 }}>
+        <img src={LOGOS.stackedDark} alt="Continuary" style={{ height: "2rem" }} />
+      </a>
 
-          <h2 className="text-xl font-semibold text-slate-700 mb-4">
-            Page Not Found
-          </h2>
+      {/* Wren peeking */}
+      <img
+        src={WREN_STILLS.peekSide}
+        alt="Wren looking curious"
+        style={{
+          width: "200px",
+          filter: "drop-shadow(0 0 40px oklch(0.78 0.16 65 / 0.4))",
+          marginBottom: "2rem",
+          position: "relative",
+          zIndex: 1,
+        }}
+      />
 
-          <p className="text-slate-600 mb-8 leading-relaxed">
-            Sorry, the page you are looking for doesn't exist.
-            <br />
-            It may have been moved or deleted.
-          </p>
+      <h1 style={{
+        fontFamily: "'Playfair Display', serif",
+        fontSize: "clamp(2rem, 4vw, 3.5rem)",
+        fontWeight: 700,
+        color: "oklch(0.96 0.02 80)",
+        marginBottom: "1rem",
+        textAlign: "center",
+        position: "relative",
+        zIndex: 1,
+      }}>
+        Wren can't find this page.
+      </h1>
 
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Button
-              onClick={handleGoHome}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
-            >
-              <Home className="w-4 h-4 mr-2" />
-              Go Home
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
+      <p style={{
+        fontFamily: "'DM Sans', sans-serif",
+        fontSize: "1.0625rem",
+        color: "oklch(0.65 0.02 80)",
+        marginBottom: "2.5rem",
+        textAlign: "center",
+        maxWidth: "400px",
+        lineHeight: 1.7,
+        position: "relative",
+        zIndex: 1,
+      }}>
+        The page you're looking for doesn't exist — but your story is still here.
+      </p>
+
+      <button
+        onClick={() => setLocation("/")}
+        className="btn-amber"
+        style={{ position: "relative", zIndex: 1 }}
+      >
+        Back to Continuary
+      </button>
     </div>
   );
 }
