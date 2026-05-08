@@ -1,18 +1,36 @@
 /**
  * Home — Continuary landing page
- * Assembles all 10 sections in order
+ *
+ * Section order (per builder prompt):
+ *  1. Nav
+ *  2. Hero
+ *  3. ProblemSection  (NEW)
+ *  4. NothingBroken
+ *  5. Rituals
+ *  6. EvidenceLog
+ *  7. VaultSection    (NEW)
+ *  8. ReEntry
+ *  9. ThreadStrength  (NEW)
+ * 10. ADHDSection
+ * 11. BookSection
+ * 12. FoundingMember  (REPLACES Pricing)
+ * 13. TrustRow
+ * 14. Footer
  */
 
 import { useEffect } from "react";
 import Nav from "../components/Nav";
 import Hero from "../components/sections/Hero";
+import ProblemSection from "../components/sections/ProblemSection";
 import NothingBroken from "../components/sections/NothingBroken";
 import Rituals from "../components/sections/Rituals";
 import EvidenceLog from "../components/sections/EvidenceLog";
+import VaultSection from "../components/sections/VaultSection";
 import ReEntry from "../components/sections/ReEntry";
+import ThreadStrength from "../components/sections/ThreadStrength";
 import ADHDSection from "../components/sections/ADHDSection";
 import BookSection from "../components/sections/BookSection";
-import Pricing from "../components/sections/Pricing";
+import FoundingMember from "../components/sections/FoundingMember";
 import TrustRow from "../components/sections/TrustRow";
 import Footer from "../components/sections/Footer";
 
@@ -40,13 +58,16 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
+        <ProblemSection />
         <NothingBroken />
         <Rituals />
         <EvidenceLog />
+        <VaultSection />
         <ReEntry />
+        <ThreadStrength />
         <ADHDSection />
         <BookSection />
-        <Pricing />
+        <FoundingMember />
         <TrustRow />
         <Footer />
       </main>
