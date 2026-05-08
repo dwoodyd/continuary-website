@@ -28,25 +28,25 @@ export default function ReEntry() {
         alignItems: "center",
       }}
     >
-      {/* Amber glow — right side, brighter for the sparkle moment */}
+      {/* Amber glow — left side */}
       <div aria-hidden style={{
-        position: "absolute", top: "50%", right: "-5%", transform: "translateY(-50%)",
+        position: "absolute", top: "50%", left: "-5%", transform: "translateY(-50%)",
         width: "60vw", height: "80vh",
         background: "radial-gradient(ellipse at center, rgba(232,160,48,0.12) 0%, rgba(232,160,48,0.04) 45%, transparent 70%)",
         pointerEvents: "none",
       }} />
 
-      {/* WREN — right half of viewport, full height. */}
+      {/* WREN — LEFT half of viewport, full height. */}
       <div style={{
-        position: "absolute", right: 0, top: 0,
+        position: "absolute", left: 0, top: 0,
         width: "55vw", height: "100%", pointerEvents: "none", zIndex: 1, overflow: "hidden",
       }}>
-        <WrenVideo src={WREN_VIDEOS.memoryOrb} glow={true} objectPosition="center center" fadeDir="right" />
+        <WrenVideo src={WREN_VIDEOS.memoryOrb} glow={true} objectPosition="center center" fadeDir="left" />
       </div>
 
-      {/* TEXT — left side */}
+      {/* TEXT — right side */}
       <div className="container" style={{ position: "relative", zIndex: 2, paddingTop: "6rem", paddingBottom: "6rem" }}>
-        <div style={{ maxWidth: "500px" }}>
+        <div style={{ marginLeft: "auto", maxWidth: "500px" }}>
           <div className="reveal eyebrow" style={{ marginBottom: "1.25rem" }}>The return</div>
 
           <h2

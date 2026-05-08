@@ -7,8 +7,6 @@
  */
 
 import { useRef } from "react";
-import WrenVideo from "../WrenVideo";
-import { WREN_VIDEOS } from "../../assets";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 
 const RITUALS = [
@@ -35,22 +33,6 @@ export default function Rituals() {
         alignItems: "center",
       }}
     >
-      {/* Amber glow — right side */}
-      <div aria-hidden style={{
-        position: "absolute", top: "50%", right: "-5%", transform: "translateY(-50%)",
-        width: "60vw", height: "80vh",
-        background: "radial-gradient(ellipse at center, rgba(232,160,48,0.09) 0%, rgba(232,160,48,0.03) 45%, transparent 70%)",
-        pointerEvents: "none",
-      }} />
-
-            {/* WREN — right half of viewport, full height. */}
-      <div style={{
-        position: "absolute", right: 0, top: 0,
-        width: "55vw", height: "100%", pointerEvents: "none", zIndex: 1, overflow: "hidden",
-      }}>
-        <WrenVideo src={WREN_VIDEOS.chirping} glow={true} objectPosition="25% center" fadeDir="right" />
-      </div>
-
       {/* TEXT — left side */}
       <div className="container" style={{ position: "relative", zIndex: 2, paddingTop: "6rem", paddingBottom: "6rem" }}>
         <div style={{ maxWidth: "500px" }}>

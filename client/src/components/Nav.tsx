@@ -29,7 +29,7 @@ export default function Nav() {
   const navLinks = [
     { label: "How it works", href: "#how-it-works" },
     { label: "Rituals", href: "#rituals" },
-    { label: "Pricing", href: "#pricing" },
+    { label: "Apply", href: "#founding-member" },
     { label: "Book", href: "#book" },
   ];
 
@@ -66,8 +66,8 @@ export default function Nav() {
 
             {/* Right side */}
             <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-              <a href="#pricing" className="btn-amber desktop-cta" style={{ padding: "0.625rem 1.25rem", fontSize: "0.875rem" }}>
-                Start Free
+              <a href="#founding-member" className="btn-amber desktop-cta" style={{ padding: "0.625rem 1.25rem", fontSize: "0.875rem" }}>
+                Apply
               </a>
               {/* Hamburger — mobile only */}
               <button
@@ -129,12 +129,12 @@ export default function Nav() {
               </a>
             ))}
             <a
-              href="#pricing"
+              href="#founding-member"
               className="btn-amber"
               onClick={() => setMenuOpen(false)}
               style={{ marginTop: "1rem", justifyContent: "center" }}
             >
-              Start Free — No credit card
+              Apply for a slot
             </a>
           </div>
         </div>

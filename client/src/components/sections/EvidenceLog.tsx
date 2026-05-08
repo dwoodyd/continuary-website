@@ -81,7 +81,7 @@ export default function EvidenceLog() {
           </p>
 
           {/* Mock journal entries */}
-          <div className="reveal reveal-delay-3" style={{ display: "flex", flexDirection: "column", gap: "0.875rem", marginBottom: "2rem" }}>
+          <div className="reveal reveal-delay-3" style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginBottom: "1.5rem" }}>
             {ENTRIES.map(({ date, text }) => (
               <div
                 key={date}
@@ -90,7 +90,7 @@ export default function EvidenceLog() {
                   border: "1px solid rgba(255,255,255,0.06)",
                   borderLeft: "2px solid rgba(232,160,48,0.4)",
                   borderRadius: "0 0.75rem 0.75rem 0",
-                  padding: "1.125rem 1.375rem",
+                  padding: "0.875rem 1.125rem",
                   backdropFilter: "blur(8px)",
                 }}
               >

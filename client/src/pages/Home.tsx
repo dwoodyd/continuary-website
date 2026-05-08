@@ -14,8 +14,7 @@
  * 10. ADHDSection
  * 11. BookSection
  * 12. FoundingMember  (REPLACES Pricing)
- * 13. TrustRow
- * 14. Footer
+ * 13. Footer
  */
 
 import { useEffect } from "react";
@@ -31,7 +30,6 @@ import ThreadStrength from "../components/sections/ThreadStrength";
 import ADHDSection from "../components/sections/ADHDSection";
 import BookSection from "../components/sections/BookSection";
 import FoundingMember from "../components/sections/FoundingMember";
-import TrustRow from "../components/sections/TrustRow";
 import Footer from "../components/sections/Footer";
 
 export default function Home() {
@@ -68,7 +66,6 @@ export default function Home() {
         <ADHDSection />
         <BookSection />
         <FoundingMember />
-        <TrustRow />
         <Footer />
       </main>
     </div>

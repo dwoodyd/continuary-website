@@ -39,12 +39,13 @@ export default function ADHDSection() {
         pointerEvents: "none",
       }} />
 
-      {/* WREN — left half of viewport, full height. Flipped so Wren faces right. */}
+      {/* WREN — small corner accent, bottom-left. Lets the four bullet points be the focal point. */}
       <div style={{
-        position: "absolute", left: 0, top: 0,
-        width: "55vw", height: "100%", pointerEvents: "none", zIndex: 1, overflow: "hidden",
+        position: "absolute", left: 0, bottom: 0,
+        width: "22vw", height: "40vh", pointerEvents: "none", zIndex: 1, overflow: "hidden",
+        opacity: 0.55,
       }}>
-        <WrenVideo src={WREN_VIDEOS.cornerWaveTrimmed} glow={true} objectPosition="center center" fadeDir="left" />
+        <WrenVideo src={WREN_VIDEOS.cornerWaveTrimmed} glow={false} objectPosition="center bottom" fadeDir="left" />
       </div>
 
       {/* TEXT — right side */}

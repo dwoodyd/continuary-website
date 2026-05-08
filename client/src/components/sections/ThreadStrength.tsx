@@ -32,6 +32,7 @@ const tiers = [
 function ThreadStrengthBar() {
   const barRef = useRef<HTMLDivElement>(null);
   const [filled, setFilled] = useState(false);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -39,6 +40,19 @@ function ThreadStrengthBar() {
         if (entry.isIntersecting) {
           setFilled(true);
           observer.disconnect();
+          // Count up from 0 to 74 over 1800ms
+          const target = 74;
+          const duration = 1800;
+          const startTime = performance.now();
+          const tick = (now: number) => {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // ease-out cubic
+            const eased = 1 - Math.pow(1 - progress, 3);
+            setCount(Math.round(eased * target));
+            if (progress < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
         }
       },
       { threshold: 0.4 }
@@ -54,7 +68,7 @@ function ThreadStrengthBar() {
         <span className="font-sans text-sm text-white/50 tracking-wide">
           Your Thread Strength
         </span>
-        <span className="font-serif text-3xl text-amber-300 font-normal">74</span>
+        <span className="font-serif text-3xl text-amber-300 font-normal">{count}</span>
       </div>
 
       {/* Bar track */}
@@ -159,7 +173,7 @@ export default function ThreadStrength() {
 
         {/* Footer note */}
         <p
-          className="reveal-child text-center font-sans text-sm italic text-white/35 max-w-sm mx-auto"
+          className="reveal-child text-center font-sans text-lg italic text-white/55 max-w-lg mx-auto"
           style={{ transitionDelay: "530ms" }}
         >
           Most members live in Weaving. Holding is rare. Both are honored.

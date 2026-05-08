@@ -91,7 +91,7 @@ export default function BookSection() {
               src={BOOK.cover}
               alt="Permission to Start book cover"
               style={{
-                width: "120px",
+                width: "180px",
                 borderRadius: "0.5rem",
                 boxShadow: "0 8px 40px rgba(232,160,48,0.2), 0 2px 8px rgba(0,0,0,0.5)",
                 flexShrink: 0,
@@ -100,12 +100,12 @@ export default function BookSection() {
             <div>
               <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.125rem", fontWeight: 600, color: "#f0e8d8", marginBottom: "0.25rem" }}>Permission to Start</div>
               <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.875rem", color: "rgba(168,180,204,0.7)", marginBottom: "0.375rem" }}>DeWayne Woods</div>
-              <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem", fontWeight: 600, color: "rgba(232,160,48,0.8)", letterSpacing: "0.08em", textTransform: "uppercase" }}>Included with Continuary Pro</div>
+              <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem", fontWeight: 600, color: "rgba(232,160,48,0.8)", letterSpacing: "0.08em", textTransform: "uppercase" }}>Included with Founding Member Access</div>
             </div>
           </div>
 
           <div className="reveal reveal-delay-4">
-            <a href="#pricing" className="btn-amber">Get the book + app</a>
+            <a href="#founding-member" className="btn-amber">Apply for the bundle</a>
           </div>
         </div>
       </div>

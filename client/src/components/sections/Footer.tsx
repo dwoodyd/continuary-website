@@ -136,15 +136,15 @@ export default function Footer() {
               lineHeight: 1.75, color: "rgba(168,180,204,0.9)", marginBottom: "2.5rem",
             }}
           >
-            Start free. Come back when you're ready. Wren will be here.
+            Apply for a founding member slot. Wren will be here when you're ready.
           </p>
 
           <div className="reveal reveal-delay-3" style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "4rem" }}>
-            <a href="#" className="btn-amber" style={{ fontSize: "1rem", padding: "0.875rem 2rem" }}>
-              Start for free
+            <a href="#founding-member" className="btn-amber" style={{ fontSize: "1rem", padding: "0.875rem 2rem" }}>
+              Apply for a slot
             </a>
-            <a href="#pricing" className="btn-ghost" style={{ fontSize: "1rem", padding: "0.875rem 2rem" }}>
-              See pricing
+            <a href="#founding-member" className="btn-ghost" style={{ fontSize: "1rem", padding: "0.875rem 2rem" }}>
+              See what’s included
             </a>
           </div>
 
@@ -196,8 +196,8 @@ export default function Footer() {
         zIndex: 40,
         display: "none",
       }} id="mobile-cta">
-        <a href="#pricing" className="btn-amber" style={{ width: "100%", textAlign: "center", display: "block" }}>
-          Start Free — No credit card
+        <a href="#founding-member" className="btn-amber" style={{ width: "100%", textAlign: "center", display: "block" }}>
+          Apply for a founding member slot
         </a>
       </div>
 

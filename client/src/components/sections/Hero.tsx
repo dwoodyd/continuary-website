@@ -145,8 +145,26 @@ export default function Hero() {
           </p>
 
           <div data-reveal style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "2rem" }}>
-            <a href="#pricing" className="btn-amber">Start Free — No credit card</a>
-            <a href="#rituals" className="btn-ghost">See how it works</a>
+            <a href="#founding-member" className="btn-amber">Apply for a slot</a>
+            <a href="#how-it-works" className="btn-ghost">See how it works</a>
+          </div>
+
+          {/* Closed beta pill — sets expectation before trust chips */}
+          <div
+            data-reveal
+            style={{
+              marginBottom: "1.25rem",
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: "0.75rem",
+              fontWeight: 600,
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              fontStyle: "italic",
+              color: "rgba(232,160,48,0.65)",
+              whiteSpace: "nowrap",
+            }}
+          >
+            In Closed Beta · 37 of 100 founding member slots claimed
           </div>
 
           <div data-reveal style={{ display: "flex", gap: "0.625rem", flexWrap: "wrap" }}>
