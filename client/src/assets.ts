@@ -46,6 +46,12 @@ export const WREN_VIDEOS = {
   memoryOrb: '/manus-storage/WrenMemoryOrb_df3144bf.mp4',
   cornerWave: '/manus-storage/WrenCornerWave_a333e802.mp4',
   premium3d: '/manus-storage/A_premium_D_character_mascot_4a8cdc59.mp4',
+  // New batch 2
+  ridingWave: '/manus-storage/WrenRidingWave_e28c12bd.mp4',
+  blobJournal: '/manus-storage/WrenBlobJournal_3cb9d6d4.mp4',
+  wipesScreen: '/manus-storage/WrenWipesScreenPointsandDances_dd2e35eb.mp4',
+  sparkleWingsNew: '/manus-storage/Bird_spreads_wings_emits_sparkles_202605071533_9b4346a6.mp4',
+  tuggingThread: '/manus-storage/Wren_tugging_golden_thread_202605061343_ef17955d.mp4',
   // Additional
   amberGold: '/manus-storage/A_small_luminous_amber_gold_bi_f14024c2.mp4',
   untitled49: '/manus-storage/Untitledvideo(49)_b23d73b8.mp4',

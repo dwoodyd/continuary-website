@@ -97,7 +97,7 @@ export default function Pricing() {
         position: "absolute", left: 0, top: 0,
         width: "55vw", height: "100%", pointerEvents: "none", zIndex: 1, overflow: "hidden",
       }}>
-        <WrenVideo src={WREN_VIDEOS.memoryOrb} glow={true} objectPosition="center center" />
+        <WrenVideo src={WREN_VIDEOS.wipesScreen} glow={true} objectPosition="center center" />
       </div>
 
       {/* PRICING — right side */}
