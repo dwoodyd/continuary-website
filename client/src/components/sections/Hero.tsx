@@ -72,9 +72,9 @@ export default function Hero() {
         }}
       >
         <WrenVideo
-          src={WREN_VIDEOS.floating}
+          src={WREN_VIDEOS.luminousFloats}
           glow={true}
-          objectPosition="left center"
+          objectPosition="40% center"
         />
       </div>
 

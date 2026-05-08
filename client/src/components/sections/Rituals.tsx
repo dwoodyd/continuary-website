@@ -48,7 +48,7 @@ export default function Rituals() {
         position: "absolute", right: 0, top: 0,
         width: "55vw", height: "100%", pointerEvents: "none", zIndex: 1, overflow: "hidden",
       }}>
-        <WrenVideo src={WREN_VIDEOS.eyesClosed} glow={true} objectPosition="left center" />
+        <WrenVideo src={WREN_VIDEOS.chirping} glow={true} objectPosition="25% center" />
       </div>
 
       {/* TEXT — left side */}

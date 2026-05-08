@@ -57,9 +57,9 @@ export default function NothingBroken() {
         }}
       >
         <WrenVideo
-          src={WREN_VIDEOS.chirping}
+          src={WREN_VIDEOS.eyesClosed}
           glow={true}
-          flip={true}
+          objectPosition="55% center"
         />
       </div>
 

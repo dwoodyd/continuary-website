@@ -89,7 +89,7 @@ export default function TrustRow() {
         position: "absolute", right: 0, top: 0,
         width: "55vw", height: "100%", pointerEvents: "none", zIndex: 1, overflow: "hidden",
       }}>
-        <WrenVideo src={WREN_VIDEOS.chirping} glow={true} objectPosition="left center" />
+        <WrenVideo src={WREN_VIDEOS.cornerWave} glow={true} objectPosition="center center" />
       </div>
       {/* TESTIMONIALS — left side */}
       <div className="container" style={{ position: "relative", zIndex: 2, paddingTop: "6rem", paddingBottom: "6rem" }}>

@@ -41,7 +41,7 @@ export default function ReEntry() {
         position: "absolute", right: 0, top: 0,
         width: "55vw", height: "100%", pointerEvents: "none", zIndex: 1, overflow: "hidden",
       }}>
-        <WrenVideo src={WREN_VIDEOS.sparkleWings} glow={true} objectPosition="left center" />
+        <WrenVideo src={WREN_VIDEOS.concentration} glow={true} objectPosition="50% center" />
       </div>
 
       {/* TEXT — left side */}

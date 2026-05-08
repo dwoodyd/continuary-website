@@ -41,7 +41,7 @@ export default function BookSection() {
         position: "absolute", right: 0, top: 0,
         width: "55vw", height: "100%", pointerEvents: "none", zIndex: 1, overflow: "hidden",
       }}>
-        <WrenVideo src={BOOK.wrenPerched} glow={true} objectPosition="left center" />
+        <WrenVideo src={BOOK.wrenLooking1} glow={true} objectPosition="center center" />
       </div>
 
       {/* TEXT — left side */}

@@ -34,25 +34,25 @@ export default function EvidenceLog() {
         alignItems: "center",
       }}
     >
-      {/* Amber glow — left side */}
+      {/* Amber glow — right side */}
       <div aria-hidden style={{
-        position: "absolute", top: "50%", left: "-5%", transform: "translateY(-50%)",
+        position: "absolute", top: "50%", right: "-5%", transform: "translateY(-50%)",
         width: "60vw", height: "80vh",
         background: "radial-gradient(ellipse at center, rgba(232,160,48,0.09) 0%, rgba(232,160,48,0.03) 45%, transparent 70%)",
         pointerEvents: "none",
       }} />
 
-      {/* WREN — left half of viewport, full height. Flipped so Wren faces right. */}
+      {/* WREN — RIGHT side, concentration video has large Wren facing left */}
       <div style={{
-        position: "absolute", left: 0, top: 0,
-        width: "55vw", height: "100%", pointerEvents: "none", zIndex: 1, overflow: "hidden",
+        position: "absolute", right: 0, top: 0,
+        width: "60vw", height: "100%", pointerEvents: "none", zIndex: 1, overflow: "hidden",
       }}>
-        <WrenVideo src={WREN_VIDEOS.fliesHome} glow={true} flip={true} />
+        <WrenVideo src={WREN_VIDEOS.concentration} glow={true} objectPosition="50% center" />
       </div>
 
-      {/* TEXT — right side */}
+      {/* TEXT — left side */}
       <div className="container" style={{ position: "relative", zIndex: 2, paddingTop: "6rem", paddingBottom: "6rem" }}>
-        <div style={{ marginLeft: "auto", maxWidth: "480px" }}>
+        <div style={{ maxWidth: "480px" }}>
           <div className="reveal eyebrow" style={{ marginBottom: "1.25rem" }}>Your evidence log</div>
 
           <h2

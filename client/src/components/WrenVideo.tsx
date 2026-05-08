@@ -77,10 +77,10 @@ export default function WrenVideo({
         width: "100%",
         height: "100%",
         objectFit: "cover",
-        // Always anchor to left center — Wren lives in the left portion of every frame.
-        // scaleX(-1) flip mirrors the whole video; objectPosition stays left center
-        // in the pre-flip space, which correctly shows Wren after the flip.
-        objectPosition: "left center",
+        // Use the passed objectPosition prop. Default is "left center" since Wren
+        // lives in the left portion of most frames. For centered clips (memoryOrb,
+        // cornerWave, premium3d, cartwheels) pass "center center".
+        objectPosition: objectPosition,
         transform: flip ? "scaleX(-1)" : undefined,
         filter: glow
           ? "drop-shadow(0 0 80px rgba(232,160,48,0.6)) drop-shadow(0 0 200px rgba(232,160,48,0.3)) brightness(1.1)"

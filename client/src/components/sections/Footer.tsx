@@ -37,12 +37,12 @@ export default function Footer() {
         pointerEvents: "none",
       }} />
 
-      {/* WREN — left half of viewport, full height. Flipped so Wren faces right. */}
+      {/* WREN — left half of viewport, full height. sparkleWings is symmetric/forward-facing. */}
       <div style={{
         position: "absolute", left: 0, top: 0,
         width: "55vw", height: "100%", pointerEvents: "none", zIndex: 1, overflow: "hidden",
       }}>
-        <WrenVideo src={WREN_VIDEOS.fliesHome} glow={true} flip={true} />
+        <WrenVideo src={WREN_VIDEOS.cartwheels} glow={true} objectPosition="center center" />
       </div>
 
       {/* FINAL CTA — right side */}

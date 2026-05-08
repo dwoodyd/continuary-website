@@ -40,6 +40,12 @@ export const WREN_VIDEOS = {
   concentration: '/manus-storage/Wren_closes_eyes_in_concentration_202605061231_16cc49ba.mp4',
   // Section 7 — bouncy cartwheels (pricing delight)
   cartwheels: '/manus-storage/Wren_does_bouncy_cartwheels_202605061326_640338a3.mp4',
+  // New clips — forward-facing, large, symmetric
+  luminousFloats: '/manus-storage/Luminous_silicone_bird_floats_202605061227_6b51d9b8.mp4',
+  dropsHovers: '/manus-storage/Bird_mascot_drops_and_hovers_202605061143_14d6eb5a.mp4',
+  memoryOrb: '/manus-storage/WrenMemoryOrb_df3144bf.mp4',
+  cornerWave: '/manus-storage/WrenCornerWave_a333e802.mp4',
+  premium3d: '/manus-storage/A_premium_D_character_mascot_4a8cdc59.mp4',
   // Additional
   amberGold: '/manus-storage/A_small_luminous_amber_gold_bi_f14024c2.mp4',
   untitled49: '/manus-storage/Untitledvideo(49)_b23d73b8.mp4',

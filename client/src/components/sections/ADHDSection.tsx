@@ -44,7 +44,7 @@ export default function ADHDSection() {
         position: "absolute", left: 0, top: 0,
         width: "55vw", height: "100%", pointerEvents: "none", zIndex: 1, overflow: "hidden",
       }}>
-        <WrenVideo src={WREN_VIDEOS.concentration} glow={true} flip={true} />
+        <WrenVideo src={WREN_VIDEOS.premium3d} glow={true} objectPosition="center center" />
       </div>
 
       {/* TEXT — right side */}
