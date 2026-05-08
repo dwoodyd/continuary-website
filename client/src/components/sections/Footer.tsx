@@ -48,13 +48,71 @@ export default function Footer() {
       {/* FINAL CTA — right side */}
       <div className="container" style={{ position: "relative", zIndex: 2, paddingTop: "6rem", paddingBottom: "6rem" }}>
         <div style={{ marginLeft: "auto", maxWidth: "480px" }}>
-          {/* Logo */}
-          <img
-            src={LOGOS.stackedDark}
-            alt="Continuary"
+          {/* Logo — intentional, centered, large */}
+          <div
             className="reveal"
-            style={{ height: "3rem", marginBottom: "2.5rem", display: "block" }}
-          />
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "1rem",
+              marginBottom: "3rem",
+            }}
+          >
+            {/* Inline SVG mark — arch + wren — white on dark */}
+            <svg
+              width="80"
+              height="80"
+              viewBox="0 0 120 140"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden
+              style={{ filter: "drop-shadow(0 0 24px rgba(232,160,48,0.4))" }}
+            >
+              {/* Arch */}
+              <path
+                d="M10 140 L10 60 Q10 10 60 10 Q110 10 110 60 L110 140"
+                stroke="rgba(240,232,216,0.9)"
+                strokeWidth="5"
+                fill="none"
+                strokeLinecap="round"
+              />
+              {/* Thread path */}
+              <path
+                d="M30 130 Q45 90 60 80 Q75 70 90 50"
+                stroke="rgba(240,232,216,0.7)"
+                strokeWidth="3.5"
+                fill="none"
+                strokeLinecap="round"
+              />
+              {/* Wren body */}
+              <ellipse cx="72" cy="72" rx="14" ry="11" fill="rgba(240,232,216,0.9)" />
+              {/* Wren head */}
+              <circle cx="84" cy="62" r="8" fill="rgba(240,232,216,0.9)" />
+              {/* Amber dot / eye */}
+              <circle cx="87" cy="59" r="2.5" fill="#e8a030" />
+              {/* Beak */}
+              <path d="M91 62 L96 63 L91 64" fill="rgba(240,232,216,0.9)" />
+              {/* Wing */}
+              <path d="M62 74 Q58 82 65 86 Q72 82 72 74" fill="rgba(240,232,216,0.6)" />
+              {/* Tail */}
+              <path d="M58 76 Q50 84 55 90 Q62 84 65 78" fill="rgba(240,232,216,0.5)" />
+            </svg>
+            {/* Wordmark */}
+            <span
+              style={{
+                fontFamily: "'Playfair Display', Georgia, serif",
+                fontSize: "2.25rem",
+                fontWeight: 400,
+                letterSpacing: "0.04em",
+                color: "rgba(240,232,216,0.92)",
+                lineHeight: 1,
+                textShadow: "0 0 40px rgba(232,160,48,0.25)",
+              }}
+            >
+              Continuary
+            </span>
+          </div>
 
           <h2
             className="reveal reveal-delay-1"
