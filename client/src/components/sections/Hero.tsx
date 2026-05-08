@@ -7,6 +7,10 @@
  * - Text is LEFT-ALIGNED, takes up left 45% of viewport
  * - No grid columns — Wren is a scene element, not a layout element
  * - Amber radial glow anchors Wren to the space
+ *
+ * MOBILE:
+ * - Wren shrinks to 80vw, anchors bottom-right at 50% opacity (decorative)
+ * - Text takes full width, headline + CTAs are immediately above the fold
  */
 
 import { useEffect, useRef } from "react";
@@ -46,6 +50,7 @@ export default function Hero() {
       {/* Amber atmospheric glow — right side, behind Wren */}
       <div
         aria-hidden
+        className="hero-glow"
         style={{
           position: "absolute",
           top: "50%",
@@ -60,6 +65,7 @@ export default function Hero() {
 
       {/* WREN — right half of viewport, full height. objectFit:cover crops to Wren's body. */}
       <div
+        id="hero-wren-container"
         style={{
           position: "absolute",
           right: 0,
@@ -84,7 +90,7 @@ export default function Hero() {
         className="container"
         style={{ position: "relative", zIndex: 2, paddingTop: "6rem", paddingBottom: "6rem" }}
       >
-        <div ref={textRef} style={{ maxWidth: "500px" }}>
+        <div id="hero-text" ref={textRef} style={{ maxWidth: "500px" }}>
           <div
             data-reveal
             className="eyebrow"
@@ -98,7 +104,7 @@ export default function Hero() {
             data-reveal
             style={{
               fontFamily: "'Playfair Display', Georgia, serif",
-              fontSize: "clamp(3.5rem, 7vw, 7.5rem)",
+              fontSize: "clamp(3rem, 7vw, 7.5rem)",
               fontWeight: 700,
               lineHeight: 0.95,
               letterSpacing: "-0.03em",
@@ -112,7 +118,7 @@ export default function Hero() {
             data-reveal
             style={{
               fontFamily: "'Playfair Display', Georgia, serif",
-              fontSize: "clamp(3.5rem, 7vw, 7.5rem)",
+              fontSize: "clamp(3rem, 7vw, 7.5rem)",
               fontWeight: 700,
               fontStyle: "italic",
               lineHeight: 0.95,
@@ -128,7 +134,7 @@ export default function Hero() {
             data-reveal
             style={{
               fontFamily: "'DM Sans', sans-serif",
-              fontSize: "clamp(1rem, 1.3vw, 1.125rem)",
+              fontSize: "clamp(0.9375rem, 1.3vw, 1.125rem)",
               lineHeight: 1.75,
               color: "rgba(168,180,204,0.9)",
               maxWidth: "400px",
@@ -163,13 +169,34 @@ export default function Hero() {
 
       <style>{`
         @media (max-width: 768px) {
-          #hero [style*="position: absolute"][style*="right"] {
-            position: relative !important;
-            right: auto !important;
+          /* Wren: shrink, anchor bottom-right, reduce opacity so text reads clearly */
+          #hero-wren-container {
+            width: 85vw !important;
+            height: 50vh !important;
+            top: auto !important;
+            bottom: 0 !important;
+            right: -15vw !important;
+            opacity: 0.45;
+          }
+          /* Text: full width, tighter top padding so headline is above the fold */
+          #hero-text {
+            max-width: 100% !important;
+          }
+          .hero-glow {
+            width: 100vw !important;
+            right: -20% !important;
+            bottom: 0 !important;
             top: auto !important;
             transform: none !important;
-            width: 100% !important;
-            margin-top: 2rem;
+            height: 60vh !important;
+          }
+        }
+        @media (max-width: 480px) {
+          #hero-wren-container {
+            width: 100vw !important;
+            height: 45vh !important;
+            right: -20vw !important;
+            opacity: 0.35;
           }
         }
       `}</style>
