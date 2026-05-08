@@ -45,6 +45,7 @@ export const WREN_VIDEOS = {
   dropsHovers: '/manus-storage/Bird_mascot_drops_and_hovers_202605061143_14d6eb5a.mp4',
   memoryOrb: '/manus-storage/WrenMemoryOrb_df3144bf.mp4',
   cornerWave: '/manus-storage/WrenCornerWave_a333e802.mp4',
+  cornerWaveTrimmed: '/manus-storage/WrenCornerWave_trimmed_abd63c34.mp4',
   premium3d: '/manus-storage/A_premium_D_character_mascot_4a8cdc59.mp4',
   // New batch 2
   ridingWave: '/manus-storage/WrenRidingWave_e28c12bd.mp4',
