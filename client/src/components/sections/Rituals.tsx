@@ -1,8 +1,8 @@
 /**
  * Rituals — Section 3
  *
- * MERL-STYLE: Wren RIGHT side, massive, bleeds off right edge.
- * Text LEFT. Alternating from Section 2.
+ * MERL-STYLE: Text LEFT, Wren still image RIGHT (trail-of-checkpoints).
+ * Mirrors the two-column layout of NothingBroken / ReEntry.
  * Background: #080f26 — Wren's world.
  */
 
@@ -33,9 +33,39 @@ export default function Rituals() {
         alignItems: "center",
       }}
     >
+      {/* Subtle ambient glow behind Wren */}
+      <div
+        style={{
+          position: "absolute",
+          right: "10%",
+          top: "50%",
+          transform: "translateY(-50%)",
+          width: "45vw",
+          height: "45vw",
+          maxWidth: "600px",
+          maxHeight: "600px",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(232,160,48,0.10) 0%, transparent 70%)",
+          pointerEvents: "none",
+          zIndex: 1,
+        }}
+      />
+
       {/* TEXT — left side */}
-      <div className="container" style={{ position: "relative", zIndex: 2, paddingTop: "6rem", paddingBottom: "6rem" }}>
-        <div style={{ maxWidth: "500px" }}>
+      <div
+        className="container"
+        style={{
+          position: "relative",
+          zIndex: 2,
+          paddingTop: "6rem",
+          paddingBottom: "6rem",
+          display: "flex",
+          alignItems: "center",
+          gap: "4vw",
+        }}
+      >
+        {/* Left: copy */}
+        <div style={{ flex: "0 0 auto", maxWidth: "480px", width: "100%" }}>
           <div className="reveal eyebrow" style={{ marginBottom: "1.25rem" }}>Daily practice</div>
 
           <h2
@@ -88,7 +118,40 @@ export default function Rituals() {
             ))}
           </div>
         </div>
+
+        {/* Right: Wren still — trail of checkpoints */}
+        <div
+          className="reveal reveal-delay-2"
+          style={{
+            flex: "1 1 auto",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minWidth: 0,
+          }}
+        >
+          <img
+            src="/manus-storage/wren_silicone_trail_of_checkpoints_1778093212673_c017fde7.png"
+            alt="Wren flying along a trail of glowing checkpoints"
+            style={{
+              width: "min(46vw, 520px)",
+              height: "auto",
+              display: "block",
+              filter: "drop-shadow(0 0 40px rgba(232,160,48,0.25))",
+              userSelect: "none",
+              pointerEvents: "none",
+            }}
+          />
+        </div>
       </div>
+
+      {/* Mobile: hide image on very small screens to keep copy readable */}
+      <style>{`
+        @media (max-width: 640px) {
+          #rituals img { display: none; }
+          #rituals .container { justify-content: flex-start; }
+        }
+      `}</style>
     </section>
   );
 }
