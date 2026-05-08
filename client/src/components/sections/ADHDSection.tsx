@@ -2,7 +2,7 @@
  * ADHDSection — Section 6
  *
  * MERL-STYLE: Wren LEFT side, massive, bleeds off left edge.
- * Text RIGHT. Alternating.
+ * Text RIGHT. Alternating from ReEntry (which has Wren LEFT too — this is fine as ADHD comes after VaultSection break).
  * Background: #080f26 — Wren's world.
  *
  * Message: "Built for the way you actually think"
@@ -31,7 +31,7 @@ export default function ADHDSection() {
         alignItems: "center",
       }}
     >
-      {/* Amber glow — left side */}
+      {/* Amber glow — left side, behind Wren */}
       <div aria-hidden style={{
         position: "absolute", top: "50%", left: "-5%", transform: "translateY(-50%)",
         width: "60vw", height: "80vh",
@@ -39,13 +39,13 @@ export default function ADHDSection() {
         pointerEvents: "none",
       }} />
 
-      {/* WREN — small corner accent, bottom-left. Lets the four bullet points be the focal point. */}
+      {/* WREN — left half of viewport, full height */}
       <div style={{
-        position: "absolute", left: 0, bottom: 0,
-        width: "22vw", height: "40vh", pointerEvents: "none", zIndex: 1, overflow: "hidden",
-        opacity: 0.55,
+        position: "absolute", left: 0, top: 0,
+        width: "55vw", height: "100%",
+        pointerEvents: "none", zIndex: 1, overflow: "hidden",
       }}>
-        <WrenVideo src={WREN_VIDEOS.cornerWaveTrimmed} glow={false} objectPosition="center bottom" fadeDir="left" />
+        <WrenVideo src={WREN_VIDEOS.cornerWaveTrimmed} glow={true} objectPosition="center center" fadeDir="left" />
       </div>
 
       {/* TEXT — right side */}
