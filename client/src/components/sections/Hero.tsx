@@ -168,7 +168,7 @@ export default function Hero() {
           </div>
 
           <div data-reveal style={{ display: "flex", gap: "0.625rem", flexWrap: "wrap", marginBottom: "1.25rem" }}>
-            {["No shame spirals", "ADHD-friendly", "Built for real life"].map((label) => (
+            {["No shame spirals", "ADHD & anxiety friendly", "Built for real life"].map((label) => (
               <span key={label} className="chip">{label}</span>
             ))}
           </div>

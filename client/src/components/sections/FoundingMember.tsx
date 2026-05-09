@@ -10,6 +10,8 @@
 import { useState } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mgodnnnk";
+
 // Hard-coded scarcity count — update this number as slots are claimed
 const SLOTS_CLAIMED = 37;
 const TOTAL_SLOTS = 100;
@@ -94,7 +96,7 @@ export default function FoundingMember() {
     return e;
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     const errs = validate();
     if (Object.keys(errs).length > 0) {
@@ -102,9 +104,26 @@ export default function FoundingMember() {
       return;
     }
     setErrors({});
-    // In production: POST to your form endpoint (Formspree, Resend, etc.)
-    // For now, show the success state
-    setSubmitted(true);
+
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          relationship: form.relationship,
+        }),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        const data = await res.json().catch(() => ({}));
+        setErrors({ submit: data?.error || "Something went wrong. Please try again." });
+      }
+    } catch {
+      setErrors({ submit: "Network error. Please check your connection and try again." });
+    }
   }
 
   return (
@@ -236,6 +255,11 @@ export default function FoundingMember() {
                   <p className="mt-1 font-sans text-xs text-red-400">{errors.relationship}</p>
                 )}
               </div>
+
+              {/* Submit error */}
+              {errors.submit && (
+                <p className="font-sans text-sm text-red-400 text-center">{errors.submit}</p>
+              )}
 
               {/* Submit */}
               <button

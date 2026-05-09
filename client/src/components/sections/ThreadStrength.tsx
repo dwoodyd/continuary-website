@@ -19,7 +19,7 @@ const tiers = [
     name: "Weaving",
     range: "26 – 75",
     description: "Building rhythm, consistent check-ins.",
-    active: true, // 74 falls here
+    active: true, // 64 falls here
   },
   {
     name: "Holding",
@@ -40,8 +40,8 @@ function ThreadStrengthBar() {
         if (entry.isIntersecting) {
           setFilled(true);
           observer.disconnect();
-          // Count up from 0 to 74 over 1800ms
-          const target = 74;
+          // Count up from 0 to 64 over 1800ms
+          const target = 64;
           const duration = 1800;
           const startTime = performance.now();
           const tick = (now: number) => {
@@ -76,7 +76,7 @@ function ThreadStrengthBar() {
         <div
           className="absolute inset-y-0 left-0 rounded-full transition-all duration-[1800ms] ease-out"
           style={{
-            width: filled ? "74%" : "0%",
+            width: filled ? "64%" : "0%",
             background: "linear-gradient(90deg, #b45309 0%, #f59e0b 60%, #fcd34d 100%)",
             boxShadow: filled ? "0 0 12px rgba(245,158,11,0.5)" : "none",
           }}
