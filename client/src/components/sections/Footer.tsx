@@ -128,10 +128,16 @@ export default function Footer() {
               © {new Date().getFullYear()} Continuary. All rights reserved.
             </div>
             <div style={{ display: "flex", gap: "1.5rem" }}>
-              {["Privacy", "Terms", "Contact"].map((link) => (
+              {[
+                { label: "Privacy", href: "https://continuary.soulengineer.online/privacy" },
+                { label: "Terms", href: "https://continuary.soulengineer.online/terms" },
+                { label: "Contact", href: "mailto:hello@siliconwren.com" },
+              ].map(({ label, href }) => (
                 <a
-                  key={link}
-                  href="#"
+                  key={label}
+                  href={href}
+                  target={href.startsWith("mailto") ? undefined : "_blank"}
+                  rel={href.startsWith("mailto") ? undefined : "noopener noreferrer"}
                   style={{
                     fontFamily: "'DM Sans', sans-serif",
                     fontSize: "0.8125rem",
@@ -141,7 +147,7 @@ export default function Footer() {
                   }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = "#e8a030")}
                   onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(168,180,204,0.5)")}
-                >{link}</a>
+                >{label}</a>
               ))}
             </div>
           </div>
