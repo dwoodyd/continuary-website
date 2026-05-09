@@ -9,11 +9,9 @@
 
 import { useState } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { trpc } from "@/lib/trpc";
 
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/mgodnnnk";
-
-// Hard-coded scarcity count — update this number as slots are claimed
-const SLOTS_CLAIMED = 37;
 const TOTAL_SLOTS = 100;
 
 const benefits = [
@@ -85,6 +83,8 @@ export default function FoundingMember() {
   const [form, setForm] = useState({ name: "", email: "", relationship: "" });
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const { data: slotCounts } = trpc.applications.slotCounts.useQuery();
+  const slotsClaimed = slotCounts ? TOTAL_SLOTS - slotCounts.remaining : 37;
 
   function validate() {
     const e: Record<string, string> = {};
@@ -282,7 +282,7 @@ export default function FoundingMember() {
           className="reveal-child text-center font-sans text-sm italic text-white/45 mb-24"
           style={{ transitionDelay: "400ms" }}
         >
-          {SLOTS_CLAIMED} of {TOTAL_SLOTS} founding member slots claimed.
+          {slotsClaimed} of {TOTAL_SLOTS} founding member slots claimed.
         </p>
 
         {/* ── After Beta reference tiers ── */}

@@ -16,9 +16,12 @@
 import { useEffect, useRef } from "react";
 import WrenVideo from "../WrenVideo";
 import { WREN_VIDEOS } from "../../assets";
+import { trpc } from "../../lib/trpc";
 
 export default function Hero() {
   const textRef = useRef<HTMLDivElement>(null);
+  const { data: slotCounts } = trpc.applications.slotCounts.useQuery();
+  const claimed = slotCounts ? 100 - slotCounts.remaining : 37;
 
   useEffect(() => {
     const el = textRef.current;
@@ -164,7 +167,7 @@ export default function Hero() {
               whiteSpace: "nowrap",
             }}
           >
-            In Closed Beta · 37 of 100 founding member slots claimed
+            In Closed Beta · {claimed} of 100 founding member slots claimed
           </div>
 
           <div data-reveal style={{ display: "flex", gap: "0.625rem", flexWrap: "wrap", marginBottom: "1.25rem" }}>
