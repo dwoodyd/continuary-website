@@ -40,7 +40,7 @@ export default function ADHDSection() {
       }} />
 
       {/* WREN — left half of viewport, full height */}
-      <div style={{
+      <div id="adhd-wren" style={{
         position: "absolute", left: 0, top: 0,
         width: "55vw", height: "100%",
         pointerEvents: "none", zIndex: 1, overflow: "hidden",
@@ -96,6 +96,17 @@ export default function ADHDSection() {
           </div>
         </div>
       </div>
+      <style>{`
+        @media (max-width: 768px) {
+          #adhd-wren {
+            display: none !important;
+          }
+          #adhd .container > div {
+            margin-left: 0 !important;
+            max-width: 100% !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

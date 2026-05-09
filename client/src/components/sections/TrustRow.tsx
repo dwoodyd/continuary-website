@@ -85,7 +85,7 @@ export default function TrustRow() {
       }} />
 
       {/* WREN — right half of viewport, full height. */}
-      <div style={{
+      <div id="trust-wren" style={{
         position: "absolute", right: 0, top: 0,
         width: "55vw", height: "100%", pointerEvents: "none", zIndex: 1, overflow: "hidden",
       }}>
@@ -159,6 +159,16 @@ export default function TrustRow() {
           </div>
         </div>
       </div>
+      <style>{`
+        @media (max-width: 768px) {
+          #trust-wren {
+            display: none !important;
+          }
+          #trust .container > div {
+            max-width: 100% !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

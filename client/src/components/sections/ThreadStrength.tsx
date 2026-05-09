@@ -55,7 +55,7 @@ function ThreadStrengthBar() {
           requestAnimationFrame(tick);
         }
       },
-      { threshold: 0.4 }
+      { threshold: 0.1, rootMargin: "0px 0px -20px 0px" }
     );
     if (barRef.current) observer.observe(barRef.current);
     return () => observer.disconnect();

@@ -42,3 +42,26 @@
 - [x] Hero.tsx — live slot counter wired via trpc.applications.slotCounts
 - [x] FoundingMember.tsx — live slot counter wired via trpc.applications.slotCounts
 - [x] Vitest tests written and passing (11/11)
+
+## Mobile Layout Audit & Fixes
+- [x] Audit all sections at 375px/430px — catalogue issues
+- [x] Nav mobile menu — hamburger + slide-down drawer already implemented
+- [x] Hero mobile layout — text, pill, CTAs all correct; Wren peeks from bottom-right
+- [x] PlatformStrip mobile — stacks vertically at 640px
+- [x] PanoramicBanner mobile — 3 panels readable
+- [x] ProblemSection mobile — single column
+- [x] NothingBroken mobile — Wren hidden, full-width text via CSS ID selector
+- [x] Rituals mobile — cards stack vertically, centered heading
+- [x] EvidenceLog mobile — Wren hidden, full-width text
+- [x] VaultSection mobile — cards stack, full-width
+- [x] ReEntry mobile — Wren hidden, text full-width
+- [x] ThreadStrength mobile — observer threshold lowered to 0.1
+- [x] ADHDSection mobile — Wren hidden, full-width text
+- [x] AppScreensSection mobile — uses useScrollReveal with updated threshold
+- [x] BookSection mobile — Wren hidden, stacked layout
+- [x] FoundingMember mobile — form fields full-width, benefit cards stack
+- [x] Footer mobile — Wren hidden, stacked links
+- [x] Global: min-height: auto on all Wren sections at ≤768px
+- [x] Global: prefers-reduced-motion — all reveal elements immediately visible
+- [x] Global: IntersectionObserver thresholds lowered (0.4→0.1, 0.12→0.05) + rootMargin added
+- [x] Global: useScrollReveal hook updated with threshold 0.05 + rootMargin

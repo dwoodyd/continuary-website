@@ -292,6 +292,20 @@
     transform: translateY(0);
   }
 
+  /* reveal-section / reveal-child pattern (used in Tailwind-based sections) */
+  .reveal-section .reveal-child {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal-section.in-view .reveal-child,
+  .reveal-section.visible .reveal-child {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   .reveal-delay-1 { transition-delay: 0.1s; }
   .reveal-delay-2 { transition-delay: 0.2s; }
   .reveal-delay-3 { transition-delay: 0.3s; }
@@ -398,4 +412,51 @@
       display: block;
     }
   }
+
+  /* ─── GLOBAL MOBILE FIXES ─── */
+
+  @media (max-width: 768px) {
+    /* Wren scene sections: remove min-height so they don't create huge empty spaces */
+    #how-it-works,
+    #evidence,
+    #re-entry,
+    #adhd,
+    #trust,
+    #book,
+    #footer,
+    #rituals {
+      min-height: auto !important;
+    }
+
+    /* Chips should wrap gracefully */
+    .chip {
+      white-space: normal;
+    }
+
+    /* Buttons: allow wrapping on small screens */
+    .btn-amber,
+    .btn-ghost {
+      white-space: normal;
+      text-align: center;
+    }
+  }
+
+  /* ─── ACCESSIBILITY: Reduced motion ─── */
+  /* Also serves as a fallback for environments where IntersectionObserver
+     doesn't fire (e.g. headless browsers, bots, prerender). */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .reveal-child {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+
+  /* ─── REVEAL ANIMATION SAFETY NET ─── */
+  /* Sections that are already in the viewport on page load should be visible immediately.
+     The IntersectionObserver fires for elements already in view on mount, but
+     adding a small initial-visible state for the first viewport ensures no flash of hidden content. */
+  /* Note: The useScrollReveal hook handles all reveal logic. This CSS only provides
+     the base transition. The .visible class is added by JS. */
 }

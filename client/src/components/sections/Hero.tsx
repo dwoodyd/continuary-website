@@ -164,7 +164,7 @@ export default function Hero() {
               textTransform: "uppercase",
               fontStyle: "italic",
               color: "rgba(232,160,48,0.65)",
-              whiteSpace: "nowrap",
+              whiteSpace: "normal",
             }}
           >
             In Closed Beta · {claimed} of 100 founding member slots claimed
@@ -225,6 +225,12 @@ export default function Hero() {
             top: auto !important;
             transform: none !important;
             height: 60vh !important;
+          }
+          /* CTAs: stack vertically on small screens */
+          #hero-text > div[data-reveal] a {
+            width: 100%;
+            text-align: center;
+            justify-content: center;
           }
         }
         @media (max-width: 480px) {

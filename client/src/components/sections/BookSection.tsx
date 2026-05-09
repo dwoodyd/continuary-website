@@ -37,7 +37,7 @@ export default function BookSection() {
       }} />
 
       {/* WREN — right half of viewport, full height. */}
-      <div style={{
+      <div id="book-wren" style={{
         position: "absolute", right: 0, top: 0,
         width: "55vw", height: "100%", pointerEvents: "none", zIndex: 1, overflow: "hidden",
       }}>
@@ -86,7 +86,7 @@ export default function BookSection() {
           </p>
 
           {/* Book cover + CTA */}
-          <div className="reveal reveal-delay-4" style={{ display: "flex", gap: "2rem", alignItems: "flex-start", marginBottom: "2rem" }}>
+          <div id="book-cover-row" className="reveal reveal-delay-4" style={{ display: "flex", gap: "2rem", alignItems: "flex-start", marginBottom: "2rem" }}>
             <img
               src={BOOK.cover}
               alt="Permission to Start book cover"
@@ -109,6 +109,24 @@ export default function BookSection() {
           </div>
         </div>
       </div>
+      <style>{`
+        @media (max-width: 768px) {
+          #book-wren {
+            display: none !important;
+          }
+          #book .container > div {
+            max-width: 100% !important;
+          }
+          /* Stack book cover + meta vertically */
+          #book-cover-row {
+            flex-direction: column !important;
+            align-items: center !important;
+          }
+          #book-cover-row img {
+            width: 140px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

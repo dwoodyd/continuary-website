@@ -37,7 +37,7 @@ export default function ReEntry() {
       }} />
 
       {/* WREN — LEFT half of viewport, full height. */}
-      <div style={{
+      <div id="reentry-wren" style={{
         position: "absolute", left: 0, top: 0,
         width: "55vw", height: "100%", pointerEvents: "none", zIndex: 1, overflow: "hidden",
       }}>
@@ -102,6 +102,17 @@ export default function ReEntry() {
           </div>
         </div>
       </div>
+      <style>{`
+        @media (max-width: 768px) {
+          #reentry-wren {
+            display: none !important;
+          }
+          #re-entry .container > div {
+            margin-left: 0 !important;
+            max-width: 100% !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

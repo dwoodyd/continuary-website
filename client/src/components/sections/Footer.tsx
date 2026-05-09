@@ -38,7 +38,7 @@ export default function Footer() {
       }} />
 
       {/* WREN — left half of viewport, full height. sparkleWings is symmetric/forward-facing. */}
-      <div style={{
+      <div id="footer-wren" style={{
         position: "absolute", left: 0, top: 0,
         width: "55vw", height: "100%", pointerEvents: "none", zIndex: 1, overflow: "hidden",
       }}>
@@ -102,7 +102,7 @@ export default function Footer() {
             Apply for a founding member slot. Wren will be here when you're ready.
           </p>
 
-          <div className="reveal reveal-delay-3" style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "4rem" }}>
+          <div id="footer-cta-row" className="reveal reveal-delay-3" style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "4rem" }}>
             <a href="#founding-member" className="btn-amber" style={{ fontSize: "1rem", padding: "0.875rem 2rem" }}>
               Apply for a slot
             </a>
@@ -113,6 +113,7 @@ export default function Footer() {
 
           {/* Footer links */}
           <div
+            id="footer-links"
             className="reveal"
             style={{
               borderTop: "1px solid rgba(255,255,255,0.06)",
@@ -171,6 +172,33 @@ export default function Footer() {
       </div>
 
       <style>{`
+        @media (max-width: 768px) {
+          #footer-wren {
+            display: none !important;
+          }
+          #footer .container > div {
+            margin-left: 0 !important;
+            max-width: 100% !important;
+          }
+          /* Center the logo on mobile */
+          #footer .container > div > .reveal:first-child {
+            align-items: center;
+          }
+          /* CTA buttons full width */
+          #footer-cta-row {
+            flex-direction: column !important;
+          }
+          #footer-cta-row a {
+            text-align: center !important;
+            justify-content: center !important;
+          }
+          /* Stack footer links on mobile */
+          #footer-links {
+            flex-direction: column !important;
+            gap: 0.75rem !important;
+            align-items: flex-start !important;
+          }
+        }
         @media (max-width: 640px) {
           #mobile-cta { display: block !important; }
           #footer { padding-bottom: 5rem; }

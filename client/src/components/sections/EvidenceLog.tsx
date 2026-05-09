@@ -43,7 +43,7 @@ export default function EvidenceLog() {
       }} />
 
       {/* WREN — RIGHT side, concentration video has large Wren facing left */}
-      <div style={{
+      <div id="evidence-wren" style={{
         position: "absolute", right: 0, top: 0,
         width: "60vw", height: "100%", pointerEvents: "none", zIndex: 1, overflow: "hidden",
       }}>
@@ -114,6 +114,16 @@ export default function EvidenceLog() {
           </div>
         </div>
       </div>
+      <style>{`
+        @media (max-width: 768px) {
+          #evidence-wren {
+            display: none !important;
+          }
+          #evidence .container > div {
+            max-width: 100% !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

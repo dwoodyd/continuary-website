@@ -45,6 +45,7 @@ export default function NothingBroken() {
 
       {/* WREN — left half of viewport, full height. Flipped so Wren faces right. */}
       <div
+        id="nothing-broken-wren"
         style={{
           position: "absolute",
           left: 0,
@@ -129,6 +130,17 @@ export default function NothingBroken() {
           </div>
         </div>
       </div>
+      <style>{`
+        @media (max-width: 768px) {
+          #nothing-broken-wren {
+            display: none !important;
+          }
+          #how-it-works .container > div {
+            margin-left: 0 !important;
+            max-width: 100% !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
