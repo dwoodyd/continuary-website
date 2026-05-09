@@ -139,6 +139,12 @@ export default function FoundingMember() {
           >
             Continuary is in closed beta. We're inviting one hundred people to help shape the product before public launch — and lock in a founding rate for life.
           </p>
+          <p
+            className="reveal-child font-sans text-white/35 text-sm max-w-xl mx-auto leading-relaxed mt-4"
+            style={{ transitionDelay: "180ms" }}
+          >
+            Continuary is a Progressive Web App. Install on iOS or Android, or open it in any browser. No app store gatekeeping. Your data stays yours.
+          </p>
         </div>
 
         {/* ── Three benefit columns ── */}

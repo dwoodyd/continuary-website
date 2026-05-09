@@ -167,11 +167,26 @@ export default function Hero() {
             In Closed Beta · 37 of 100 founding member slots claimed
           </div>
 
-          <div data-reveal style={{ display: "flex", gap: "0.625rem", flexWrap: "wrap" }}>
+          <div data-reveal style={{ display: "flex", gap: "0.625rem", flexWrap: "wrap", marginBottom: "1.25rem" }}>
             {["No shame spirals", "ADHD-friendly", "Built for real life"].map((label) => (
               <span key={label} className="chip">{label}</span>
             ))}
           </div>
+
+          {/* PWA clarity line */}
+          <p
+            data-reveal
+            style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: "0.875rem",
+              lineHeight: 1.6,
+              color: "rgba(168,180,204,0.55)",
+              maxWidth: "380px",
+              margin: 0,
+            }}
+          >
+            A daily thread — in your pocket or on the web. Install on iOS, Android, or open in any browser.
+          </p>
         </div>
       </div>
 
