@@ -29,7 +29,7 @@ export default function Nav() {
   const navLinks = [
     { label: "How it works", href: "#how-it-works" },
     { label: "Rituals", href: "#rituals" },
-    { label: "Apply", href: "#founding-member" },
+    { label: "Apply", href: "https://continuary.soulengineer.online/apply" },
     { label: "Book", href: "#book" },
   ];
 
@@ -66,7 +66,7 @@ export default function Nav() {
 
             {/* Right side */}
             <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-              <a href="#founding-member" className="btn-amber desktop-cta" style={{ padding: "0.625rem 1.25rem", fontSize: "0.875rem" }}>
+              <a href="https://continuary.soulengineer.online/apply" className="btn-amber desktop-cta" style={{ padding: "0.625rem 1.25rem", fontSize: "0.875rem" }}>
                 Apply
               </a>
               {/* Hamburger — mobile only */}
@@ -129,7 +129,7 @@ export default function Nav() {
               </a>
             ))}
             <a
-              href="#founding-member"
+              href="https://continuary.soulengineer.online/apply"
               className="btn-amber"
               onClick={() => setMenuOpen(false)}
               style={{ marginTop: "1rem", justifyContent: "center" }}

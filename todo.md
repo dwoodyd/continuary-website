@@ -65,3 +65,6 @@
 - [x] Global: prefers-reduced-motion — all reveal elements immediately visible
 - [x] Global: IntersectionObserver thresholds lowered (0.4→0.1, 0.12→0.05) + rootMargin added
 - [x] Global: useScrollReveal hook updated with threshold 0.05 + rootMargin
+
+## Apply Link Update
+- [x] Update all Apply CTA links to https://continuary.soulengineer.online/apply (Nav, Hero, BookSection, Footer — 6 links total)

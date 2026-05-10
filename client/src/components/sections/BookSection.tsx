@@ -105,7 +105,7 @@ export default function BookSection() {
           </div>
 
           <div className="reveal reveal-delay-4">
-            <a href="#founding-member" className="btn-amber">Apply for the bundle</a>
+            <a href="https://continuary.soulengineer.online/apply" className="btn-amber">Apply for the bundle</a>
           </div>
         </div>
       </div>
