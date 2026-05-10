@@ -68,3 +68,8 @@
 
 ## Apply Link Update
 - [x] Update all Apply CTA links to https://continuary.soulengineer.online/apply (Nav, Hero, BookSection, Footer — 6 links total)
+
+## Round 3 Improvements
+- [x] Add target=_blank rel=noopener to all Apply CTA links (Nav, Hero, BookSection, Footer — 7 links)
+- [x] Wire FoundingMember form to submit via trpc.applications.submit in addition to Formspree
+- [x] Save checkpoint and publish

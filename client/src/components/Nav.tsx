@@ -27,10 +27,10 @@ export default function Nav() {
   }, [menuOpen]);
 
   const navLinks = [
-    { label: "How it works", href: "#how-it-works" },
-    { label: "Rituals", href: "#rituals" },
-    { label: "Apply", href: "https://continuary.soulengineer.online/apply" },
-    { label: "Book", href: "#book" },
+    { label: "How it works", href: "#how-it-works", target: undefined as string | undefined },
+    { label: "Rituals", href: "#rituals", target: undefined as string | undefined },
+    { label: "Apply", href: "https://continuary.soulengineer.online/apply", target: "_blank" },
+    { label: "Book", href: "#book", target: undefined as string | undefined },
   ];
 
   return (
@@ -59,14 +59,14 @@ export default function Nav() {
 
             {/* Nav links — desktop */}
             <div className="desktop-nav-links" style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
-              {navLinks.map(({ label, href }) => (
-                <a key={label} href={href} className="nav-link">{label}</a>
+              {navLinks.map(({ label, href, target }) => (
+                <a key={label} href={href} className="nav-link" target={target} rel={target ? "noopener noreferrer" : undefined}>{label}</a>
               ))}
             </div>
 
             {/* Right side */}
             <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-              <a href="https://continuary.soulengineer.online/apply" className="btn-amber desktop-cta" style={{ padding: "0.625rem 1.25rem", fontSize: "0.875rem" }}>
+              <a href="https://continuary.soulengineer.online/apply" className="btn-amber desktop-cta" target="_blank" rel="noopener noreferrer" style={{ padding: "0.625rem 1.25rem", fontSize: "0.875rem" }}>
                 Apply
               </a>
               {/* Hamburger — mobile only */}
@@ -132,6 +132,8 @@ export default function Nav() {
               href="https://continuary.soulengineer.online/apply"
               className="btn-amber"
               onClick={() => setMenuOpen(false)}
+              target="_blank"
+              rel="noopener noreferrer"
               style={{ marginTop: "1rem", justifyContent: "center" }}
             >
               Apply for a slot

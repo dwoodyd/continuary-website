@@ -82,9 +82,11 @@ export default function FoundingMember() {
   const sectionRef = useScrollReveal();
   const [form, setForm] = useState({ name: "", email: "", relationship: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [formspreeOk, setFormspreeOk] = useState(true);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const { data: slotCounts } = trpc.applications.slotCounts.useQuery();
   const slotsClaimed = slotCounts ? TOTAL_SLOTS - slotCounts.remaining : 37;
+  const submitMutation = trpc.applications.submit.useMutation();
 
   function validate() {
     const e: Record<string, string> = {};
@@ -105,24 +107,42 @@ export default function FoundingMember() {
     }
     setErrors({});
 
+    // Submit to Formspree and CRM in parallel
+    // Formspree is the primary — if it fails, we still save to CRM
+    let formspreeId: string | undefined;
+
     try {
-      const res = await fetch(FORMSPREE_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          relationship: form.relationship,
+      const [formspreeRes] = await Promise.allSettled([
+        fetch(FORMSPREE_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({
+            name: form.name,
+            email: form.email,
+            relationship: form.relationship,
+          }),
         }),
-      });
-      if (res.ok) {
-        setSubmitted(true);
-      } else {
-        const data = await res.json().catch(() => ({}));
-        setErrors({ submit: data?.error || "Something went wrong. Please try again." });
+      ]);
+
+      const formspreeSucceeded = formspreeRes.status === "fulfilled" && formspreeRes.value.ok;
+      if (formspreeSucceeded) {
+        const formspreeData = await formspreeRes.value.json().catch(() => ({}));
+        formspreeId = formspreeData?.submissionId ?? formspreeData?.id ?? undefined;
       }
-    } catch {
-      setErrors({ submit: "Network error. Please check your connection and try again." });
+
+      // Always save to CRM database regardless of Formspree result
+      await submitMutation.mutateAsync({
+        name: form.name,
+        email: form.email,
+        relationship: form.relationship,
+        formspreeId,
+      });
+
+      setFormspreeOk(formspreeSucceeded);
+      setSubmitted(true);
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : "Something went wrong. Please try again.";
+      setErrors({ submit: message });
     }
   }
 
@@ -195,6 +215,11 @@ export default function FoundingMember() {
               <p className="font-sans text-white/55 text-base leading-relaxed">
                 We read every application personally. You'll hear from us within 48 hours.
               </p>
+              {!formspreeOk && (
+                <p className="font-sans text-amber-400/70 text-sm mt-4">
+                  Your application has been saved. If you don't receive a confirmation email, that's okay — we have your details.
+                </p>
+              )}
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5" noValidate>
