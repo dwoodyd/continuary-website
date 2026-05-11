@@ -57,9 +57,13 @@ export async function updateApplicationNotes(id: number, notes: string): Promise
   await db.update(applications).set({ notes }).where(eq(applications.id, id));
 }
 
+// Seed offset — makes the counter start at a realistic number from day one.
+// Real applications are added on top of this, so the count grows naturally.
+const SLOT_SEED = 5;
+
 export async function getSlotCounts(): Promise<{ total: number; accepted: number; remaining: number }> {
   const db = await getDb();
-  if (!db) return { total: 0, accepted: 0, remaining: 100 };
+  if (!db) return { total: SLOT_SEED, accepted: 0, remaining: 100 - SLOT_SEED };
 
   const totalRows = await db.select({ count: count() }).from(applications);
   const acceptedRows = await db
@@ -67,7 +71,7 @@ export async function getSlotCounts(): Promise<{ total: number; accepted: number
     .from(applications)
     .where(eq(applications.status, "accepted"));
 
-  const total = totalRows[0]?.count ?? 0;
+  const total = (totalRows[0]?.count ?? 0) + SLOT_SEED;
   const accepted = acceptedRows[0]?.count ?? 0;
 
   return {
