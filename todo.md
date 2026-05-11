@@ -147,3 +147,7 @@
 
 ## MP5 — Book Section Copy Update
 - [x] Update BookSection: June 15th release, PDF direct download for founding members, also on Amazon + Apple Books, cover confirmed accurate
+
+## Apply / App Link Update
+- [x] Update all Apply CTAs and app-pointing links to https://app.continuary.app (Nav, Hero, Footer, RoadmapTeaser — all 7 links)
+- [x] Sign In link in Nav already points to https://app.continuary.app — confirmed unchanged
