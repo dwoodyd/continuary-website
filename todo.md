@@ -130,7 +130,7 @@
 - [x] MP2: Removed McKinsey citation from ProblemSection and VaultSection — replaced with original copy
 - [x] MP3: Footer links fixed — Privacy/Terms → continuary.app, Contact → hello@continuary.app
 - [x] MP4: PWA install text is decorative (not interactive) — noted, no action needed for launch
-- [ ] MP5: Awaiting user input — is book published? how do founding members receive it?
+- [x] MP5: BookSection updated — June 15th release date, direct download + Amazon + Apple Books delivery channels, founding member PDF benefit confirmed
 - [x] MP6: "Apply for the bundle" CTA → https://www.soulengineer.online/shop
 - [x] MP7: "See what's included" → #pricing anchor — FoundingMember has id="pricing", confirmed working
 
@@ -144,3 +144,6 @@
 - [x] Fixed all Apply links → https://continuary.app/apply (7 links across Nav, Hero, BookSection, Footer)
 - [x] Sign In link added to Nav → https://app.continuary.app
 - [x] Book bundle link updated → https://www.soulengineer.online/shop
+
+## MP5 — Book Section Copy Update
+- [x] Update BookSection: June 15th release, PDF direct download for founding members, also on Amazon + Apple Books, cover confirmed accurate

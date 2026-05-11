@@ -79,10 +79,21 @@ export default function BookSection() {
             style={{
               fontFamily: "'DM Sans', sans-serif",
               fontSize: "clamp(1rem, 1.3vw, 1.125rem)",
-              lineHeight: 1.75, color: "rgba(168,180,204,0.9)", marginBottom: "2.5rem",
+              lineHeight: 1.75, color: "rgba(168,180,204,0.9)", marginBottom: "1rem",
             }}
           >
             The book gives you the philosophy. Continuary gives you the practice. Together, they hold the thread.
+          </p>
+
+          <p
+            className="reveal reveal-delay-3"
+            style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: "0.9375rem",
+              lineHeight: 1.6, color: "rgba(168,180,204,0.65)", marginBottom: "2.5rem",
+            }}
+          >
+            Releasing <strong style={{ color: "rgba(232,160,48,0.85)" }}>June 15th</strong> — available as a direct download and on Amazon &amp; Apple Books.
           </p>
 
           {/* Book cover + CTA */}
@@ -100,7 +111,7 @@ export default function BookSection() {
             <div>
               <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.125rem", fontWeight: 600, color: "#f0e8d8", marginBottom: "0.25rem" }}>Permission to Start</div>
               <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.875rem", color: "rgba(168,180,204,0.7)", marginBottom: "0.375rem" }}>DeWayne Woods</div>
-              <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem", fontWeight: 600, color: "rgba(232,160,48,0.8)", letterSpacing: "0.08em", textTransform: "uppercase" }}>Included with Founding Member Access</div>
+              <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem", fontWeight: 600, color: "rgba(232,160,48,0.8)", letterSpacing: "0.08em", textTransform: "uppercase" }}>Founding members receive a direct download PDF</div>
             </div>
           </div>
 
