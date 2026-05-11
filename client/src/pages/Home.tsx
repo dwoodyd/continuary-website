@@ -14,10 +14,11 @@
  * 10. ReEntry
  * 11. ThreadStrength
  * 12. ADHDSection
- * 13. AppScreensSection (NEW — 2×2 mockup grid)
- * 14. BookSection
- * 15. FoundingMember
- * 16. Footer
+ *  13. AppScreensSection (NEW — 2×2 mockup grid)
+ *  14. RoadmapTeaser   (NEW — "What's coming" in-development chips)
+ *  15. BookSection
+ *  16. FoundingMember
+ *  17. Footer
  */
 
 import { useEffect } from "react";
@@ -34,6 +35,7 @@ import ReEntry from "../components/sections/ReEntry";
 import ThreadStrength from "../components/sections/ThreadStrength";
 import ADHDSection from "../components/sections/ADHDSection";
 import AppScreensSection from "../components/sections/AppScreensSection";
+import RoadmapTeaser from "../components/sections/RoadmapTeaser";
 import BookSection from "../components/sections/BookSection";
 import FoundingMember from "../components/sections/FoundingMember";
 import Footer from "../components/sections/Footer";
@@ -73,6 +75,7 @@ export default function Home() {
         <ThreadStrength />
         <ADHDSection />
         <AppScreensSection />
+        <RoadmapTeaser />
         <BookSection />
         <FoundingMember />
         <Footer />

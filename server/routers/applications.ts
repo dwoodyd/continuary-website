@@ -10,6 +10,7 @@ import {
   getSlotCounts,
 } from "../db.applications";
 import { notifyOwner } from "../_core/notification";
+import { sendApplicationConfirmation } from "../email";
 
 // Admin-only guard
 const adminProcedure = protectedProcedure.use(({ ctx, next }) => {
@@ -50,7 +51,13 @@ export const applicationsRouter = router({
         content: `Email: ${input.email}\n\nRelationship with consistency:\n${input.relationship.slice(0, 300)}${input.relationship.length > 300 ? "…" : ""}`,
       });
 
-      return { success: true, id: app?.id };
+      // Send confirmation email to the applicant (non-blocking — failure doesn't affect the response)
+      const emailSent = await sendApplicationConfirmation({
+        name: input.name,
+        email: input.email,
+      });
+
+      return { success: true, id: app?.id, confirmationEmailSent: emailSent };
     }),
 
   // Admin: list all applications

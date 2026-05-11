@@ -20,7 +20,7 @@ import { trpc } from "../../lib/trpc";
 
 export default function Hero() {
   const textRef = useRef<HTMLDivElement>(null);
-  const { data: slotCounts } = trpc.applications.slotCounts.useQuery();
+  const { data: slotCounts } = trpc.applications.slotCounts.useQuery(undefined, { refetchInterval: 60_000 });
   const claimed = slotCounts ? 100 - slotCounts.remaining : 37;
 
   useEffect(() => {

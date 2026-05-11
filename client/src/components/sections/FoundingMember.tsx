@@ -94,7 +94,7 @@ export default function FoundingMember() {
   const [submitted, setSubmitted] = useState(false);
   const [formspreeOk, setFormspreeOk] = useState(true);
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const { data: slotCounts } = trpc.applications.slotCounts.useQuery();
+  const { data: slotCounts } = trpc.applications.slotCounts.useQuery(undefined, { refetchInterval: 60_000 });
   const slotsClaimed = slotCounts ? TOTAL_SLOTS - slotCounts.remaining : 37;
   const submitMutation = trpc.applications.submit.useMutation();
 
