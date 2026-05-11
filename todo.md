@@ -116,3 +116,31 @@
 ## Confirmation Email Copy Update
 - [x] Update server/email.ts with approved subject, HTML body, and plain-text copy
 - [x] Fix Home.tsx unterminated comment / stale Vite parse error
+
+## Marketing Site Remaining Work (Brief)
+
+### 🔴 Blockers
+- [x] MB1: Form submission reaches admin queue via trpc.applications.submit (DB insert confirmed)
+- [x] MB2: Confirmation email fires via Resend on submit (RESEND_API_KEY verified, domain verified)
+- [x] MB3: Sign In link added to Nav — ghost button on desktop, link in mobile drawer → https://app.continuary.app
+- [x] MB4: Slot counter is live DB query via getSlotCounts() with 60s refetchInterval polling
+
+### 🟡 Polish
+- [x] MP1: Removed both fake stats — replaced with on-brand italic copy
+- [x] MP2: Removed McKinsey citation from ProblemSection and VaultSection — replaced with original copy
+- [x] MP3: Footer links fixed — Privacy/Terms → continuary.app, Contact → hello@continuary.app
+- [x] MP4: PWA install text is decorative (not interactive) — noted, no action needed for launch
+- [ ] MP5: Awaiting user input — is book published? how do founding members receive it?
+- [x] MP6: "Apply for the bundle" CTA → https://www.soulengineer.online/shop
+- [x] MP7: "See what's included" → #pricing anchor — FoundingMember has id="pricing", confirmed working
+
+### 🟢 Future / Post-launch
+- [ ] MC1: Email capture for non-founders when 100 slots fill (waitlist)
+- [ ] MC2: Replace placeholder stats with real founding member quotes once cohort is active
+- [ ] MC3: Link to Lifewoven / Operator House sites once they launch
+- [ ] MC4: Add "Why I built this" founder section for trust signal
+
+## 🔴 Urgent Fix
+- [x] Fixed all Apply links → https://continuary.app/apply (7 links across Nav, Hero, BookSection, Footer)
+- [x] Sign In link added to Nav → https://app.continuary.app
+- [x] Book bundle link updated → https://www.soulengineer.online/shop

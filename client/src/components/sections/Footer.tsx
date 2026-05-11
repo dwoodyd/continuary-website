@@ -103,7 +103,7 @@ export default function Footer() {
           </p>
 
           <div id="footer-cta-row" className="reveal reveal-delay-3" style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "4rem" }}>
-            <a href="https://continuary.soulengineer.online/apply" className="btn-amber" target="_blank" rel="noopener noreferrer" style={{ fontSize: "1rem", padding: "0.875rem 2rem" }}>
+            <a href="https://continuary.app/apply" className="btn-amber" target="_blank" rel="noopener noreferrer" style={{ fontSize: "1rem", padding: "0.875rem 2rem" }}>
               Apply for a slot
             </a>
             <a href="#pricing" className="btn-ghost" style={{ fontSize: "1rem", padding: "0.875rem 2rem" }}>
@@ -130,9 +130,9 @@ export default function Footer() {
             </div>
             <div style={{ display: "flex", gap: "1.5rem" }}>
               {[
-                { label: "Privacy", href: "https://continuary.soulengineer.online/privacy" },
-                { label: "Terms", href: "https://continuary.soulengineer.online/terms" },
-                { label: "Contact", href: "mailto:hello@siliconwren.com" },
+                { label: "Privacy", href: "https://continuary.app/privacy" },
+                { label: "Terms", href: "https://continuary.app/terms" },
+                { label: "Contact", href: "mailto:hello@continuary.app" },
               ].map(({ label, href }) => (
                 <a
                   key={label}
@@ -166,7 +166,7 @@ export default function Footer() {
         zIndex: 40,
         display: "none",
       }} id="mobile-cta">
-        <a href="https://continuary.soulengineer.online/apply" className="btn-amber" target="_blank" rel="noopener noreferrer" style={{ width: "100%", textAlign: "center", display: "block" }}>
+        <a href="https://continuary.app/apply" className="btn-amber" target="_blank" rel="noopener noreferrer" style={{ width: "100%", textAlign: "center", display: "block" }}>
           Apply for a founding member slot
         </a>
       </div>

@@ -18,7 +18,7 @@ const entries = [
   {
     category: "Research",
     categoryColor: "bg-blue-400/15 text-blue-300 border-blue-400/30",
-    text: "Knowledge workers lose 28% of their week to context-switching. (McKinsey)",
+    text: "Every time I switch tasks, it takes at least 20 minutes to get back into deep focus. Continuary helps me hold the thread.",
     project: "Reference",
     projectColor: "text-blue-200/50",
   },

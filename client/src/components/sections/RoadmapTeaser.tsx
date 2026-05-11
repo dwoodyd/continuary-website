@@ -305,7 +305,7 @@ export default function RoadmapTeaser() {
         >
           Founding members vote on priority.{" "}
           <a
-            href="https://continuary.soulengineer.online/apply"
+            href="https://continuary.app/apply"
             target="_blank"
             rel="noopener noreferrer"
             style={{

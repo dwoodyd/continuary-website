@@ -107,12 +107,12 @@ export default function ProblemSection() {
           ))}
         </div>
 
-        {/* McKinsey stat — quiet citation */}
+        {/* Closing thought */}
         <p
           className="reveal-child text-center font-sans text-sm italic text-white/35 max-w-md mx-auto"
           style={{ transitionDelay: "420ms" }}
         >
-          Knowledge workers lose 28% of their week to context-switching. (McKinsey)
+          The cost isn't the interruption. It's the restart.
         </p>
       </div>
 

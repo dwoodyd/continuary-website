@@ -29,7 +29,7 @@ export default function Nav() {
   const navLinks = [
     { label: "How it works", href: "#how-it-works", target: undefined as string | undefined },
     { label: "Rituals", href: "#rituals", target: undefined as string | undefined },
-    { label: "Apply", href: "https://continuary.soulengineer.online/apply", target: "_blank" },
+    { label: "Apply", href: "https://continuary.app/apply", target: "_blank" },
     { label: "Book", href: "#book", target: undefined as string | undefined },
   ];
 
@@ -65,8 +65,29 @@ export default function Nav() {
             </div>
 
             {/* Right side */}
-            <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-              <a href="https://continuary.soulengineer.online/apply" className="btn-amber desktop-cta" target="_blank" rel="noopener noreferrer" style={{ padding: "0.625rem 1.25rem", fontSize: "0.875rem" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+              <a
+                href="https://app.continuary.app"
+                className="desktop-cta"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  padding: "0.5rem 1rem",
+                  fontSize: "0.875rem",
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontWeight: 500,
+                  color: "oklch(0.75 0.02 80)",
+                  textDecoration: "none",
+                  border: "1px solid oklch(1 0 0 / 15%)",
+                  borderRadius: "0.375rem",
+                  transition: "color 0.2s ease, border-color 0.2s ease",
+                }}
+                onMouseEnter={e => { e.currentTarget.style.color = "oklch(0.96 0.02 80)"; e.currentTarget.style.borderColor = "oklch(1 0 0 / 30%)"; }}
+                onMouseLeave={e => { e.currentTarget.style.color = "oklch(0.75 0.02 80)"; e.currentTarget.style.borderColor = "oklch(1 0 0 / 15%)"; }}
+              >
+                Sign in
+              </a>
+              <a href="https://continuary.app/apply" className="btn-amber desktop-cta" target="_blank" rel="noopener noreferrer" style={{ padding: "0.625rem 1.25rem", fontSize: "0.875rem" }}>
                 Apply
               </a>
               {/* Hamburger — mobile only */}
@@ -129,7 +150,17 @@ export default function Nav() {
               </a>
             ))}
             <a
-              href="https://continuary.soulengineer.online/apply"
+              href="https://app.continuary.app"
+              className="nav-link"
+              onClick={() => setMenuOpen(false)}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ padding: "0.75rem 0", fontSize: "1rem", borderBottom: "1px solid oklch(1 0 0 / 6%)" }}
+            >
+              Sign in
+            </a>
+            <a
+              href="https://continuary.app/apply"
               className="btn-amber"
               onClick={() => setMenuOpen(false)}
               target="_blank"

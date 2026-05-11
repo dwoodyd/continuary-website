@@ -100,17 +100,9 @@ export default function EvidenceLog() {
             ))}
           </div>
 
-          {/* Stats */}
-          <div className="reveal reveal-delay-4" style={{ display: "flex", gap: "3rem" }}>
-            {[
-              { num: "3", label: "captures per day, avg." },
-              { num: "94%", label: "feel more grounded after 30 days" },
-            ].map(({ num, label }) => (
-              <div key={label}>
-                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.25rem", fontWeight: 700, color: "#e8a030", lineHeight: 1, marginBottom: "0.375rem" }}>{num}</div>
-                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.8125rem", color: "rgba(168,180,204,0.7)", lineHeight: 1.4, maxWidth: "100px" }}>{label}</div>
-              </div>
-            ))}
+          {/* Closing thought */}
+          <div className="reveal reveal-delay-4" style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.875rem", color: "rgba(168,180,204,0.55)", fontStyle: "italic", lineHeight: 1.6, maxWidth: "340px" }}>
+            Every entry is a thread. Every thread is a story you don't have to re-explain to yourself.
           </div>
         </div>
       </div>
