@@ -148,7 +148,7 @@ export default function Hero() {
           </p>
 
           <div data-reveal style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "2rem" }}>
-            <a href="https://app.continuary.app" className="btn-amber" target="_blank" rel="noopener noreferrer">Apply for a slot</a>
+            <a href="https://app.continuary.app/apply" className="btn-amber" target="_blank" rel="noopener noreferrer">Apply for a slot</a>
             <a href="#how-it-works" className="btn-ghost">See how it works</a>
           </div>
 

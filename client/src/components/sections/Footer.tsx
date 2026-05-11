@@ -103,7 +103,7 @@ export default function Footer() {
           </p>
 
           <div id="footer-cta-row" className="reveal reveal-delay-3" style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "4rem" }}>
-            <a href="https://app.continuary.app" className="btn-amber" target="_blank" rel="noopener noreferrer" style={{ fontSize: "1rem", padding: "0.875rem 2rem" }}>
+            <a href="https://app.continuary.app/apply" className="btn-amber" target="_blank" rel="noopener noreferrer" style={{ fontSize: "1rem", padding: "0.875rem 2rem" }}>
               Apply for a slot
             </a>
             <a href="#pricing" className="btn-ghost" style={{ fontSize: "1rem", padding: "0.875rem 2rem" }}>
@@ -166,7 +166,7 @@ export default function Footer() {
         zIndex: 40,
         display: "none",
       }} id="mobile-cta">
-        <a href="https://app.continuary.app" className="btn-amber" target="_blank" rel="noopener noreferrer" style={{ width: "100%", textAlign: "center", display: "block" }}>
+        <a href="https://app.continuary.app/apply" className="btn-amber" target="_blank" rel="noopener noreferrer" style={{ width: "100%", textAlign: "center", display: "block" }}>
           Apply for a founding member slot
         </a>
       </div>
