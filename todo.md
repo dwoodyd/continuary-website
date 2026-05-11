@@ -73,3 +73,28 @@
 - [x] Add target=_blank rel=noopener to all Apply CTA links (Nav, Hero, BookSection, Footer — 7 links)
 - [x] Wire FoundingMember form to submit via trpc.applications.submit in addition to Formspree
 - [x] Save checkpoint and publish
+
+## Cleanup Brief (Continuary-Website-Builder-Cleanup.md)
+
+### P0 — Pricing reconciliation
+- [x] Replace pricing block with locked tier structure (Free $0 / Pro $4.99mo·$39.99yr founding, $7.99mo·$79.99yr retail / Keeper $9.99mo·$79.99yr founding, $14.99mo·$149.99yr retail)
+- [x] Fix founding-rate copy line: "$4.99 Pro / $9.99 Keeper monthly (or $39.99 / $79.99 annual) — for life, across every renewal"
+- [x] Show all four retail tiers in "After beta" comparison with founding rates as strikethrough anchors
+- [x] Fix "Locked for life" callout to use real numbers $4.99/$9.99 not $5/$10
+
+### P1 — Copy grafts from /landing
+- [x] Replace problem-framing block with: Restart Tax / Burst Penalty / Open Tab Spiral / Lost Week
+- [x] Lock four ritual names: Morning check-in / Midday pulse / Evening close / Weekly Compass
+
+### P2 — Feature name reconciliation
+- [x] "The Vault" eyebrow → "Knowledge Vault"
+- [x] "The return" eyebrow → "Re-Entry Card"
+- [x] AppScreensSection summary copy updated to use canonical names (Weekly Compass, Focus Blocks)
+- [x] Focus Blocks alt text and subhead updated (was "Clarity mode")
+- [x] Distraction Insights added to Pro tier features in after-beta comparison
+
+### P3 — Keeper tier fix
+- [x] Replace "Keeper-exclusive Wren" with actual Keeper features: Wren voice check-ins / Weekly Compass deep-dive / Threshold Diagnosis tool / Study Mode & Focus Blocks
+
+### P6 — Tone pass
+- [x] FoundingMember heading changed from "Become a Founding Member" to "Apply for a founding seat"

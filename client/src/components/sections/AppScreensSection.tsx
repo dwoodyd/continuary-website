@@ -31,9 +31,9 @@ const MOCKUPS = [
   },
   {
     src: "/manus-storage/screenshot_5_focus_ffd17e66.webp",
-    alt: "Continuary clarity mode screen showing a focused task 'Write the intro section' with a 25-minute timer.",
+    alt: "Continuary Focus Blocks screen showing a focused task 'Write the intro section' with a 25-minute timer.",
     headline: "One task. Full presence.",
-    subhead: "Clarity mode locks in your focus, nothing else.",
+    subhead: "Focus Blocks lock in your attention, nothing else.",
   },
 ];
 
@@ -82,7 +82,7 @@ export default function AppScreensSection() {
             color: "rgba(168,180,204,0.7)",
           }}
         >
-          Three check-ins. A weekly compass. A focus mode. A view of every project you might be losing. That's the whole system.
+          Four rituals. A Weekly Compass. Focus Blocks. A view of every project you might be losing. That's the whole system.
         </p>
       </div>
 

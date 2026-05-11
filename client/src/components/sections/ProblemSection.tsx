@@ -11,43 +11,48 @@ const cards = [
   {
     icon: (
       <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 text-amber-400">
-        <line x1="8" y1="16" x2="24" y2="16" />
-        <line x1="16" y1="8" x2="16" y2="24" strokeDasharray="2 3" />
-        <circle cx="16" cy="16" r="4" />
+        <path d="M8 22 L16 10 L24 22" />
+        <line x1="12" y1="18" x2="20" y2="18" />
+        <line x1="16" y1="22" x2="16" y2="28" />
       </svg>
     ),
-    headline: "You step away",
-    body: "Life happens. A meeting runs long. A family emergency. A bad week. You leave your work mid-thought.",
+    headline: "Restart Tax",
+    body: "Every time you step away and come back, you pay a hidden tax — 20 to 40 minutes just to remember where you were. It compounds silently across every project.",
   },
   {
     icon: (
       <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 text-amber-400">
-        <circle cx="16" cy="16" r="8" strokeDasharray="3 3" />
-        <path d="M12 12 L20 20 M20 12 L12 20" strokeDasharray="2 2" />
+        <circle cx="16" cy="16" r="7" />
+        <path d="M16 9 L16 6 M16 26 L16 23 M9 16 L6 16 M26 16 L23 16" strokeDasharray="1 2" />
+        <circle cx="16" cy="16" r="2" fill="currentColor" />
       </svg>
     ),
-    headline: "Context evaporates",
-    body: "When you return, the thread is gone. You spend 40 minutes reconstructing what you were doing instead of doing it.",
+    headline: "Burst Penalty",
+    body: "ADHD, creative work, and life don't run on schedules. When your energy finally arrives, you lose the first hour just trying to re-enter the work — and the burst is gone.",
   },
   {
     icon: (
       <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 text-amber-400">
-        <path d="M8 20 Q12 8 16 16 Q20 24 24 12" />
-        <polyline points="20,8 24,12 20,16" />
+        <rect x="6" y="8" width="20" height="14" rx="2" />
+        <line x1="6" y1="13" x2="26" y2="13" strokeDasharray="2 2" />
+        <line x1="6" y1="18" x2="26" y2="18" strokeDasharray="2 2" />
+        <line x1="13" y1="8" x2="13" y2="22" strokeDasharray="2 2" />
       </svg>
     ),
-    headline: "The restart tax",
-    body: "Every interruption costs more than the time lost. The cognitive overhead of re-entry compounds across weeks and months.",
+    headline: "Open Tab Spiral",
+    body: "Forty browser tabs. Three half-finished notes. A voice memo you'll never find. Good ideas don't disappear — they just get buried under the weight of everything else.",
   },
   {
     icon: (
       <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 text-amber-400">
-        <polyline points="6,10 12,18 18,14 26,22" />
-        <line x1="6" y1="26" x2="26" y2="26" strokeOpacity="0.4" />
+        <rect x="8" y="6" width="16" height="20" rx="2" />
+        <line x1="12" y1="12" x2="20" y2="12" />
+        <line x1="12" y1="16" x2="20" y2="16" strokeDasharray="2 2" strokeOpacity="0.5" />
+        <line x1="12" y1="20" x2="16" y2="20" strokeDasharray="2 2" strokeOpacity="0.3" />
       </svg>
     ),
-    headline: "Momentum breaks",
-    body: "Projects stall. Ideas go cold. The gap between who you are and what you're building quietly widens.",
+    headline: "Lost Week",
+    body: "Sunday night and you can't account for the week. You were busy — but doing what? The effort was real. The record isn't. That gap is where momentum goes to die.",
   },
 ];
 

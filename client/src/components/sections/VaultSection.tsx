@@ -55,7 +55,7 @@ export default function VaultSection() {
             className="reveal-child text-amber-400 text-xs tracking-[0.25em] uppercase font-sans mb-4"
             style={{ transitionDelay: "0ms" }}
           >
-            The Vault
+            Knowledge Vault
           </p>
           <h2
             className="reveal-child font-serif text-4xl md:text-5xl lg:text-6xl text-white leading-tight mb-6"

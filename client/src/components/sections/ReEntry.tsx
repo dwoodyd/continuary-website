@@ -47,7 +47,7 @@ export default function ReEntry() {
       {/* TEXT — right side */}
       <div className="container" style={{ position: "relative", zIndex: 2, paddingTop: "6rem", paddingBottom: "6rem" }}>
         <div style={{ marginLeft: "auto", maxWidth: "500px" }}>
-          <div className="reveal eyebrow" style={{ marginBottom: "1.25rem" }}>The return</div>
+          <div className="reveal eyebrow" style={{ marginBottom: "1.25rem" }}>Re-Entry Card</div>
 
           <h2
             className="reveal reveal-delay-1"

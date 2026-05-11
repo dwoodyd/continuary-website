@@ -24,8 +24,8 @@ const benefits = [
     body: (
       <>
         When the beta closes, founding members keep their rate forever.{" "}
-        <strong className="text-white/90">$5/mo on Pro</strong> or{" "}
-        <strong className="text-white/90">$10/mo on Keeper</strong> — almost half the retail price the rest of the world will pay.
+        <strong className="text-white/90">$4.99/mo on Pro</strong> or{" "}
+        <strong className="text-white/90">$9.99/mo on Keeper</strong> — for life, across every renewal. Almost half what the rest of the world will pay.
       </>
     ),
   },
@@ -40,6 +40,10 @@ const afterBetaTiers = [
     name: "Free",
     price: "$0",
     period: "/ forever",
+    foundingMonthly: null,
+    foundingAnnual: null,
+    retailMonthly: null,
+    retailAnnual: null,
     features: [
       "Unlimited journal entries",
       "Morning & evening prompts",
@@ -49,31 +53,37 @@ const afterBetaTiers = [
   },
   {
     name: "Pro",
-    price: "$9",
+    price: "$7.99",
     period: "/ mo",
-    annual: "$87 / year",
+    annual: "$79.99 / year",
+    foundingMonthly: "$4.99 / mo",
+    foundingAnnual: "$39.99 / yr",
+    retailMonthly: "$7.99 / mo",
+    retailAnnual: "$79.99 / yr",
     features: [
       "Everything in Free",
       "Unlimited history & archive",
-      "Weekly thread summaries",
+      "Weekly Compass summaries",
       "Voice capture + transcription",
-      "Pattern recognition insights",
+      "Distraction Insights",
       "Permission to Start book access",
     ],
   },
   {
     name: "Keeper",
-    price: "$15",
+    price: "$14.99",
     period: "/ mo",
-    annual: "$149 / year",
+    annual: "$149.99 / year",
+    foundingMonthly: "$9.99 / mo",
+    foundingAnnual: "$79.99 / yr",
+    retailMonthly: "$14.99 / mo",
+    retailAnnual: "$149.99 / yr",
     features: [
       "Everything in Pro",
-      "Unlimited voice transcription",
-      "Annual digital memory book",
-      "Cross-app early access",
-      "Monthly founder office hours",
-      "Direct founder DM access",
-      "Keeper-exclusive Wren",
+      "Wren voice check-ins",
+      "Weekly Compass deep-dive",
+      "Threshold Diagnosis tool",
+      "Study Mode & Focus Blocks",
     ],
   },
 ];
@@ -168,9 +178,9 @@ export default function FoundingMember() {
             className="reveal-child font-serif text-5xl md:text-6xl lg:text-7xl text-white leading-tight mb-6"
             style={{ transitionDelay: "60ms" }}
           >
-            Become a
+            Apply for a
             <br />
-            <em className="text-amber-200">Founding Member.</em>
+            <em className="text-amber-200">founding seat.</em>
           </h2>
           <p
             className="reveal-child font-sans text-white/60 text-lg max-w-2xl mx-auto leading-relaxed"
@@ -334,15 +344,35 @@ export default function FoundingMember() {
                 className="reveal-child rounded-xl border border-white/6 bg-white/[0.02] p-6 opacity-60"
                 style={{ transitionDelay: `${100 + i * 60}ms` }}
               >
-                <h4 className="font-serif text-xl text-white/50 mb-1">{tier.name}</h4>
-                <div className="flex items-baseline gap-1 mb-1">
-                  <span className="font-serif text-2xl text-white/40">{tier.price}</span>
-                  <span className="font-sans text-xs text-white/25">{tier.period}</span>
-                </div>
-                {tier.annual && (
-                  <p className="font-sans text-xs text-white/20 mb-4">or {tier.annual}</p>
+                <h4 className="font-serif text-xl text-white/50 mb-3">{tier.name}</h4>
+
+                {/* Pricing rows: founding (strikethrough anchor) vs retail */}
+                {tier.foundingMonthly ? (
+                  <div className="space-y-1 mb-4">
+                    <div className="flex items-baseline gap-2">
+                      <span className="font-sans text-xs text-amber-400/60 line-through">{tier.foundingMonthly}</span>
+                      <span className="font-sans text-[10px] text-amber-400/40 uppercase tracking-wider">founding</span>
+                    </div>
+                    <div className="flex items-baseline gap-2">
+                      <span className="font-serif text-xl text-white/40">{tier.retailMonthly}</span>
+                      <span className="font-sans text-[10px] text-white/20 uppercase tracking-wider">retail</span>
+                    </div>
+                    <div className="flex items-baseline gap-2 mt-1">
+                      <span className="font-sans text-xs text-amber-400/50 line-through">{tier.foundingAnnual}</span>
+                      <span className="font-sans text-[10px] text-amber-400/35 uppercase tracking-wider">founding annual</span>
+                    </div>
+                    <div className="flex items-baseline gap-2">
+                      <span className="font-sans text-xs text-white/25">{tier.retailAnnual}</span>
+                      <span className="font-sans text-[10px] text-white/15 uppercase tracking-wider">retail annual</span>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="mb-4">
+                    <span className="font-serif text-2xl text-white/40">{tier.price}</span>
+                    <span className="font-sans text-xs text-white/25 ml-1">{tier.period}</span>
+                  </div>
                 )}
-                {!tier.annual && <div className="mb-4" />}
+
                 <ul className="space-y-2">
                   {tier.features.map((f) => (
                     <li key={f} className="flex items-start gap-2 font-sans text-xs text-white/25 leading-relaxed">
@@ -356,10 +386,10 @@ export default function FoundingMember() {
           </div>
 
           <p
-            className="reveal-child text-center font-sans text-xs italic text-white/25 mt-6 max-w-md mx-auto"
+            className="reveal-child text-center font-sans text-xs italic text-white/25 mt-6 max-w-lg mx-auto"
             style={{ transitionDelay: "300ms" }}
           >
-            Founding members are locked at $5 Pro / $10 Keeper for as long as they remain subscribers — even at renewal.
+            Founding members lock in at $4.99 Pro / $9.99 Keeper monthly (or $39.99 / $79.99 annual) — for life, across every renewal.
           </p>
         </div>
       </div>
