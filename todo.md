@@ -100,15 +100,19 @@
 - [x] FoundingMember heading changed from "Become a Founding Member" to "Apply for a founding seat"
 
 ## Roadmap Teaser Section
-- [ ] Create RoadmapTeaser.tsx section with "In development" chips for upcoming features
-- [ ] Insert between AppScreensSection and FoundingMember in Home.tsx
+- [x] Create RoadmapTeaser.tsx section with "In development" chips for upcoming features
+- [x] Insert between AppScreensSection and FoundingMember in Home.tsx
 
 ## Round 4 Improvements
 - [x] Create RoadmapTeaser.tsx section with "In development" chips and insert between AppScreensSection and FoundingMember
 - [x] Add refetchInterval: 60_000 to slotCounts query in Hero and FoundingMember for live counter
 - [x] Set up Resend transactional email and send applicant confirmation on trpc.applications.submit success (sends from hello@continuary.app)
 
-## Resend Setup (Pending User Action)
-- [ ] User to provide RESEND_API_KEY in Secrets panel (Settings → Secrets)
-- [ ] User to verify continuary.app domain in Resend dashboard (Domains → Add Domain)
-- [ ] Confirm applicant confirmation emails send from hello@continuary.app after key is set
+## Resend Setup
+- [x] RESEND_API_KEY provided and confirmed present in environment
+- [x] continuary.app domain verified in Resend dashboard
+- [x] Test email delivered successfully to Resend sink (ID: a846ca06-d7f3-4d8c-b296-366feb062d13)
+
+## Confirmation Email Copy Update
+- [x] Update server/email.ts with approved subject, HTML body, and plain-text copy
+- [x] Fix Home.tsx unterminated comment / stale Vite parse error

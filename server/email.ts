@@ -39,7 +39,7 @@ export async function sendApplicationConfirmation({
     const { error } = await resend.emails.send({
       from: `${APP_NAME} <${FROM_ADDRESS}>`,
       to: email,
-      subject: "We received your application — Continuary Founding Member",
+      subject: "You're in the queue — Continuary Founding Member",
       html: `
 <!DOCTYPE html>
 <html lang="en">
@@ -54,11 +54,11 @@ export async function sendApplicationConfirmation({
       <td align="center">
         <table width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#0f1a30;border-radius:16px;border:1px solid rgba(255,255,255,0.07);overflow:hidden;">
 
-          <!-- Header bar -->
+          <!-- Header -->
           <tr>
             <td style="background:linear-gradient(135deg,#0f1a30 0%,#1a2a4a 100%);padding:36px 40px 28px;border-bottom:1px solid rgba(232,160,48,0.15);">
-              <p style="margin:0 0 8px;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(232,160,48,0.7);font-weight:600;">Silicon Wren · Continuary</p>
-              <h1 style="margin:0;font-size:26px;font-weight:700;color:#f0e8d8;line-height:1.2;">Your application is in.</h1>
+              <p style="margin:0 0 8px;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(232,160,48,0.7);font-weight:600;">Silicon Wren &middot; Continuary</p>
+              <h1 style="margin:0;font-size:26px;font-weight:700;color:#f0e8d8;line-height:1.2;">Your story is already worth keeping.</h1>
             </td>
           </tr>
 
@@ -69,22 +69,33 @@ export async function sendApplicationConfirmation({
                 Hi ${name},
               </p>
               <p style="margin:0 0 20px;font-size:15px;line-height:1.7;color:#a8b4cc;">
-                Thank you for applying for a founding member seat. We've received your application and we're reading every one personally.
+                Something just landed in our inbox that we're genuinely glad to read.
               </p>
               <p style="margin:0 0 20px;font-size:15px;line-height:1.7;color:#a8b4cc;">
-                Founding members are the first 100 people who shape what Continuary becomes — your feedback, your patterns, and your story will directly influence what we build next.
+                You applied for a founding member seat &mdash; and that means you're one of the first 100 people who will shape what Continuary becomes. Not just as a user, but as someone whose patterns, frustrations, and small wins will directly influence what we build next.
+              </p>
+              <p style="margin:0 0 20px;font-size:15px;line-height:1.7;color:#a8b4cc;">
+                We read every application personally. We're not filtering for credentials or productivity credentials &mdash; we're looking for people who know what it feels like to lose the thread, and who want something that helps them find it again.
               </p>
 
               <!-- Divider -->
               <div style="height:1px;background:linear-gradient(90deg,transparent,rgba(232,160,48,0.2),transparent);margin:28px 0;"></div>
 
-              <p style="margin:0 0 8px;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(168,180,204,0.5);font-weight:600;">What happens next</p>
+              <p style="margin:0 0 10px;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(168,180,204,0.5);font-weight:600;">What happens next</p>
               <p style="margin:0 0 20px;font-size:15px;line-height:1.7;color:#a8b4cc;">
-                We'll review your application and reach out to this email address with next steps. We're moving through applications in the order they arrive, so you'll hear from us soon.
+                We'll review your application and reach out to this address within a few days. When we do, we'll share your founding member access details, your locked-in rate, and what the first few weeks of beta look like.
               </p>
-
               <p style="margin:0;font-size:15px;line-height:1.7;color:#a8b4cc;">
-                In the meantime, if you have any questions, just reply to this email.
+                In the meantime, if anything comes to mind &mdash; questions, second thoughts, or something you forgot to mention &mdash; just reply here. This goes to a real inbox.
+              </p>
+            </td>
+          </tr>
+
+          <!-- Sign-off -->
+          <tr>
+            <td style="padding:0 40px 32px;">
+              <p style="margin:0;font-size:15px;line-height:1.7;color:#a8b4cc;">
+                &mdash; DeWayne &amp; the Continuary team
               </p>
             </td>
           </tr>
@@ -94,7 +105,7 @@ export async function sendApplicationConfirmation({
             <td style="padding:24px 40px;border-top:1px solid rgba(255,255,255,0.05);">
               <p style="margin:0;font-size:13px;color:rgba(168,180,204,0.4);line-height:1.6;">
                 You're receiving this because you applied for a founding member seat at Continuary.<br />
-                Silicon Wren · <a href="https://continuary.app" style="color:rgba(232,160,48,0.6);text-decoration:none;">continuary.app</a>
+                Silicon Wren &middot; <a href="https://continuary.app" style="color:rgba(232,160,48,0.6);text-decoration:none;">continuary.app</a>
               </p>
             </td>
           </tr>
@@ -106,7 +117,7 @@ export async function sendApplicationConfirmation({
 </body>
 </html>
       `.trim(),
-      text: `Hi ${name},\n\nThank you for applying for a founding member seat at Continuary. We've received your application and we're reading every one personally.\n\nWe'll review your application and reach out to this email address with next steps.\n\nIf you have any questions, just reply to this email.\n\n— The Continuary team\nhello@continuary.app`,
+      text: `Hi ${name},\n\nSomething just landed in our inbox that we're genuinely glad to read.\n\nYou applied for a founding member seat — and that means you're one of the first 100 people who will shape what Continuary becomes. We read every application personally.\n\nWe'll be in touch within a few days with your founding member access details and locked-in rate.\n\nIf anything comes to mind in the meantime — questions, second thoughts, or something you forgot to mention — just reply here. This goes to a real inbox.\n\n— DeWayne & the Continuary team\nhello@continuary.app`,
     });
 
     if (error) {
