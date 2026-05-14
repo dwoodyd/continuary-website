@@ -15,7 +15,7 @@
 
 import { useEffect, useRef } from "react";
 import WrenVideo from "../WrenVideo";
-import { WREN_VIDEOS } from "../../assets";
+import { WREN_VIDEOS, WREN_STILLS } from "../../assets";
 import { trpc } from "../../lib/trpc";
 
 export default function Hero() {
@@ -85,6 +85,7 @@ export default function Hero() {
           glow={true}
           objectPosition="40% center"
           fadeDir="right"
+          poster={WREN_STILLS.neutral}
         />
       </div>
 

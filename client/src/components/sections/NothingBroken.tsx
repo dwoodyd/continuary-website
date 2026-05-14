@@ -8,7 +8,7 @@
 
 import { useRef } from "react";
 import WrenVideo from "../WrenVideo";
-import { WREN_VIDEOS } from "../../assets";
+import { WREN_VIDEOS, WREN_STILLS } from "../../assets";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 
 export default function NothingBroken() {
@@ -62,6 +62,7 @@ export default function NothingBroken() {
           glow={true}
           objectPosition="center center"
           fadeDir="left"
+          poster={WREN_STILLS.lookingDown}
         />
       </div>
 

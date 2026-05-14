@@ -8,7 +8,7 @@
 
 import { useRef } from "react";
 import WrenVideo from "../WrenVideo";
-import { WREN_VIDEOS } from "../../assets";
+import { WREN_VIDEOS, WREN_STILLS } from "../../assets";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 
 const ENTRIES = [
@@ -47,7 +47,7 @@ export default function EvidenceLog() {
         position: "absolute", right: 0, top: 0,
         width: "60vw", height: "100%", pointerEvents: "none", zIndex: 1, overflow: "hidden",
       }}>
-        <WrenVideo src={WREN_VIDEOS.blobJournal} glow={true} objectPosition="center center" fadeDir="right" />
+        <WrenVideo src={WREN_VIDEOS.blobJournal} glow={true} objectPosition="center center" fadeDir="right" poster={WREN_STILLS.journalingBook} />
       </div>
 
       {/* TEXT — left side */}

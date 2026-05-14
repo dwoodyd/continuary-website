@@ -158,3 +158,10 @@
 ## Cleanup Brief Round 2 (from Continuary-Website-Builder-Cleanup.md)
 - [x] Ritual descriptions updated to locked copy: "Set your intention..." / "Two-minute alignment check..." / "Close the loop..." / "One clear direction for the week. Not a schedule — a compass."
 - [x] Verified all other cleanup brief items already completed in prior sessions (pricing, feature names, problem framing, Keeper tier, stats removed, heading softened)
+
+## Video Performance & iOS/iPad Fix
+- [x] Audit all video elements — find sources, attributes, iOS compatibility issues
+- [x] Fix iOS/iPad autoplay: ensure all videos have muted + playsinline + autoplay attributes
+- [x] Add poster images to all videos so they show a frame while loading (not blank)
+- [x] Lazy-load videos that are off-screen (IntersectionObserver + preload=none)
+- [x] Verify video formats include MP4 (H.264) which is required for iOS Safari — all .mp4 confirmed

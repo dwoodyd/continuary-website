@@ -8,7 +8,7 @@
 
 import { useRef } from "react";
 import WrenVideo from "../WrenVideo";
-import { WREN_VIDEOS } from "../../assets";
+import { WREN_VIDEOS, WREN_STILLS } from "../../assets";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 
 const TESTIMONIALS = [
@@ -89,7 +89,7 @@ export default function TrustRow() {
         position: "absolute", right: 0, top: 0,
         width: "55vw", height: "100%", pointerEvents: "none", zIndex: 1, overflow: "hidden",
       }}>
-        <WrenVideo src={WREN_VIDEOS.sparkleWingsNew} glow={true} objectPosition="center center" fadeDir="right" />
+        <WrenVideo src={WREN_VIDEOS.sparkleWingsNew} glow={true} objectPosition="center center" fadeDir="right" poster={WREN_STILLS.secureNest} />
       </div>
       {/* TESTIMONIALS — left side */}
       <div className="container" style={{ position: "relative", zIndex: 2, paddingTop: "6rem", paddingBottom: "6rem" }}>

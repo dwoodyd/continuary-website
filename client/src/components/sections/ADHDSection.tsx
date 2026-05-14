@@ -11,7 +11,7 @@
 
 import { useRef } from "react";
 import WrenVideo from "../WrenVideo";
-import { WREN_VIDEOS } from "../../assets";
+import { WREN_VIDEOS, WREN_STILLS } from "../../assets";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 
 export default function ADHDSection() {
@@ -45,7 +45,7 @@ export default function ADHDSection() {
         width: "55vw", height: "100%",
         pointerEvents: "none", zIndex: 1, overflow: "hidden",
       }}>
-        <WrenVideo src={WREN_VIDEOS.cornerWaveTrimmed} glow={true} objectPosition="center center" fadeDir="left" />
+        <WrenVideo src={WREN_VIDEOS.cornerWaveTrimmed} glow={true} objectPosition="center center" fadeDir="left" poster={WREN_STILLS.neutral} />
       </div>
 
       {/* TEXT — right side */}

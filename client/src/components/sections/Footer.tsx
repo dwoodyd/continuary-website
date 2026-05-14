@@ -8,7 +8,7 @@
 
 import { useRef } from "react";
 import WrenVideo from "../WrenVideo";
-import { LOGOS, WREN_VIDEOS } from "../../assets";
+import { LOGOS, WREN_VIDEOS, WREN_STILLS } from "../../assets";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 
 export default function Footer() {
@@ -42,7 +42,7 @@ export default function Footer() {
         position: "absolute", left: 0, top: 0,
         width: "55vw", height: "100%", pointerEvents: "none", zIndex: 1, overflow: "hidden",
       }}>
-        <WrenVideo src={WREN_VIDEOS.tuggingThread} glow={true} objectPosition="center center" fadeDir="left" />
+        <WrenVideo src={WREN_VIDEOS.tuggingThread} glow={true} objectPosition="center center" fadeDir="left" poster={WREN_STILLS.tuggingThread} />
       </div>
 
       {/* FINAL CTA — right side */}
