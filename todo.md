@@ -154,3 +154,7 @@
 
 ## Apply URL Fix
 - [x] Fix all Apply CTAs: change https://app.continuary.app → https://app.continuary.app/apply (root redirects to login wall, /apply is the correct public page)
+
+## Cleanup Brief Round 2 (from Continuary-Website-Builder-Cleanup.md)
+- [x] Ritual descriptions updated to locked copy: "Set your intention..." / "Two-minute alignment check..." / "Close the loop..." / "One clear direction for the week. Not a schedule — a compass."
+- [x] Verified all other cleanup brief items already completed in prior sessions (pricing, feature names, problem framing, Keeper tier, stats removed, heading softened)

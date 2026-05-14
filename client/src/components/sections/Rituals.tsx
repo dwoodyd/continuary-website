@@ -10,10 +10,10 @@ import { useRef } from "react";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 
 const RITUALS = [
-  { name: "Morning check-in", desc: "Three questions. Two minutes. One anchor before the day takes over." },
-  { name: "Midday pulse", desc: "A quick mid-session check-in. Capture the idea, the shift, the thing you don't want to lose." },
-  { name: "Evening close", desc: "What happened. What mattered. What you want to carry forward into tomorrow." },
-  { name: "Weekly Compass", desc: "Wren weaves your week into a single thread — patterns, progress, and one clear direction." },
+  { name: "Morning check-in", desc: "Set your intention. Protect your focus. Prime the day." },
+  { name: "Midday pulse", desc: "Two-minute alignment check. On plan? Any blockers?" },
+  { name: "Evening close", desc: "Close the loop. Acknowledge what moved. Prepare tomorrow." },
+  { name: "Weekly Compass", desc: "One clear direction for the week. Not a schedule — a compass." },
 ];
 
 export default function Rituals() {
