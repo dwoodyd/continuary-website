@@ -191,6 +191,26 @@ export default function Hero() {
           >
             A daily thread — in your pocket or on the web. Install on iOS, Android, or open in any browser.
           </p>
+
+          {/* Focus Sessions "what's new" tagline — retire after launch month */}
+          <div
+            data-reveal
+            style={{
+              marginTop: "1.75rem",
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: "0.9375rem",
+              fontStyle: "italic",
+              color: "rgba(232,160,48,0.8)",
+              letterSpacing: "0.01em",
+              lineHeight: 1.5,
+              display: "flex",
+              alignItems: "center",
+              gap: "0.5rem",
+            }}
+          >
+            <span style={{ display: "inline-block", width: "16px", height: "1px", background: "rgba(232,160,48,0.5)", flexShrink: 0 }} />
+            Now with Focus Sessions — Wren works alongside you.
+          </div>
         </div>
       </div>
 

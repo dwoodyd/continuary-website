@@ -122,6 +122,7 @@ export default function NothingBroken() {
               { label: "No streaks. No shame. No score." },
               { label: "Pick up exactly where you left off." },
               { label: "Wren remembers even when you forget." },
+              { label: "And when you're ready to work, she's there — reading, writing, weaving — while you do." },
             ].map(({ label }) => (
               <div key={label} style={{ display: "flex", alignItems: "flex-start", gap: "0.875rem" }}>
                 <span style={{ color: "#e8a030", fontSize: "0.6875rem", marginTop: "0.35rem", flexShrink: 0 }}>✦</span>

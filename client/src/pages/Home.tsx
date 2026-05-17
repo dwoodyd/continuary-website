@@ -9,6 +9,7 @@
  *  5. ProblemSection
  *  6. NothingBroken
  *  7. Rituals
+ *  7b. WhatsNew   (launch band — retire after May 2026)
  *  8. EvidenceLog
  *  9. VaultSection
  * 10. ReEntry
@@ -29,6 +30,7 @@ import PanoramicBanner from "../components/sections/PanoramicBanner";
 import ProblemSection from "../components/sections/ProblemSection";
 import NothingBroken from "../components/sections/NothingBroken";
 import Rituals from "../components/sections/Rituals";
+import WhatsNew from "../components/sections/WhatsNew";
 import EvidenceLog from "../components/sections/EvidenceLog";
 import VaultSection from "../components/sections/VaultSection";
 import ReEntry from "../components/sections/ReEntry";
@@ -69,6 +71,7 @@ export default function Home() {
         <ProblemSection />
         <NothingBroken />
         <Rituals />
+        <WhatsNew />
         <EvidenceLog />
         <VaultSection />
         <ReEntry />

@@ -165,3 +165,12 @@
 - [x] Add poster images to all videos so they show a frame while loading (not blank)
 - [x] Lazy-load videos that are off-screen (IntersectionObserver + preload=none)
 - [x] Verify video formats include MP4 (H.264) which is required for iOS Safari — all .mp4 confirmed
+
+## Focus Sessions / Single Focus Mode Website Updates (Part 1 & 3 spec)
+- [x] 1.1 Hero: add "Now with Focus Sessions — Wren works alongside you." italic gold tagline band below hero
+- [x] 1.2 Rituals: add fifth "Focus Sessions with Wren" pillar block after the four existing ritual tiles
+- [x] 1.3 Wren character section: append fourth line "And when you're ready to work, she's there — reading, writing, weaving — while you do."
+- [x] 1.4 Pricing: rebuild all three tier feature lists with full locked feature ladder from Part 3
+- [x] 1.5 Apply form: add optional "What draws you to Continuary?" checkbox field, wire draws[] to POST payload (DB migrated, tRPC + Formspree wired)
+- [x] 1.6 What's New band: WhatsNew.tsx created, inserted between Rituals and EvidenceLog in Home.tsx
+- [x] Audit: confirmed no Stripe references in codebase (PayPal only) — clean

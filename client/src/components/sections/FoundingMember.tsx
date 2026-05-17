@@ -45,10 +45,12 @@ const afterBetaTiers = [
     retailMonthly: null,
     retailAnnual: null,
     features: [
-      "Unlimited journal entries",
-      "Morning & evening prompts",
-      "7-day entry history",
-      "Wren ambient companion",
+      "Daily check-ins (Morning · Midday · Evening · Weekly Compass)",
+      "Projects, Clarity Engine basics, Knowledge Vault",
+      "Scratch Pad",
+      "Single Focus Mode — 1 active focus, up to 60 days, manual prompts",
+      "Focus Sessions — 1 session/week, chat with Wren, all session lengths",
+      "Capacity Today, basic Compass",
     ],
   },
   {
@@ -62,11 +64,11 @@ const afterBetaTiers = [
     retailAnnual: "$79.99 / yr",
     features: [
       "Everything in Free",
-      "Unlimited history & archive",
-      "Weekly Compass summaries",
-      "Voice capture + transcription",
-      "Distraction Insights",
-      "Permission to Start book access",
+      "Focus Sessions — unlimited, book ahead, recurring, pop-out & PiP",
+      "Focus Sessions — export your \u201cweave\u201d to PDF or markdown",
+      "Single Focus Mode — up to 2 active, Wren prompts, 365-day max, unlimited history",
+      "Full Compass · Weekly Review · Re-Entry Card",
+      "7-day chat history retention",
     ],
   },
   {
@@ -80,17 +82,17 @@ const afterBetaTiers = [
     retailAnnual: "$149.99 / yr",
     features: [
       "Everything in Pro",
-      "Wren voice check-ins",
-      "Weekly Compass deep-dive",
-      "Threshold Diagnosis tool",
-      "Study Mode & Focus Blocks",
+      "Single Focus Mode — unlimited active focuses, unlimited duration",
+      "Focus Sessions — priority Studios access (Phase 2)",
+      "Full chat history retention across all sessions",
+      "Priority support during founding member period",
     ],
   },
 ];
 
 export default function FoundingMember() {
   const sectionRef = useScrollReveal();
-  const [form, setForm] = useState({ name: "", email: "", relationship: "" });
+  const [form, setForm] = useState({ name: "", email: "", relationship: "", draws: [] as string[] });
   const [submitted, setSubmitted] = useState(false);
   const [formspreeOk, setFormspreeOk] = useState(true);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -130,6 +132,7 @@ export default function FoundingMember() {
             name: form.name,
             email: form.email,
             relationship: form.relationship,
+            draws: form.draws.length > 0 ? form.draws : null,
           }),
         }),
       ]);
@@ -146,6 +149,7 @@ export default function FoundingMember() {
         email: form.email,
         relationship: form.relationship,
         formspreeId,
+        draws: form.draws.length > 0 ? form.draws : null,
       });
 
       setFormspreeOk(formspreeSucceeded);
@@ -289,6 +293,42 @@ export default function FoundingMember() {
                 {errors.relationship && (
                   <p className="mt-1 font-sans text-xs text-red-400">{errors.relationship}</p>
                 )}
+              </div>
+
+              {/* What draws you — optional interest signal */}
+              <div>
+                <label className="block font-sans text-sm text-white/50 mb-3">
+                  What draws you to Continuary? <span className="text-white/30">(optional — pick any)</span>
+                </label>
+                <div className="space-y-2.5">
+                  {[
+                    { value: "daily_rhythm", label: "The daily check-in rhythm" },
+                    { value: "focus_sessions", label: "Focus Sessions with Wren" },
+                    { value: "single_focus", label: "Single Focus Mode for one big thing" },
+                    { value: "projects_threaded", label: "Keeping my projects threaded" },
+                    { value: "not_sure", label: "Not sure yet" },
+                  ].map(({ value, label }) => (
+                    <label
+                      key={value}
+                      className="flex items-center gap-3 cursor-pointer group"
+                    >
+                      <input
+                        type="checkbox"
+                        checked={form.draws.includes(value)}
+                        onChange={(e) => {
+                          setForm({
+                            ...form,
+                            draws: e.target.checked
+                              ? [...form.draws, value]
+                              : form.draws.filter((d) => d !== value),
+                          });
+                        }}
+                        className="w-4 h-4 rounded border border-white/20 bg-white/[0.04] accent-amber-400 cursor-pointer"
+                      />
+                      <span className="font-sans text-sm text-white/60 group-hover:text-white/80 transition-colors duration-150">{label}</span>
+                    </label>
+                  ))}
+                </div>
               </div>
 
               {/* Submit error */}

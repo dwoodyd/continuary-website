@@ -126,6 +126,38 @@ export default function Rituals() {
               </div>
             ))}
           </div>
+
+          {/* Fifth pillar — Focus Sessions: wider hero-style block, slightly different visual weight */}
+          <div
+            className="reveal reveal-delay-4"
+            style={{ marginTop: "1.5rem", width: "100%" }}
+          >
+            <div
+              style={{
+                background: "rgba(232,160,48,0.06)",
+                border: "1px solid rgba(232,160,48,0.18)",
+                borderRadius: "1rem",
+                padding: "1.75rem 2rem",
+                textAlign: "left",
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.75rem",
+                backdropFilter: "blur(8px)",
+                transition: "border-color 0.2s ease",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(232,160,48,0.35)")}
+              onMouseLeave={(e) => (e.currentTarget.style.borderColor = "rgba(232,160,48,0.18)")}
+            >
+              <div style={{ display: "flex", alignItems: "center", gap: "0.625rem" }}>
+                <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#e8a030", flexShrink: 0 }} />
+                <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "1rem", color: "#f0e8d8", letterSpacing: "0.01em" }}>Focus Sessions with Wren</div>
+                <span style={{ marginLeft: "auto", fontFamily: "'DM Sans', sans-serif", fontSize: "0.6875rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(232,160,48,0.7)", background: "rgba(232,160,48,0.1)", border: "1px solid rgba(232,160,48,0.2)", borderRadius: "999px", padding: "0.2rem 0.625rem" }}>When you're ready to work</span>
+              </div>
+              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.9375rem", color: "rgba(168,180,204,0.85)", lineHeight: 1.65, margin: 0 }}>
+                When you're ready to work, Wren shows up too. Reading, writing, weaving — alongside you, not watching you. Book ahead or start one whenever the moment is right.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

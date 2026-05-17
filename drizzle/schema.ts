@@ -35,6 +35,8 @@ export const applications = mysqlTable("applications", {
   relationship: text("relationship").notNull(),
   // CRM status
   status: mysqlEnum("status", ["new", "reviewed", "accepted", "declined"]).default("new").notNull(),
+  // Optional interest signal from the apply form — JSON array of strings e.g. ["focus_sessions","single_focus"]
+  draws: text("draws"),
   // Private admin notes
   notes: text("notes"),
   submittedAt: timestamp("submittedAt").defaultNow().notNull(),

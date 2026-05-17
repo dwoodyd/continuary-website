@@ -34,6 +34,8 @@ export const applicationsRouter = router({
         email: z.string().email(),
         relationship: z.string().min(200, "Please write at least 200 characters"),
         formspreeId: z.string().optional(),
+        // Optional interest signal — array of strings from the apply form checkboxes
+        draws: z.array(z.string()).optional().nullable(),
       })
     )
     .mutation(async ({ input }) => {
@@ -42,13 +44,18 @@ export const applicationsRouter = router({
         email: input.email,
         relationship: input.relationship,
         formspreeId: input.formspreeId ?? null,
+        // Serialize draws array as JSON string for storage
+        draws: input.draws && input.draws.length > 0 ? JSON.stringify(input.draws) : null,
         status: "new",
       });
 
       // Notify owner of new application
+      const drawsLabel = input.draws && input.draws.length > 0
+        ? `\n\nInterest signals: ${input.draws.join(", ")}`
+        : "";
       await notifyOwner({
         title: `New founding member application from ${input.name}`,
-        content: `Email: ${input.email}\n\nRelationship with consistency:\n${input.relationship.slice(0, 300)}${input.relationship.length > 300 ? "…" : ""}`,
+        content: `Email: ${input.email}\n\nRelationship with consistency:\n${input.relationship.slice(0, 300)}${input.relationship.length > 300 ? "\u2026" : ""}${drawsLabel}`,
       });
 
       // Send confirmation email to the applicant (non-blocking — failure doesn't affect the response)

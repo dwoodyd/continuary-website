@@ -15,6 +15,13 @@
       "when": 1778300466263,
       "tag": "0001_volatile_killraven",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1779061065267,
+      "tag": "0002_oval_northstar",
+      "breakpoints": true
     }
   ]
 }
