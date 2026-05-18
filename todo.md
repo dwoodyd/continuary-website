@@ -190,3 +190,6 @@
 
 ### CTA Verification
 - [x] All CTAs audited: all routes verified correct per spec table; #pricing anchor confirmed valid
+
+## Post-publish Polish
+- [x] Focus Sessions nav anchor: add scrollMarginTop: "5rem" so nav click lands at section heading, not bottom of block

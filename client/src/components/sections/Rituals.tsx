@@ -131,7 +131,7 @@ export default function Rituals() {
           <div
             id="focus-sessions"
             className="reveal reveal-delay-4"
-            style={{ marginTop: "1.5rem", width: "100%" }}
+            style={{ marginTop: "1.5rem", width: "100%", scrollMarginTop: "5rem" }}
           >
             <div
               style={{
