@@ -128,7 +128,7 @@ export default function Footer() {
             <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.8125rem", color: "rgba(168,180,204,0.4)" }}>
               © {new Date().getFullYear()} Continuary. All rights reserved.
             </div>
-            <div style={{ display: "flex", gap: "1.5rem" }}>
+            <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap", alignItems: "center" }}>
               {[
                 { label: "Privacy", href: "https://continuary.app/privacy" },
                 { label: "Terms", href: "https://continuary.app/terms" },
@@ -150,6 +150,24 @@ export default function Footer() {
                   onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(168,180,204,0.5)")}
                 >{label}</a>
               ))}
+              {/* Soul Engineer ecosystem link */}
+              <a
+                href="https://soulengineer.online"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: "0.8125rem",
+                  color: "rgba(168,180,204,0.4)",
+                  textDecoration: "none",
+                  transition: "color 0.2s ease",
+                  marginLeft: "0.5rem",
+                  borderLeft: "1px solid rgba(255,255,255,0.08)",
+                  paddingLeft: "1.5rem",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#e8a030")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(168,180,204,0.4)")}
+              >An app from Soul Engineer →</a>
             </div>
           </div>
         </div>

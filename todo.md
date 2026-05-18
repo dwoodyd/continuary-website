@@ -174,3 +174,19 @@
 - [x] 1.5 Apply form: add optional "What draws you to Continuary?" checkbox field, wire draws[] to POST payload (DB migrated, tRPC + Formspree wired)
 - [x] 1.6 What's New band: WhatsNew.tsx created, inserted between Rituals and EvidenceLog in Home.tsx
 - [x] Audit: confirmed no Stripe references in codebase (PayPal only) — clean
+
+## Marketing Site Fix Spec (Continuary-Marketing-Site-Fix-Spec.md)
+
+### Critical
+- [x] Thread Strength: strip 0/100 numerical score and progress bar; replace with qualitative three-state Wren-voiced framing (Gathering / Weaving / Holding)
+- [x] What's Coming (RoadmapTeaser): full rewrite — removed all contradictory/shipped entries; added real Phase 1.5 + Phase 2 roadmap in 3 time-horizon groups
+- [x] Inside the App (AppScreensSection): replaced "Focus Blocks" with Single Focus Mode; replaced "Health scores" with non-gamification language; updated preamble
+
+### Important
+- [x] Footer: added "An app from Soul Engineer →" link (routes to soulengineer.online), right-aligned, small, gold on hover
+- [x] Slot counter: confirmed live DB data (trpc.applications.slotCounts, 60s refetch, SLOT_SEED=5 offset)
+- [x] Sign In link: updated to app.continuary.app/signin (both desktop and mobile drawer)
+- [x] Nav: added "Focus Sessions" anchor (scrolls to #focus-sessions in Rituals); removed redundant "Apply" nav item; orange Apply button remains as primary CTA
+
+### CTA Verification
+- [x] All CTAs audited: all routes verified correct per spec table; #pricing anchor confirmed valid

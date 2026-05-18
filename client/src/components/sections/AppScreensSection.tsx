@@ -19,9 +19,9 @@ const MOCKUPS = [
   },
   {
     src: "/manus-storage/screenshot_3_projects_5577fa94.webp",
-    alt: "Continuary app screen showing project health scores: Website Redesign at 92, Mobile App Launch at 61 marked cold, Marketing Campaign at 38.",
+    alt: "Continuary app screen showing project threads with attention signals — Website Redesign active, Mobile App Launch needs attention, Marketing Campaign cold.",
     headline: "Never lose a project to silence.",
-    subhead: "Health scores surface what needs attention.",
+    subhead: "Continuary surfaces the threads that need attention — without shame, without scoring.",
   },
   {
     src: "/manus-storage/screenshot_4_compass_aa95f72c.webp",
@@ -31,9 +31,9 @@ const MOCKUPS = [
   },
   {
     src: "/manus-storage/screenshot_5_focus_ffd17e66.webp",
-    alt: "Continuary Focus Blocks screen showing a focused task 'Write the intro section' with a 25-minute timer.",
-    headline: "One task. Full presence.",
-    subhead: "Focus Blocks lock in your attention, nothing else.",
+    alt: "Continuary Single Focus Mode screen showing one task 'Write the intro section' with a 25-minute timer — nothing else visible.",
+    headline: "One focus when you need to commit.",
+    subhead: "Single Focus Mode locks the dashboard to one stretch — learning, training, drafting, anything.",
   },
 ];
 
@@ -82,7 +82,7 @@ export default function AppScreensSection() {
             color: "rgba(168,180,204,0.7)",
           }}
         >
-          Four rituals. A Weekly Compass. Focus Blocks. A view of every project you might be losing. That's the whole system.
+          Four daily rituals. A Weekly Compass. Focus Sessions with Wren. Single Focus Mode when you want to go deep on one thing. A view of every project that might be slipping. That's the whole system.
         </p>
       </div>
 

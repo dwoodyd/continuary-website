@@ -29,7 +29,7 @@ export default function Nav() {
   const navLinks = [
     { label: "How it works", href: "#how-it-works", target: undefined as string | undefined },
     { label: "Rituals", href: "#rituals", target: undefined as string | undefined },
-    { label: "Apply", href: "https://app.continuary.app/apply", target: "_blank" },
+    { label: "Focus Sessions", href: "#focus-sessions", target: undefined as string | undefined },
     { label: "Book", href: "#book", target: undefined as string | undefined },
   ];
 
@@ -67,7 +67,7 @@ export default function Nav() {
             {/* Right side */}
             <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
               <a
-                href="https://app.continuary.app"
+                href="https://app.continuary.app/signin"
                 className="desktop-cta"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -150,7 +150,7 @@ export default function Nav() {
               </a>
             ))}
             <a
-              href="https://app.continuary.app"
+              href="https://app.continuary.app/signin"
               className="nav-link"
               onClick={() => setMenuOpen(false)}
               target="_blank"

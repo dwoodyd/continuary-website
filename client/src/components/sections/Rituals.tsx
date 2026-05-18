@@ -129,6 +129,7 @@ export default function Rituals() {
 
           {/* Fifth pillar — Focus Sessions: wider hero-style block, slightly different visual weight */}
           <div
+            id="focus-sessions"
             className="reveal reveal-delay-4"
             style={{ marginTop: "1.5rem", width: "100%" }}
           >

@@ -1,95 +1,31 @@
 /**
  * ThreadStrength — "Not productivity. Continuity."
- * Design: Centered hero visual (animated bar gauge at 74%), three tier cards below.
- * Inserted AFTER ReEntry ("She remembers everything"), BEFORE Stats section.
- * No Wren — metric visualization, not a character moment.
+ * Design: Three qualitative state cards with Wren-voiced descriptions.
+ * No numerical score, no progress bar — per voice doctrine: "She remembers, doesn't measure."
  */
 
-import { useEffect, useRef, useState } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
-const tiers = [
+const states = [
   {
     name: "Gathering",
-    range: "0 – 25",
-    description: "Just starting, or returning after a long gap.",
+    wren: "You're here. That's the whole thing.",
+    description: "Just starting, or coming back after time away.",
     active: false,
   },
   {
     name: "Weaving",
-    range: "26 – 75",
-    description: "Building rhythm, consistent check-ins.",
-    active: true, // 64 falls here
+    wren: "You're finding the cadence. The thread is alive.",
+    description: "Building rhythm, consistent returns.",
+    active: true,
   },
   {
     name: "Holding",
-    range: "76 – 100",
-    description: "Deep continuity, strong thread.",
+    wren: "You've been with this for a while. Let it carry.",
+    description: "Deep continuity, the thread is taut.",
     active: false,
   },
 ];
-
-function ThreadStrengthBar() {
-  const barRef = useRef<HTMLDivElement>(null);
-  const [filled, setFilled] = useState(false);
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setFilled(true);
-          observer.disconnect();
-          // Count up from 0 to 64 over 1800ms
-          const target = 64;
-          const duration = 1800;
-          const startTime = performance.now();
-          const tick = (now: number) => {
-            const elapsed = now - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            // ease-out cubic
-            const eased = 1 - Math.pow(1 - progress, 3);
-            setCount(Math.round(eased * target));
-            if (progress < 1) requestAnimationFrame(tick);
-          };
-          requestAnimationFrame(tick);
-        }
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -20px 0px" }
-    );
-    if (barRef.current) observer.observe(barRef.current);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div ref={barRef} className="w-full max-w-2xl mx-auto mb-14">
-      {/* Label row */}
-      <div className="flex items-center justify-between mb-3">
-        <span className="font-sans text-sm text-white/50 tracking-wide">
-          Your Thread Strength
-        </span>
-        <span className="font-serif text-3xl text-amber-300 font-normal">{count}</span>
-      </div>
-
-      {/* Bar track */}
-      <div className="relative h-3 w-full rounded-full bg-white/8 overflow-hidden">
-        <div
-          className="absolute inset-y-0 left-0 rounded-full transition-all duration-[1800ms] ease-out"
-          style={{
-            width: filled ? "64%" : "0%",
-            background: "linear-gradient(90deg, #b45309 0%, #f59e0b 60%, #fcd34d 100%)",
-            boxShadow: filled ? "0 0 12px rgba(245,158,11,0.5)" : "none",
-          }}
-        />
-      </div>
-
-      {/* Status label */}
-      <p className="mt-3 font-sans text-sm text-amber-400/80 italic">
-        Weaving — strong momentum, consistent returns
-      </p>
-    </div>
-  );
-}
 
 export default function ThreadStrength() {
   const sectionRef = useScrollReveal();
@@ -122,50 +58,43 @@ export default function ThreadStrength() {
             className="reveal-child font-sans text-white/60 text-lg max-w-2xl mx-auto leading-relaxed"
             style={{ transitionDelay: "120ms" }}
           >
-            Thread Strength doesn't measure how much you did. It measures how consistently you've stayed connected to your work — and how well you've returned after gaps.
+            Thread Strength isn't a score. It's a read on where you are in your relationship with your work — and Wren names it in plain language, not digits.
           </p>
         </div>
 
-        {/* Animated bar gauge */}
-        <div
-          className="reveal-child"
-          style={{ transitionDelay: "200ms" }}
-        >
-          <ThreadStrengthBar />
-        </div>
-
-        {/* Three tier cards */}
+        {/* Three qualitative state cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-10">
-          {tiers.map((tier, i) => (
+          {states.map((state, i) => (
             <div
-              key={tier.name}
+              key={state.name}
               className={`reveal-child rounded-2xl border p-8 text-center transition-all duration-300 ${
-                tier.active
+                state.active
                   ? "border-amber-400/40 bg-amber-400/[0.06]"
                   : "border-white/8 bg-white/[0.02]"
               }`}
-              style={{ transitionDelay: `${280 + i * 80}ms` }}
+              style={{ transitionDelay: `${200 + i * 80}ms` }}
             >
               <h3
-                className={`font-serif text-3xl md:text-4xl mb-2 ${
-                  tier.active ? "text-white" : "text-white/60"
+                className={`font-serif text-3xl md:text-4xl mb-4 ${
+                  state.active ? "text-white" : "text-white/60"
                 }`}
               >
-                {tier.name}
+                {state.name}
               </h3>
               <p
-                className={`font-sans text-sm tracking-widest mb-4 ${
-                  tier.active ? "text-amber-400" : "text-white/30"
+                className={`font-sans text-sm leading-relaxed mb-4 ${
+                  state.active ? "text-white/65" : "text-white/35"
                 }`}
               >
-                {tier.range}
+                {state.description}
               </p>
+              {/* Wren-voiced quote */}
               <p
-                className={`font-sans text-sm leading-relaxed ${
-                  tier.active ? "text-white/65" : "text-white/35"
+                className={`font-sans text-sm italic leading-relaxed ${
+                  state.active ? "text-amber-300/80" : "text-white/25"
                 }`}
               >
-                {tier.description}
+                "{state.wren}" — Wren
               </p>
             </div>
           ))}
@@ -174,7 +103,14 @@ export default function ThreadStrength() {
         {/* Footer note */}
         <p
           className="reveal-child text-center font-sans text-lg italic text-white/55 max-w-lg mx-auto"
-          style={{ transitionDelay: "530ms" }}
+          style={{ transitionDelay: "460ms" }}
+        >
+          Wren reads your thread state and names it. You'll never see a number.
+        </p>
+
+        <p
+          className="reveal-child text-center font-sans text-sm text-white/35 max-w-lg mx-auto mt-4"
+          style={{ transitionDelay: "520ms" }}
         >
           Most members live in Weaving. Holding is rare. Both are honored.
         </p>
