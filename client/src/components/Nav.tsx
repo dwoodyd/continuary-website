@@ -96,7 +96,6 @@ export default function Nav() {
                 onClick={() => setMenuOpen(!menuOpen)}
                 aria-label={menuOpen ? "Close menu" : "Open menu"}
                 style={{
-                  display: "none",
                   background: "none",
                   border: "none",
                   padding: "0.5rem",
