@@ -11,7 +11,7 @@ import { useState } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { trpc } from "@/lib/trpc";
 
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/mgodnnnk";
+const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT ?? "https://formspree.io/f/mgodnnnk";
 const TOTAL_SLOTS = 100;
 
 const benefits = [
