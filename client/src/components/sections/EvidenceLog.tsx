@@ -100,8 +100,35 @@ export default function EvidenceLog() {
             ))}
           </div>
 
+          {/* Emotional Cycle named beat */}
+          <div className="reveal reveal-delay-4" style={{ marginBottom: "1.5rem" }}>
+            <div style={{
+              background: "rgba(17,28,66,0.6)",
+              border: "1px solid rgba(232,160,48,0.18)",
+              borderRadius: "0.75rem",
+              padding: "1rem 1.25rem",
+              backdropFilter: "blur(8px)",
+            }}>
+              <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(232,160,48,0.7)", marginBottom: "0.625rem" }}>Emotional Cycle</div>
+              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.875rem", color: "rgba(168,180,204,0.85)", lineHeight: 1.65, margin: 0 }}>
+                Log where you are — Worry, Neutral, or Elation. Not to track your mood, but to give your work its context. Wren remembers the pattern so you don't have to explain it from scratch every time.
+              </p>
+              <div style={{ display: "flex", gap: "0.5rem", marginTop: "0.75rem" }}>
+                {["Worry", "Neutral", "Elation"].map((state, i) => (
+                  <div key={state} style={{
+                    fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem", fontWeight: 600,
+                    padding: "0.25rem 0.75rem", borderRadius: "999px",
+                    background: i === 0 ? "rgba(168,100,80,0.18)" : i === 1 ? "rgba(168,180,204,0.12)" : "rgba(232,160,48,0.15)",
+                    border: i === 0 ? "1px solid rgba(168,100,80,0.3)" : i === 1 ? "1px solid rgba(168,180,204,0.2)" : "1px solid rgba(232,160,48,0.3)",
+                    color: i === 0 ? "rgba(220,140,120,0.9)" : i === 1 ? "rgba(168,180,204,0.8)" : "rgba(232,160,48,0.9)",
+                  }}>{state}</div>
+                ))}
+              </div>
+            </div>
+          </div>
+
           {/* Closing thought */}
-          <div className="reveal reveal-delay-4" style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.875rem", color: "rgba(168,180,204,0.55)", fontStyle: "italic", lineHeight: 1.6, maxWidth: "340px" }}>
+          <div className="reveal reveal-delay-5" style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.875rem", color: "rgba(168,180,204,0.55)", fontStyle: "italic", lineHeight: 1.6, maxWidth: "340px" }}>
             Every entry is a thread. Every thread is a story you don't have to re-explain to yourself.
           </div>
         </div>

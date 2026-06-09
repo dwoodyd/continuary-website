@@ -193,3 +193,8 @@
 
 ## Post-publish Polish
 - [x] Focus Sessions nav anchor: add scrollMarginTop: "5rem" so nav click lands at section heading, not bottom of block
+
+## Marketing Update (verified live 2026-06-06)
+- [x] Rename "Clarity Engine" → "Intelligence" everywhere on the marketing site (Pricing.tsx + FoundingMember.tsx Free tier feature list)
+- [x] Add Emotional Cycle named feature beat (Worry → Neutral → Elation mood log, framed as context for the work, not a tracker) — added to EvidenceLog.tsx with three state pills
+- [x] Confirm You & Wren relationship panel is represented — added "You & Wren" named callout block to NothingBroken.tsx

@@ -46,7 +46,7 @@ const afterBetaTiers = [
     retailAnnual: null,
     features: [
       "Daily check-ins (Morning · Midday · Evening · Weekly Compass)",
-      "Projects, Clarity Engine basics, Knowledge Vault",
+      "Projects, Intelligence basics, Knowledge Vault",
       "Scratch Pad",
       "Single Focus Mode — 1 active focus, up to 60 days, manual prompts",
       "Focus Sessions — 1 session/week, chat with Wren, all session lengths",

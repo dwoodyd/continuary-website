@@ -38,7 +38,7 @@ const PLANS: Plan[] = [
     tagline: "Start here. No pressure.",
     features: [
       "Daily check-ins (Morning · Midday · Evening · Weekly Compass)",
-      "Projects, Clarity Engine basics, Knowledge Vault",
+      "Projects, Intelligence basics, Knowledge Vault",
       "Scratch Pad",
       "Single Focus Mode — one active focus, up to 60 days, manual prompts",
       "Focus Sessions — 1 session per week, chat with Wren, all session lengths (25/50/90)",

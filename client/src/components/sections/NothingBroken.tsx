@@ -130,6 +130,21 @@ export default function NothingBroken() {
               </div>
             ))}
           </div>
+
+          {/* You & Wren relationship beat */}
+          <div className="reveal reveal-delay-5" style={{
+            marginTop: "2rem",
+            background: "rgba(17,28,66,0.5)",
+            border: "1px solid rgba(232,160,48,0.2)",
+            borderRadius: "0.875rem",
+            padding: "1.25rem 1.5rem",
+            backdropFilter: "blur(8px)",
+          }}>
+            <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(232,160,48,0.7)", marginBottom: "0.625rem" }}>You &amp; Wren</div>
+            <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.9rem", color: "rgba(168,180,204,0.85)", lineHeight: 1.7, margin: 0 }}>
+              Wren isn't a chatbot. She's your memory companion — she learns your voice, holds your history, and meets you where you are. The longer you use Continuary, the more she understands what you actually mean.
+            </p>
+          </div>
         </div>
       </div>
       <style>{`
