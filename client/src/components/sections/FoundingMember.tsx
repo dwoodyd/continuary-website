@@ -46,7 +46,7 @@ const afterBetaTiers = [
     retailAnnual: null,
     features: [
       "Daily check-ins (Morning · Midday · Evening · Weekly Compass)",
-      "Projects, Intelligence basics, Knowledge Vault",
+      "Projects, Clarity Engine (daily clarity-pass), Intelligence basics, Knowledge Vault",
       "Scratch Pad",
       "Single Focus Mode — 1 active focus, up to 60 days, manual prompts",
       "Focus Sessions — 1 session/week, chat with Wren, all session lengths",
@@ -64,6 +64,7 @@ const afterBetaTiers = [
     retailAnnual: "$79.99 / yr",
     features: [
       "Everything in Free",
+      "Clarity Engine — full session history, Wren-guided clarity passes",
       "Focus Sessions — unlimited, book ahead, recurring, pop-out & PiP",
       "Focus Sessions — export your \u201cweave\u201d to PDF or markdown",
       "Single Focus Mode — up to 2 active, Wren prompts, 365-day max, unlimited history",

@@ -38,7 +38,7 @@ const PLANS: Plan[] = [
     tagline: "Start here. No pressure.",
     features: [
       "Daily check-ins (Morning · Midday · Evening · Weekly Compass)",
-      "Projects, Intelligence basics, Knowledge Vault",
+      "Projects, Clarity Engine (daily clarity-pass), Intelligence basics, Knowledge Vault",
       "Scratch Pad",
       "Single Focus Mode — one active focus, up to 60 days, manual prompts",
       "Focus Sessions — 1 session per week, chat with Wren, all session lengths (25/50/90)",
@@ -57,6 +57,7 @@ const PLANS: Plan[] = [
     tagline: "For the practice that's becoming real.",
     features: [
       "Everything in Free",
+      "Clarity Engine — full session history, Wren-guided clarity passes",
       "Focus Sessions — unlimited sessions, book ahead with Wren, recurring sessions",
       "Focus Sessions — pop-out window & picture-in-picture for cross-app workflows",
       "Focus Sessions — export your \"weave\" to PDF or markdown",

@@ -82,7 +82,7 @@ export default function AppScreensSection() {
             color: "rgba(168,180,204,0.7)",
           }}
         >
-          Four daily rituals. A Weekly Compass. Focus Sessions with Wren. Single Focus Mode when you want to go deep on one thing. A view of every project that might be slipping. That's the whole system.
+          Four daily rituals. A Weekly Compass. Clarity Engine for your daily clarity-pass. Focus Sessions with Wren. Single Focus Mode when you want to go deep on one thing. A view of every project that might be slipping. That's the whole system.
         </p>
       </div>
 

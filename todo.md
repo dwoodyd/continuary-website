@@ -198,3 +198,6 @@
 - [x] Rename "Clarity Engine" → "Intelligence" everywhere on the marketing site (Pricing.tsx + FoundingMember.tsx Free tier feature list)
 - [x] Add Emotional Cycle named feature beat (Worry → Neutral → Elation mood log, framed as context for the work, not a tracker) — added to EvidenceLog.tsx with three state pills
 - [x] Confirm You & Wren relationship panel is represented — added "You & Wren" named callout block to NothingBroken.tsx
+
+## Clarity Engine / Intelligence Naming Fix
+- [x] Add Clarity Engine back as a named distinct feature (daily clarity-pass tool) in Pricing.tsx, FoundingMember.tsx tier cards, and AppScreensSection — separate from Intelligence (review/insight layer)
