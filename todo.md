@@ -201,3 +201,8 @@
 
 ## Clarity Engine / Intelligence Naming Fix
 - [x] Add Clarity Engine back as a named distinct feature (daily clarity-pass tool) in Pricing.tsx, FoundingMember.tsx tier cards, and AppScreensSection — separate from Intelligence (review/insight layer)
+
+## Published Book Update
+- [x] Update every Permission to Start marketing-site reference from future release language to "Available now"
+- [x] Add digital and paperback purchase links with required new-tab security attributes
+- [x] Verify no book-related metadata or site copy retains release-date, pre-order, or coming-soon language

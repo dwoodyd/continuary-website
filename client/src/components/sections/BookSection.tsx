@@ -93,7 +93,7 @@ export default function BookSection() {
               lineHeight: 1.6, color: "rgba(168,180,204,0.65)", marginBottom: "2.5rem",
             }}
           >
-            Releasing <strong style={{ color: "rgba(232,160,48,0.85)" }}>June 15th</strong> — available as a direct download and on Amazon &amp; Apple Books.
+            <strong style={{ color: "rgba(232,160,48,0.9)" }}>Available now.</strong> Read the digital edition or get the paperback wherever you like to begin.
           </p>
 
           {/* Book cover + CTA */}
@@ -115,8 +115,23 @@ export default function BookSection() {
             </div>
           </div>
 
-          <div className="reveal reveal-delay-4">
-            <a href="https://www.soulengineer.online/shop" className="btn-amber" target="_blank" rel="noopener noreferrer">Get the bundle</a>
+          <div className="reveal reveal-delay-4" style={{ display: "flex", flexWrap: "wrap", gap: "0.875rem", alignItems: "center" }}>
+            <a href="https://www.soulengineer.online/books" className="btn-amber" target="_blank" rel="noopener noreferrer">Get the book</a>
+            <a
+              href="https://a.co/d/0bvqj6jD"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: "0.875rem",
+                fontWeight: 600,
+                color: "#e8a030",
+                textDecoration: "underline",
+                textUnderlineOffset: "0.25rem",
+              }}
+            >
+              Paperback on Amazon
+            </a>
           </div>
         </div>
       </div>

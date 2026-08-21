@@ -56,6 +56,11 @@ vi.mock("./_core/notification", () => ({
   notifyOwner: vi.fn().mockResolvedValue(true),
 }));
 
+// Also mock confirmation email delivery so the public-submit unit test stays offline.
+vi.mock("./email", () => ({
+  sendApplicationConfirmation: vi.fn().mockResolvedValue(true),
+}));
+
 // ── Context helpers ───────────────────────────────────────────────────────────
 function makeCtx(role: "admin" | "user" | null = null): TrpcContext {
   const user =
