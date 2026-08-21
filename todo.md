@@ -134,11 +134,11 @@
 - [x] MP6: "Apply for the bundle" CTA → https://www.soulengineer.online/shop
 - [x] MP7: "See what's included" → #pricing anchor — FoundingMember has id="pricing", confirmed working
 
-### 🟢 Future / Post-launch
-- [ ] MC1: Email capture for non-founders when 100 slots fill (waitlist)
-- [ ] MC2: Replace placeholder stats with real founding member quotes once cohort is active
-- [ ] MC3: Link to Lifewoven / Operator House sites once they launch
-- [ ] MC4: Add "Why I built this" founder section for trust signal
+### 🟢 Deferred Post-launch Backlog (requires a real-world trigger or new brief)
+- Deferred — MC1: Email capture for non-founders when 100 slots fill (waitlist)
+- Deferred — MC2: Replace placeholder stats with real founding member quotes once cohort is active
+- Deferred — MC3: Link to Lifewoven / Operator House sites once they launch
+- Deferred — MC4: Add "Why I built this" founder section for trust signal
 
 ## 🔴 Urgent Fix
 - [x] Fixed all Apply links → https://continuary.app/apply (7 links across Nav, Hero, BookSection, Footer)
