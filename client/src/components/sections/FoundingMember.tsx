@@ -362,16 +362,16 @@ export default function FoundingMember() {
         </p>
 
         {/* ── After Beta reference tiers ── */}
-        <div className="border-t border-white/8 pt-16">
+        <div className="border-t border-white/15 pt-16">
           <div className="text-center mb-10">
             <p
-              className="reveal-child text-white/30 text-xs tracking-[0.25em] uppercase font-sans mb-3"
+              className="reveal-child text-amber-300 text-xs tracking-[0.25em] uppercase font-sans mb-3"
               style={{ transitionDelay: "0ms" }}
             >
               After Beta · Public Launch
             </p>
             <p
-              className="reveal-child font-sans text-sm italic text-white/30 max-w-lg mx-auto leading-relaxed"
+              className="reveal-child font-sans text-sm italic text-white/80 max-w-lg mx-auto leading-relaxed"
               style={{ transitionDelay: "60ms" }}
             >
               This is what Continuary will cost when it launches publicly. Founding members never pay these prices.
@@ -382,42 +382,42 @@ export default function FoundingMember() {
             {afterBetaTiers.map((tier, i) => (
               <div
                 key={tier.name}
-                className="reveal-child rounded-xl border border-white/6 bg-white/[0.02] p-6 opacity-60"
+                className="reveal-child rounded-xl border border-white/15 bg-white/[0.055] p-6 shadow-[0_12px_30px_rgba(0,0,0,0.16)]"
                 style={{ transitionDelay: `${100 + i * 60}ms` }}
               >
-                <h4 className="font-serif text-xl text-white/50 mb-3">{tier.name}</h4>
+                <h4 className="font-serif text-xl text-white mb-3">{tier.name}</h4>
 
                 {/* Pricing rows: founding (strikethrough anchor) vs retail */}
                 {tier.foundingMonthly ? (
                   <div className="space-y-1 mb-4">
                     <div className="flex items-baseline gap-2">
-                      <span className="font-sans text-xs text-amber-400/60 line-through">{tier.foundingMonthly}</span>
-                      <span className="font-sans text-[10px] text-amber-400/40 uppercase tracking-wider">founding</span>
+                      <span className="font-sans text-xs text-amber-300/90 line-through">{tier.foundingMonthly}</span>
+                      <span className="font-sans text-[10px] text-amber-200/85 uppercase tracking-wider">founding</span>
                     </div>
                     <div className="flex items-baseline gap-2">
-                      <span className="font-serif text-xl text-white/40">{tier.retailMonthly}</span>
-                      <span className="font-sans text-[10px] text-white/20 uppercase tracking-wider">retail</span>
+                      <span className="font-serif text-xl text-white">{tier.retailMonthly}</span>
+                      <span className="font-sans text-[10px] text-white/65 uppercase tracking-wider">retail</span>
                     </div>
                     <div className="flex items-baseline gap-2 mt-1">
-                      <span className="font-sans text-xs text-amber-400/50 line-through">{tier.foundingAnnual}</span>
-                      <span className="font-sans text-[10px] text-amber-400/35 uppercase tracking-wider">founding annual</span>
+                      <span className="font-sans text-xs text-amber-300/85 line-through">{tier.foundingAnnual}</span>
+                      <span className="font-sans text-[10px] text-amber-200/75 uppercase tracking-wider">founding annual</span>
                     </div>
                     <div className="flex items-baseline gap-2">
-                      <span className="font-sans text-xs text-white/25">{tier.retailAnnual}</span>
-                      <span className="font-sans text-[10px] text-white/15 uppercase tracking-wider">retail annual</span>
+                      <span className="font-sans text-xs text-white/80">{tier.retailAnnual}</span>
+                      <span className="font-sans text-[10px] text-white/55 uppercase tracking-wider">retail annual</span>
                     </div>
                   </div>
                 ) : (
                   <div className="mb-4">
-                    <span className="font-serif text-2xl text-white/40">{tier.price}</span>
-                    <span className="font-sans text-xs text-white/25 ml-1">{tier.period}</span>
+                    <span className="font-serif text-2xl text-white">{tier.price}</span>
+                    <span className="font-sans text-xs text-white/65 ml-1">{tier.period}</span>
                   </div>
                 )}
 
                 <ul className="space-y-2">
                   {tier.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2 font-sans text-xs text-white/25 leading-relaxed">
-                      <span className="mt-1.5 w-1 h-1 rounded-full bg-white/20 flex-shrink-0" />
+                    <li key={f} className="flex items-start gap-2 font-sans text-xs text-white/80 leading-relaxed">
+                      <span className="mt-1.5 w-1 h-1 rounded-full bg-amber-300/80 flex-shrink-0" />
                       {f}
                     </li>
                   ))}
@@ -427,7 +427,7 @@ export default function FoundingMember() {
           </div>
 
           <p
-            className="reveal-child text-center font-sans text-xs italic text-white/25 mt-6 max-w-lg mx-auto"
+            className="reveal-child text-center font-sans text-xs italic text-white/75 mt-6 max-w-lg mx-auto"
             style={{ transitionDelay: "300ms" }}
           >
             Founding members lock in at $4.99 Pro / $9.99 Keeper monthly (or $39.99 / $79.99 annual) — for life, across every renewal.

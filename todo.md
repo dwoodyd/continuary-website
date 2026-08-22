@@ -211,3 +211,7 @@
 - [x] Audit whether a founding-member PDF or book-link delivery workflow exists across the marketing site, application flow, and transactional email — no member-specific PDF delivery path exists
 - [x] Replace or remove the BookSection founding-member PDF promise so it reflects only the verified fulfillment path — public digital and paperback purchase links
 - [x] Verify the final fulfillment wording, links, and related tests before checkpointing — BookSection contract test added; 13/13 tests pass
+
+## Founding-member Pricing Contrast Repair
+- [x] Audit and correct low-contrast text, borders, and hierarchy in the post-beta public-launch comparison
+- [x] Verify readable desktop and mobile pricing comparison rendering, then run regression tests and type checks — desktop and mobile captures reviewed; 15/15 tests and TypeScript pass
