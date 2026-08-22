@@ -206,3 +206,8 @@
 - [x] Update every Permission to Start marketing-site reference from future release language to "Available now"
 - [x] Add digital and paperback purchase links with required new-tab security attributes
 - [x] Verify no book-related metadata or site copy retains release-date, pre-order, or coming-soon language
+
+## Founding-member Book Fulfillment
+- [x] Audit whether a founding-member PDF or book-link delivery workflow exists across the marketing site, application flow, and transactional email — no member-specific PDF delivery path exists
+- [x] Replace or remove the BookSection founding-member PDF promise so it reflects only the verified fulfillment path — public digital and paperback purchase links
+- [x] Verify the final fulfillment wording, links, and related tests before checkpointing — BookSection contract test added; 13/13 tests pass
