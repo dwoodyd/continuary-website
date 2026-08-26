@@ -220,6 +220,9 @@
 - [x] Remove unbuilt book-ahead and recurring-session language from current Pro feature copy in Pricing.tsx and FoundingMember.tsx
 - [x] Leave the application-flow copy unchanged until the separate frictionless auto-admit build has shipped — verified FoundingMember success state retains “We read every application personally… within 48 hours.”
 
+## Final Roadmap Document — Application Flow
+- [x] Point the marketing “Claim your founding seat” CTA to `https://app.continuary.app/signin`, the confirmed OAuth destination that instantly claims a founding seat while availability remains — rendered link verified
+
 ## Published Book Update
 - [x] Update every Permission to Start marketing-site reference from future release language to "Available now"
 - [x] Add digital and paperback purchase links with required new-tab security attributes

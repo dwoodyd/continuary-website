@@ -7,11 +7,9 @@
  * as founding members are admitted, or hook to a live API endpoint later.
  */
 
-import { useState } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { trpc } from "@/lib/trpc";
 
-const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT ?? "https://formspree.io/f/mgodnnnk";
 const TOTAL_SLOTS = 100;
 
 const benefits = [
@@ -93,73 +91,8 @@ const afterBetaTiers = [
 
 export default function FoundingMember() {
   const sectionRef = useScrollReveal();
-  const [form, setForm] = useState({ name: "", email: "", relationship: "", draws: [] as string[] });
-  const [submitted, setSubmitted] = useState(false);
-  const [formspreeOk, setFormspreeOk] = useState(true);
-  const [errors, setErrors] = useState<Record<string, string>>({});
   const { data: slotCounts } = trpc.applications.slotCounts.useQuery(undefined, { refetchInterval: 60_000 });
   const slotsClaimed = slotCounts ? TOTAL_SLOTS - slotCounts.remaining : 37;
-  const submitMutation = trpc.applications.submit.useMutation();
-
-  function validate() {
-    const e: Record<string, string> = {};
-    if (!form.name.trim()) e.name = "Your name is required.";
-    if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
-      e.email = "A valid email address is required.";
-    if (form.relationship.trim().length < 200)
-      e.relationship = `Please write at least 200 characters (${form.relationship.trim().length} so far).`;
-    return e;
-  }
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    const errs = validate();
-    if (Object.keys(errs).length > 0) {
-      setErrors(errs);
-      return;
-    }
-    setErrors({});
-
-    // Submit to Formspree and CRM in parallel
-    // Formspree is the primary — if it fails, we still save to CRM
-    let formspreeId: string | undefined;
-
-    try {
-      const [formspreeRes] = await Promise.allSettled([
-        fetch(FORMSPREE_ENDPOINT, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify({
-            name: form.name,
-            email: form.email,
-            relationship: form.relationship,
-            draws: form.draws.length > 0 ? form.draws : null,
-          }),
-        }),
-      ]);
-
-      const formspreeSucceeded = formspreeRes.status === "fulfilled" && formspreeRes.value.ok;
-      if (formspreeSucceeded) {
-        const formspreeData = await formspreeRes.value.json().catch(() => ({}));
-        formspreeId = formspreeData?.submissionId ?? formspreeData?.id ?? undefined;
-      }
-
-      // Always save to CRM database regardless of Formspree result
-      await submitMutation.mutateAsync({
-        name: form.name,
-        email: form.email,
-        relationship: form.relationship,
-        formspreeId,
-        draws: form.draws.length > 0 ? form.draws : null,
-      });
-
-      setFormspreeOk(formspreeSucceeded);
-      setSubmitted(true);
-    } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : "Something went wrong. Please try again.";
-      setErrors({ submit: message });
-    }
-  }
 
   return (
     <section
@@ -217,140 +150,30 @@ export default function FoundingMember() {
           ))}
         </div>
 
-        {/* ── Application form ── */}
+        {/* ── Instant founding access ── */}
         <div className="max-w-[560px] mx-auto mb-10">
-          {submitted ? (
-            <div
-              className="reveal-child text-center py-16 px-8 rounded-2xl border border-amber-400/30 bg-amber-400/[0.05]"
-              style={{ transitionDelay: "0ms" }}
+          <div
+            className="reveal-child text-center py-12 px-8 rounded-2xl border border-amber-400/30 bg-amber-400/[0.05]"
+            style={{ transitionDelay: "0ms" }}
+          >
+            <p className="font-serif text-3xl text-white mb-4">
+              <em>Claim your founding seat.</em>
+            </p>
+            <p className="font-sans text-white/60 text-base leading-relaxed max-w-md mx-auto mb-7">
+              Access is instant while founding seats remain. Start in the Continuary app, sign in, and your founding rate is locked in.
+            </p>
+            <a
+              href="https://app.continuary.app/signin"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center bg-amber-400 hover:bg-amber-300 text-[#080f26] font-sans font-semibold text-base px-7 py-4 rounded-xl transition-all duration-200 hover:shadow-[0_0_24px_rgba(245,158,11,0.4)]"
             >
-              <p className="font-serif text-3xl text-white mb-4">
-                <em>Application received.</em>
-              </p>
-              <p className="font-sans text-white/55 text-base leading-relaxed">
-                We read every application personally. You'll hear from us within 48 hours.
-              </p>
-              {!formspreeOk && (
-                <p className="font-sans text-amber-400/70 text-sm mt-4">
-                  Your application has been saved. If you don't receive a confirmation email, that's okay — we have your details.
-                </p>
-              )}
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-5" noValidate>
-              {/* Name */}
-              <div>
-                <label className="block font-sans text-sm text-white/50 mb-2" htmlFor="fm-name">
-                  Your name
-                </label>
-                <input
-                  id="fm-name"
-                  type="text"
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="w-full bg-white/[0.04] border border-white/12 rounded-xl px-5 py-3.5 font-sans text-white text-base placeholder-white/25 focus:outline-none focus:border-amber-400/60 focus:bg-white/[0.06] transition-all duration-200"
-                  placeholder="Your name"
-                />
-                {errors.name && (
-                  <p className="mt-1.5 font-sans text-xs text-red-400">{errors.name}</p>
-                )}
-              </div>
-
-              {/* Email */}
-              <div>
-                <label className="block font-sans text-sm text-white/50 mb-2" htmlFor="fm-email">
-                  Email address
-                </label>
-                <input
-                  id="fm-email"
-                  type="email"
-                  value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="w-full bg-white/[0.04] border border-white/12 rounded-xl px-5 py-3.5 font-sans text-white text-base placeholder-white/25 focus:outline-none focus:border-amber-400/60 focus:bg-white/[0.06] transition-all duration-200"
-                  placeholder="you@example.com"
-                />
-                {errors.email && (
-                  <p className="mt-1.5 font-sans text-xs text-red-400">{errors.email}</p>
-                )}
-              </div>
-
-              {/* Relationship with consistency */}
-              <div>
-                <label className="block font-sans text-sm text-white/50 mb-2" htmlFor="fm-relationship">
-                  What's your relationship with consistency?
-                </label>
-                <textarea
-                  id="fm-relationship"
-                  value={form.relationship}
-                  onChange={(e) => setForm({ ...form, relationship: e.target.value })}
-                  rows={5}
-                  className="w-full bg-white/[0.04] border border-white/12 rounded-xl px-5 py-3.5 font-sans text-white text-base placeholder-white/25 focus:outline-none focus:border-amber-400/60 focus:bg-white/[0.06] transition-all duration-200 resize-none"
-                  placeholder="One or two sentences. We're trying to understand whether Continuary is built for the way you actually work."
-                  minLength={200}
-                />
-                <p className="mt-1.5 font-sans text-xs text-white/25 text-right">
-                  {form.relationship.trim().length} / 200 minimum
-                </p>
-                {errors.relationship && (
-                  <p className="mt-1 font-sans text-xs text-red-400">{errors.relationship}</p>
-                )}
-              </div>
-
-              {/* What draws you — optional interest signal */}
-              <div>
-                <label className="block font-sans text-sm text-white/50 mb-3">
-                  What draws you to Continuary? <span className="text-white/30">(optional — pick any)</span>
-                </label>
-                <div className="space-y-2.5">
-                  {[
-                    { value: "daily_rhythm", label: "The daily check-in rhythm" },
-                    { value: "focus_sessions", label: "Focus Sessions with Wren" },
-                    { value: "single_focus", label: "Single Focus Mode for one big thing" },
-                    { value: "projects_threaded", label: "Keeping my projects threaded" },
-                    { value: "not_sure", label: "Not sure yet" },
-                  ].map(({ value, label }) => (
-                    <label
-                      key={value}
-                      className="flex items-center gap-3 cursor-pointer group"
-                    >
-                      <input
-                        type="checkbox"
-                        checked={form.draws.includes(value)}
-                        onChange={(e) => {
-                          setForm({
-                            ...form,
-                            draws: e.target.checked
-                              ? [...form.draws, value]
-                              : form.draws.filter((d) => d !== value),
-                          });
-                        }}
-                        className="w-4 h-4 rounded border border-white/20 bg-white/[0.04] accent-amber-400 cursor-pointer"
-                      />
-                      <span className="font-sans text-sm text-white/60 group-hover:text-white/80 transition-colors duration-150">{label}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Submit error */}
-              {errors.submit && (
-                <p className="font-sans text-sm text-red-400 text-center">{errors.submit}</p>
-              )}
-
-              {/* Submit */}
-              <button
-                type="submit"
-                className="w-full bg-amber-400 hover:bg-amber-300 text-[#080f26] font-sans font-semibold text-base py-4 rounded-xl transition-all duration-200 hover:shadow-[0_0_24px_rgba(245,158,11,0.4)]"
-              >
-                Apply for a slot →
-              </button>
-
-              {/* Disclaimer */}
-              <p className="text-center font-sans text-xs italic text-white/35">
-                We read every application personally. You'll hear from us within 48 hours.
-              </p>
-            </form>
-          )}
+              Claim your founding seat →
+            </a>
+            <p className="font-sans text-xs italic text-white/35 mt-5">
+              When all 100 founding seats are claimed, you can join the waitlist for the next opening.
+            </p>
+          </div>
         </div>
 
         {/* ── Scarcity counter ── */}
