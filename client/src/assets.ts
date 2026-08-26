@@ -5,7 +5,7 @@
 
 export const LOGOS = {
   stackedLight: '/manus-storage/ContinuaryStackedFullLogo_ffd6b5b7.svg',
-  stackedDark: '/manus-storage/ContinuaryDark-backgroundstackedlockup_7bdc9a09.svg',
+  stackedDark: '/manus-storage/ContinuaryDark-backgroundstackedlockup_9f5b7ae6.png',
   icon: '/manus-storage/DarkBackgroundMonochrome_c18146a8.svg',
 } as const;
 

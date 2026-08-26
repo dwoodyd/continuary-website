@@ -205,6 +205,9 @@
 ## GitHub Sync and Book Copy Verification
 - [x] Synchronized with origin/main at f59d9f2 and verified BookSection shows “Available now” and “Get the book,” with no direct-download PDF promise or “Get the bundle” CTA
 
+## Navigation Logo Repair
+- [x] Restore the broken Continuary navigation logo asset and verify it renders correctly in preview
+
 ## Published Book Update
 - [x] Update every Permission to Start marketing-site reference from future release language to "Available now"
 - [x] Add digital and paperback purchase links with required new-tab security attributes
