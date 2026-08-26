@@ -15,3 +15,5 @@ The navigation now uses the user-supplied `DarkBackgroundMonochrome` app icon at
 The browser-rendered homepage now exposes the navigation image as `/manus-storage/DarkBackgroundMonochrome_8f514114.png`, confirming that the supplied official icon is the active compact mark.
 
 Direct footer inspection confirms the formerly broken visual was the obsolete `Continuary_logo_transparent_1c533370.svg` footer logo. It now renders the supplied full `ContinuaryStackedFullLogo` lockup, visibly and without a missing-image icon.
+
+The final desktop navigation preview was inspected at full scale: the enlarged monochrome icon no longer has a white outer border or halo, while the white Wren linework remains legible against the dark navy square.

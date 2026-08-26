@@ -50,11 +50,26 @@ export default function Nav() {
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "4rem" }}>
             {/* Logo */}
             <a href="#" aria-label="Continuary home" style={{ display: "flex", alignItems: "center" }}>
-              <img
-                src={LOGOS.icon}
-                alt="Continuary"
-                style={{ height: "2rem", width: "2rem", borderRadius: "0.35rem" }}
-              />
+              <span style={{
+                width: "2.4rem",
+                height: "2.4rem",
+                display: "block",
+                overflow: "hidden",
+                borderRadius: "0.52rem",
+              }}>
+                <img
+                  src={LOGOS.icon}
+                  alt="Continuary"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    display: "block",
+                    objectFit: "cover",
+                    transform: "scale(1.16)",
+                    transformOrigin: "center",
+                  }}
+                />
+              </span>
             </a>
 
             {/* Nav links — desktop */}
