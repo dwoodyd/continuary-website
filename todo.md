@@ -202,6 +202,9 @@
 ## Clarity Engine / Intelligence Naming Fix
 - [x] Add Clarity Engine back as a named distinct feature (daily clarity-pass tool) in Pricing.tsx, FoundingMember.tsx tier cards, and AppScreensSection — separate from Intelligence (review/insight layer)
 
+## GitHub Sync and Book Copy Verification
+- [x] Synchronized with origin/main at f59d9f2 and verified BookSection shows “Available now” and “Get the book,” with no direct-download PDF promise or “Get the bundle” CTA
+
 ## Published Book Update
 - [x] Update every Permission to Start marketing-site reference from future release language to "Available now"
 - [x] Add digital and paperback purchase links with required new-tab security attributes
