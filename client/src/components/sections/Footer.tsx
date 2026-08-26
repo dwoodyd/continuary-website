@@ -58,21 +58,15 @@ export default function Footer() {
               marginBottom: "3rem",
             }}
           >
-            {/*
-              Real Continuary logo PNG — dark navy mark on white background.
-              filter: invert(1) brightness(10) converts the dark navy to white/cream.
-              sepia + saturate + hue-rotate restores the amber eye dot.
-              drop-shadow adds the warm amber glow.
-            */}
+            {/* Official full Continuary lockup — reserved for this larger branding placement. */}
             <img
-              src="/manus-storage/Continuary_logo_transparent_1c533370.svg"
+              src={LOGOS.stackedDark}
               alt="Continuary"
               style={{
                 width: "clamp(200px, 22vw, 280px)",
                 height: "auto",
-                filter:
-                  "invert(1) brightness(10) sepia(0.2) saturate(1.1) drop-shadow(0 0 28px rgba(232,160,48,0.35))",
-                opacity: 0.93,
+                borderRadius: "0.5rem",
+                boxShadow: "0 0 28px rgba(232,160,48,0.2)",
               }}
             />
           </div>

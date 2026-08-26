@@ -51,9 +51,9 @@ export default function Nav() {
             {/* Logo */}
             <a href="#" aria-label="Continuary home" style={{ display: "flex", alignItems: "center" }}>
               <img
-                src={LOGOS.stackedDark}
+                src={LOGOS.icon}
                 alt="Continuary"
-                style={{ height: "2rem", width: "auto" }}
+                style={{ height: "2rem", width: "2rem", borderRadius: "0.35rem" }}
               />
             </a>
 

@@ -33,7 +33,7 @@ export default function NotFound() {
 
       {/* Logo */}
       <a href="/" style={{ marginBottom: "3rem", position: "relative", zIndex: 1 }}>
-        <img src={LOGOS.stackedDark} alt="Continuary" style={{ height: "2rem" }} />
+        <img src={LOGOS.icon} alt="Continuary" style={{ height: "3rem", width: "3rem", borderRadius: "0.5rem" }} />
       </a>
 
       {/* Wren peeking */}

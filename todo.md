@@ -208,6 +208,10 @@
 ## Navigation Logo Repair
 - [x] Restore the broken Continuary navigation logo asset and verify it renders correctly in preview
 
+## Official Logo Placement and Visual Repair
+- [x] Use supplied DarkBackgroundMonochrome app icon in compact navigation placement and reserve the full Continuary lockup for larger contexts
+- [x] Identify and repair the separate broken visual asset shown in the live-page screenshot (Footer referenced obsolete Continuary_logo_transparent asset; restored it with supplied full lockup)
+
 ## Published Book Update
 - [x] Update every Permission to Start marketing-site reference from future release language to "Available now"
 - [x] Add digital and paperback purchase links with required new-tab security attributes

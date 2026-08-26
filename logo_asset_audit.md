@@ -7,3 +7,11 @@
 ## Repair Verification
 
 The repaired PNG reference was visually verified in desktop preview on both `/` and `/404`: the actual Continuary stacked logo renders in place of the broken-image icon in each shared use of `LOGOS.stackedDark`.
+
+## Official Asset Placement Verification
+
+The navigation now uses the user-supplied `DarkBackgroundMonochrome` app icon at compact desktop scale. The final footer CTA uses the user-supplied `ContinuaryStackedFullLogo` in a larger branding context. Full-page and top-of-page previews show no broken-image icon at either of these placements.
+
+The browser-rendered homepage now exposes the navigation image as `/manus-storage/DarkBackgroundMonochrome_8f514114.png`, confirming that the supplied official icon is the active compact mark.
+
+Direct footer inspection confirms the formerly broken visual was the obsolete `Continuary_logo_transparent_1c533370.svg` footer logo. It now renders the supplied full `ContinuaryStackedFullLogo` lockup, visibly and without a missing-image icon.

@@ -5,8 +5,8 @@
 
 export const LOGOS = {
   stackedLight: '/manus-storage/ContinuaryStackedFullLogo_ffd6b5b7.svg',
-  stackedDark: '/manus-storage/ContinuaryDark-backgroundstackedlockup_9f5b7ae6.png',
-  icon: '/manus-storage/DarkBackgroundMonochrome_c18146a8.svg',
+  stackedDark: '/manus-storage/ContinuaryStackedFullLogo_53319f50.svg',
+  icon: '/manus-storage/DarkBackgroundMonochrome_8f514114.png',
 } as const;
 
 export const WREN_STILLS = {
