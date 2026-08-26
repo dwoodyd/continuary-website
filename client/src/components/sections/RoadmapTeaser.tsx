@@ -1,8 +1,8 @@
 /**
  * RoadmapTeaser — "What's coming"
  *
- * Three time-horizon groups: Next 4 weeks / Next 2–3 months / Later this year.
- * Only real upcoming features per Phase 1.5 + Phase 2 specs.
+ * Two time-horizon groups: Next 4 weeks / Later this year.
+ * Only verified, genuinely upcoming features are shown.
  * Removed: Threshold Diagnosis (shipped), Idea Sanctuary (= Scratch Pad, shipped),
  *           Project Memory (= Projects, shipped), Distraction Insights (= Intelligence, shipped),
  *           Study Mode (not in any spec).
@@ -23,31 +23,6 @@ const HORIZONS: Horizon[] = [
       {
         name: "Focus Sessions — book ahead",
         desc: "Schedule a session with Wren like an appointment. She'll be there when the time comes.",
-        tier: "Pro",
-      },
-      {
-        name: "Focus Sessions — chat with Wren in-session",
-        desc: "Small dialogue while you work. Presence, not task assistance.",
-        tier: "Free+",
-      },
-      {
-        name: "Focus Sessions — Wren's vibe by time of day",
-        desc: "Quiet in late hours, warm at dawn, steady mid-afternoon.",
-        tier: "Free+",
-      },
-    ],
-  },
-  {
-    label: "In Development · Next 2–3 Months",
-    items: [
-      {
-        name: "Focus Sessions — pop-out window + picture-in-picture",
-        desc: "Work on another monitor, or pin Wren on top of any app.",
-        tier: "Pro",
-      },
-      {
-        name: "Single Focus Mode — Wren-generated daily prompts",
-        desc: "Wren weaves the day's focus from your stated topic. For users who want a little more guidance.",
         tier: "Pro",
       },
     ],
@@ -166,7 +141,7 @@ export default function RoadmapTeaser() {
           </p>
         </div>
 
-        {/* Three time-horizon groups */}
+        {/* Verified upcoming feature groups */}
         <div className="reveal reveal-delay-3" style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
           {HORIZONS.map(({ label, items }) => (
             <div key={label}>

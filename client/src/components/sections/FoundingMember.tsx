@@ -65,7 +65,7 @@ const afterBetaTiers = [
     features: [
       "Everything in Free",
       "Clarity Engine — full session history, Wren-guided clarity passes",
-      "Focus Sessions — unlimited, book ahead, recurring, pop-out & PiP",
+      "Focus Sessions — unlimited, pop-out & PiP",
       "Focus Sessions — export your \u201cweave\u201d to PDF or markdown",
       "Single Focus Mode — up to 2 active, Wren prompts, 365-day max, unlimited history",
       "Full Compass · Weekly Review · Re-Entry Card",

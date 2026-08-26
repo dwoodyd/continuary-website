@@ -58,7 +58,7 @@ const PLANS: Plan[] = [
     features: [
       "Everything in Free",
       "Clarity Engine — full session history, Wren-guided clarity passes",
-      "Focus Sessions — unlimited sessions, book ahead with Wren, recurring sessions",
+      "Focus Sessions — unlimited sessions with Wren",
       "Focus Sessions — pop-out window & picture-in-picture for cross-app workflows",
       "Focus Sessions — export your \"weave\" to PDF or markdown",
       "Single Focus Mode — up to 2 active focuses, Wren-generated daily prompts",
