@@ -17,7 +17,10 @@ describe("RevealBuild marketing contract", () => {
     expect(heroSource).toContain("Nothing is broken.");
     expect(heroSource).toContain("Show me where I was →");
     expect(heroSource).toContain("Here&apos;s where you left off.");
+    expect(heroSource).toContain("The short story");
+    expect(heroSource).toContain("You had decided to open with the argument, not the backstory.");
     expect(heroSource).toContain("Your next move:");
+    expect(heroSource).toContain("Open the draft and delete the first paragraph. Just that.");
     expect(heroSource).toContain("That&apos;s <em");
     expect(heroSource).toContain('href="https://app.continuary.app/signin"');
   });

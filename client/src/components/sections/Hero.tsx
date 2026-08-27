@@ -140,11 +140,11 @@ export default function Hero() {
                   Here&apos;s where you left off.
                 </h2>
                 <div style={{ borderLeft: "2px solid #e8a030", paddingLeft: "1rem", marginBottom: "1.15rem" }}>
-                  <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(232,160,48,0.78)", marginBottom: "0.3rem" }}>Continuary redesign</div>
-                  <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.94rem", color: "rgba(240,232,216,0.9)", lineHeight: 1.55, margin: 0 }}>You had decided to simplify onboarding.</p>
+                  <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(232,160,48,0.78)", marginBottom: "0.3rem" }}>The short story</div>
+                  <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.94rem", color: "rgba(240,232,216,0.9)", lineHeight: 1.55, margin: 0 }}>You had decided to open with the argument, not the backstory.</p>
                 </div>
                 <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.92rem", color: "rgba(168,180,204,0.85)", lineHeight: 1.62, marginBottom: "1.35rem" }}>
-                  <strong style={{ color: "#f0e8d8" }}>Your next move:</strong> Open the signup form and remove the long-answer field.
+                  <strong style={{ color: "#f0e8d8" }}>Your next move:</strong> Open the draft and delete the first paragraph. Just that.
                 </p>
                 <button type="button" onClick={() => setStage("complete")} className="btn-amber" style={{ border: 0, cursor: "pointer" }}>
                   Continue →

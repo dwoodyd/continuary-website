@@ -231,6 +231,9 @@
 - [x] Replace all cold-project and needs-attention marketing language with “Quietly Waiting”
 - [x] Verify desktop and mobile behavior, TypeScript, tests, and every revised CTA before saving one complete publish-ready checkpoint — 18/18 tests and TypeScript pass; 1280px and 390px visual previews reviewed
 
+## Hero Sample Thread Patch
+- [x] Review and apply the supplied sample-thread patch to the interactive re-entry hero, then verify all stages and CTA behavior — opening, restored-context, and final OAuth CTA states directly verified; 18/18 tests and TypeScript pass
+
 ## Published Book Update
 - [x] Update every Permission to Start marketing-site reference from future release language to "Available now"
 - [x] Add digital and paperback purchase links with required new-tab security attributes
