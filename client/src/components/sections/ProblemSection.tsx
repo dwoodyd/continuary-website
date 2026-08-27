@@ -79,7 +79,7 @@ export default function ProblemSection() {
             <em className="text-amber-200/90">quietly.</em>
           </h2>
           <p className="font-sans text-white/60 text-lg max-w-xl leading-relaxed">
-            Most productivity apps are built for the days you show up. Continuary was built for everything that happens between them.
+            Most tools are built around the days you show up. Continuary holds the context through everything that happens between them.
           </p>
         </div>
 

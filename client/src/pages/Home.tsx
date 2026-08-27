@@ -4,22 +4,12 @@
  * Section order:
  *  1. Nav
  *  2. Hero
- *  3. PlatformStrip     (NEW — iOS/Android/Browser strip)
- *  4. PanoramicBanner   (NEW — 3-panel composite mockup)
- *  5. ProblemSection
- *  6. NothingBroken
- *  7. Rituals
- *  7b. WhatsNew   (launch band — retire after May 2026)
- *  8. EvidenceLog
- *  9. VaultSection
- * 10. ReEntry
- * 11. ThreadStrength
- * 12. ADHDSection
- *  13. AppScreensSection (NEW — 2×2 mockup grid)
- *  14. RoadmapTeaser   (NEW — "What's coming" in-development chips)
- *  15. BookSection
- *  16. FoundingMember
- *  17. Footer
+ *  3. NothingBroken — emotional re-entry moat
+ *  4. ReEntry — product re-entry story
+ *  5. PlatformStrip / PanoramicBanner — system depth begins
+ *  6. ProblemSection / Rituals / WhatsNew
+ *  7. EvidenceLog / VaultSection / ThreadStrength / ADHDSection
+ *  8. AppScreensSection / RoadmapTeaser / BookSection / FoundingMember / Footer
  */
 
 import { useEffect } from "react";
@@ -66,15 +56,15 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
+        <NothingBroken />
+        <ReEntry />
         <PlatformStrip />
         <PanoramicBanner />
         <ProblemSection />
-        <NothingBroken />
         <Rituals />
         <WhatsNew />
         <EvidenceLog />
         <VaultSection />
-        <ReEntry />
         <ThreadStrength />
         <ADHDSection />
         <AppScreensSection />

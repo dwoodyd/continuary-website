@@ -223,6 +223,14 @@
 ## Final Roadmap Document — Application Flow
 - [x] Point the marketing “Claim your founding seat” CTA to `https://app.continuary.app/signin`, the confirmed OAuth destination that instantly claims a founding seat while availability remains — rendered link verified
 
+## RevealBuild Marketing — Re-entry Thesis
+- [x] Recast the homepage hero, page title, meta description, Open Graph, and Twitter copy around continuity after absence and “the place that remembers where you were”
+- [x] Build the scripted front-end interactive re-entry demo: 11-day absence → restored context → one next move → explanatory close
+- [x] Reorder the page so the re-entry experience and Nothing Broken story lead before the retained full-system depth sections
+- [x] Frame retained system-depth content as capability users can grow into after the re-entry story
+- [x] Replace all cold-project and needs-attention marketing language with “Quietly Waiting”
+- [x] Verify desktop and mobile behavior, TypeScript, tests, and every revised CTA before saving one complete publish-ready checkpoint — 18/18 tests and TypeScript pass; 1280px and 390px visual previews reviewed
+
 ## Published Book Update
 - [x] Update every Permission to Start marketing-site reference from future release language to "Available now"
 - [x] Add digital and paperback purchase links with required new-tab security attributes

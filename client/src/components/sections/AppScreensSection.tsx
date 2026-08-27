@@ -19,9 +19,9 @@ const MOCKUPS = [
   },
   {
     src: "/manus-storage/screenshot_3_projects_5577fa94.webp",
-    alt: "Continuary app screen showing project threads with attention signals — Website Redesign active, Mobile App Launch needs attention, Marketing Campaign cold.",
-    headline: "Never lose a project to silence.",
-    subhead: "Continuary surfaces the threads that need attention — without shame, without scoring.",
+    alt: "Continuary app screen showing project threads — Website Redesign active, with Mobile App Launch and Marketing Campaign quietly waiting.",
+    headline: "Nothing important gets lost.",
+    subhead: "Continuary keeps the threads that are quietly waiting in view — without shame, without scoring.",
   },
   {
     src: "/manus-storage/screenshot_4_compass_aa95f72c.webp",
@@ -56,7 +56,7 @@ export default function AppScreensSection() {
         className="container"
         style={{ marginBottom: "3.5rem", maxWidth: "700px" }}
       >
-        <div className="reveal eyebrow" style={{ marginBottom: "1rem" }}>Inside the app</div>
+        <div className="reveal eyebrow" style={{ marginBottom: "1rem" }}>When you&apos;re ready for more</div>
         <h2
           className="reveal reveal-delay-1"
           style={{
@@ -69,9 +69,9 @@ export default function AppScreensSection() {
             marginBottom: "1rem",
           }}
         >
-          What you'll see
+          Depth you can
           <br />
-          <em style={{ color: "#e8a030", fontStyle: "italic" }}>when you open it.</em>
+          <em style={{ color: "#e8a030", fontStyle: "italic" }}>grow into.</em>
         </h2>
         <p
           className="reveal reveal-delay-2"
@@ -82,7 +82,7 @@ export default function AppScreensSection() {
             color: "rgba(168,180,204,0.7)",
           }}
         >
-          Four daily rituals. A Weekly Compass. Clarity Engine for your daily clarity-pass. Focus Sessions with Wren. Single Focus Mode when you want to go deep on one thing. A view of every project that might be slipping. That's the whole system.
+          Re-entry is where you return. From there, Continuary grows with your work: four daily rituals, a Weekly Compass, Clarity Engine for your daily clarity-pass, Focus Sessions with Wren, Single Focus Mode when you want to go deep, and a view of every project quietly waiting for you.
         </p>
       </div>
 
