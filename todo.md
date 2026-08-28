@@ -243,6 +243,14 @@
 - [x] Replace remaining “Health scores” copy with Quietly Waiting language while preserving meaning
 - [x] Verify desktop and phone-sized layouts, menu behavior, tests, and TypeScript before one complete checkpoint — 21/21 tests and TypeScript pass; desktop and 390px visual views reviewed; menu open state directly confirmed as opaque fixed overlay with body and document scrolling locked
 
+## Marketing Mobile Round 2 — Media and Void Repair
+- [x] Audit every Wren media slot and its mobile reserved space; eliminate any empty mobile video box with a reliable poster or zero-height collapse
+- [x] Update mobile Wren video loading and inline autoplay behavior without regressing desktop or prior lazy-loading safeguards
+- [x] Replace the baked third app-preview card that includes retired “Health scores” copy and preserve a legible one-card mobile layout
+- [x] Increase fixed CTA bottom clearance so final section content always clears the bar and safe area
+- [x] Tighten remaining phone-only inter-section spacing and prevent the hero eyebrow from overlapping the visible Wren
+- [x] Verify all round-two fixes on phone and desktop, run regression tests and TypeScript, then save one complete publish-ready checkpoint — 22/22 tests and TypeScript pass; final 390px and desktop views reviewed
+
 ## Published Book Update
 - [x] Update every Permission to Start marketing-site reference from future release language to "Available now"
 - [x] Add digital and paperback purchase links with required new-tab security attributes

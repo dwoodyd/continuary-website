@@ -17,6 +17,27 @@ import { useScrollReveal } from "../../hooks/useScrollReveal";
 
 const PANORAMIC_URL = "/manus-storage/panoramic_banner_053f80c8.webp";
 
+const MOBILE_PREVIEWS = [
+  {
+    src: "/manus-storage/screenshot_2_checkins_3535fc6e.webp",
+    alt: "Continuary check-ins screen showing morning, midday, and evening rituals.",
+    title: "Your brain isn’t broken.",
+    description: "Start with the context you have, then take one small step.",
+  },
+  {
+    src: "/manus-storage/screenshot_2_checkins_3535fc6e.webp",
+    alt: "Continuary check-ins screen showing a connected daily thread.",
+    title: "Three check-ins. One thread.",
+    description: "Morning, midday, and evening stay connected without a streak to protect.",
+  },
+  {
+    src: "/manus-storage/screenshot_3_projects_5577fa94.webp",
+    alt: "Continuary projects screen showing active work and projects quietly waiting.",
+    title: "Nothing important gets lost.",
+    description: "Projects can wait quietly until you are ready to return.",
+  },
+];
+
 export default function PanoramicBanner() {
   const sectionRef = useRef<HTMLElement>(null);
   useScrollReveal(sectionRef);
@@ -32,7 +53,7 @@ export default function PanoramicBanner() {
       }}
     >
       <div
-        className="reveal"
+        className="desktop-composite reveal"
         style={{
           maxWidth: "1400px",
           margin: "0 auto",
@@ -96,17 +117,73 @@ export default function PanoramicBanner() {
         </div>
       </div>
 
+      <div id="mobile-app-previews" aria-label="Continuary app preview cards">
+        {MOBILE_PREVIEWS.map(({ src, alt, title, description }) => (
+          <article key={title}>
+            <img src={src} alt={alt} loading="lazy" decoding="async" />
+            <div>
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+
       <style>{`
         @media (max-width: 640px) {
           #panoramic-banner {
-            padding: 3rem 0 !important;
+            padding: 2.75rem 0 !important;
           }
-          #panoramic-banner img {
+          #panoramic-banner .desktop-composite {
+            display: none !important;
+          }
+          #panoramic-banner .desktop-composite img {
             border-radius: 0.5rem !important;
           }
           #panoramic-banner [aria-hidden="true"] {
             display: none !important;
           }
+          #mobile-app-previews {
+            display: grid !important;
+            grid-template-columns: 1fr !important;
+            gap: 1.25rem;
+            padding: 0 1.5rem;
+          }
+          #mobile-app-previews article {
+            display: grid;
+            grid-template-columns: minmax(6.5rem, 30%) 1fr;
+            gap: 1rem;
+            align-items: center;
+            padding: 0.9rem;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 0.9rem;
+            background: rgba(17,28,66,0.55);
+          }
+          #mobile-app-previews img {
+            width: 100%;
+            aspect-ratio: 9 / 14;
+            object-fit: cover;
+            object-position: top center;
+            border-radius: 0.6rem;
+            box-shadow: 0 10px 24px rgba(0,0,0,0.32);
+          }
+          #mobile-app-previews h3 {
+            margin: 0 0 0.35rem;
+            color: #f0e8d8;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.08rem;
+            line-height: 1.18;
+          }
+          #mobile-app-previews p {
+            margin: 0;
+            color: rgba(168,180,204,0.78);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.82rem;
+            line-height: 1.45;
+          }
+        }
+        @media (min-width: 641px) {
+          #mobile-app-previews { display: none; }
         }
       `}</style>
     </section>

@@ -439,6 +439,56 @@
       white-space: normal;
       text-align: center;
     }
+
+    /* Every former desktop Wren scene becomes a compact, in-flow mobile media block.
+       This removes reserved desktop space while preserving a video or its poster still. */
+    #how-it-works,
+    #evidence,
+    #re-entry,
+    #adhd,
+    #trust,
+    #book,
+    #footer {
+      display: block !important;
+    }
+
+    #how-it-works #nothing-broken-wren,
+    #evidence #evidence-wren,
+    #re-entry #reentry-wren,
+    #adhd #adhd-wren,
+    #trust #trust-wren,
+    #book #book-wren,
+    #footer #footer-wren {
+      position: relative !important;
+      inset: auto !important;
+      display: block !important;
+      width: 100% !important;
+      height: clamp(10rem, 46vw, 15rem) !important;
+      margin: 0 auto -0.5rem !important;
+      overflow: hidden !important;
+      opacity: 1 !important;
+    }
+
+    #how-it-works #nothing-broken-wren .wren-video,
+    #evidence #evidence-wren .wren-video,
+    #re-entry #reentry-wren .wren-video,
+    #adhd #adhd-wren .wren-video,
+    #trust #trust-wren .wren-video,
+    #book #book-wren .wren-video,
+    #footer #footer-wren .wren-video {
+      object-position: center center !important;
+    }
+
+    #how-it-works .container,
+    #evidence .container,
+    #re-entry .container,
+    #adhd .container,
+    #trust .container,
+    #book .container,
+    #footer .container {
+      padding-top: 2.5rem !important;
+      padding-bottom: 3rem !important;
+    }
   }
 
   @media (max-width: 640px) {

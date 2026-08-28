@@ -13,10 +13,11 @@
  *   "left"  = Wren is on the left  → fade from #080f26 (left edge) to transparent (right)
  *
  * PERFORMANCE & iOS NOTES:
- * - preload="none" — videos do NOT download until the user scrolls near them.
+ * - preload="metadata" fetches only enough data for resilient mobile playback.
  * - IntersectionObserver handles play/pause. On iOS Safari, .load() is called before
- *   .play() when preload="none" to satisfy the browser's media loading requirement.
- * - poster image is shown while the video is loading, preventing blank spaces.
+ *   .play() to satisfy the browser's media loading requirement.
+ * - A real image element, not just the native video poster attribute, remains underneath
+ *   the video so a still is visible even if playback or the video request fails.
  * - autoplay is always muted + playsInline to satisfy iOS autoplay policy.
  */
 
@@ -66,9 +67,12 @@ export default function WrenVideo({
         loadStarted = true;
         video.load();
       }
-      video.play().catch(() => {
-        // Silently ignore — poster image remains visible if autoplay is blocked
-      });
+      video.play()
+        .then(() => setHasLoaded(true))
+        .catch(() => {
+          // Keep the poster visible if autoplay is blocked or the clip fails.
+          setHasLoaded(false);
+        });
     };
 
     const observer = new IntersectionObserver(
@@ -111,7 +115,28 @@ export default function WrenVideo({
         height: "100%",
         overflow: "hidden",
       }}
-    >
+      >
+      {poster && (
+        <img
+          src={poster}
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+          style={{
+            position: "absolute",
+            inset: 0,
+            display: "block",
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition,
+            transform: flip ? "scaleX(-1)" : undefined,
+            opacity: hasLoaded ? 0 : 1,
+            transition: "opacity 0.4s ease",
+          }}
+        />
+      )}
       <video
         ref={videoRef}
         src={src}
@@ -119,11 +144,14 @@ export default function WrenVideo({
         muted
         playsInline
         autoPlay
-        preload="none"
+        preload="metadata"
         poster={poster}
-        onCanPlay={() => setHasLoaded(true)}
+        onPlaying={() => setHasLoaded(true)}
+        onError={() => setHasLoaded(false)}
         className="wren-video"
         style={{
+          position: "absolute",
+          inset: 0,
           display: "block",
           width: "100%",
           height: "100%",
@@ -134,7 +162,7 @@ export default function WrenVideo({
             ? "drop-shadow(0 0 80px rgba(232,160,48,0.6)) drop-shadow(0 0 200px rgba(232,160,48,0.3)) brightness(1.1)"
             : "none",
           // Fade in once video is ready to avoid flash from poster → video
-          opacity: hasLoaded ? 1 : (poster ? 1 : 0),
+          opacity: hasLoaded ? 1 : (poster ? 0 : 1),
           transition: "opacity 0.4s ease",
           ...style,
         }}
