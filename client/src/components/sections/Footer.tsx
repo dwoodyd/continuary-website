@@ -171,8 +171,8 @@ export default function Footer() {
       <div style={{
         position: "fixed",
         bottom: 0, left: 0, right: 0,
-        padding: "0.875rem 1.25rem",
-        background: "rgba(8,15,38,0.92)",
+        padding: "0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom))",
+        background: "#080f26",
         backdropFilter: "blur(16px)",
         borderTop: "1px solid rgba(255,255,255,0.08)",
         zIndex: 40,
@@ -213,7 +213,7 @@ export default function Footer() {
         }
         @media (max-width: 640px) {
           #mobile-cta { display: block !important; }
-          #footer { padding-bottom: 5rem; }
+          #footer { padding-bottom: calc(5.5rem + env(safe-area-inset-bottom)) !important; }
         }
       `}</style>
     </footer>

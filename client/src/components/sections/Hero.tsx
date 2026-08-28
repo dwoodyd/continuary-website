@@ -176,13 +176,20 @@ export default function Hero() {
 
       <style>{`
         @media (max-width: 768px) {
-          #hero-wren-container { width: 100vw !important; height: 43vh !important; top: auto !important; bottom: 0 !important; right: -20vw !important; opacity: 0.18; }
-          .hero-glow { width: 110vw !important; height: 55vh !important; top: auto !important; bottom: 0 !important; right: -25% !important; transform: none !important; }
-          #hero-text { max-width: 100% !important; }
+          #hero { min-height: auto !important; align-items: flex-start !important; }
+          #hero > .container { padding-top: 5.5rem !important; padding-bottom: 3.5rem !important; }
+          #hero-wren-container { width: 62vw !important; height: 12.5rem !important; top: 4rem !important; bottom: auto !important; right: -10vw !important; opacity: 0.9; }
+          .hero-glow { width: 105vw !important; height: 24rem !important; top: 2rem !important; bottom: auto !important; right: -28% !important; transform: none !important; }
+          #hero-text { max-width: 100% !important; padding-top: 11.25rem; }
         }
         @media (max-width: 480px) {
-          #hero-wren-container { display: none !important; }
-          #hero { min-height: auto !important; }
+          #hero-wren-container { display: block !important; width: 62vw !important; height: 9rem !important; top: 3.25rem !important; right: -10vw !important; opacity: 0.94; }
+          #hero > .container { padding-top: 4.5rem !important; padding-bottom: calc(7rem + env(safe-area-inset-bottom)) !important; }
+          #hero-text { padding-top: 5rem !important; }
+          #hero h1 { font-size: 2.38rem !important; }
+          #hero p { line-height: 1.58 !important; }
+          #hero [aria-live="polite"] { padding: 1rem !important; }
+          #hero [aria-live="polite"] h2 { font-size: 1.55rem !important; }
         }
       `}</style>
     </section>

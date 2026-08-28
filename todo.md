@@ -234,6 +234,15 @@
 ## Hero Sample Thread Patch
 - [x] Review and apply the supplied sample-thread patch to the interactive re-entry hero, then verify all stages and CTA behavior — opening, restored-context, and final OAuth CTA states directly verified; 18/18 tests and TypeScript pass
 
+## Marketing Mobile Fix Pass
+- [x] Reserve bottom clearance for the fixed mobile Apply CTA, including the safe-area inset, so content is never covered or clipped
+- [x] Tighten mobile-only hero and section vertical spacing without altering desktop layout
+- [x] Restore a scaled, valid Wren brand anchor to the mobile hero without creating empty space
+- [x] Stack the three app-preview cards into unclipped full-width mobile rows
+- [x] Make the open mobile hamburger menu a fully opaque, scroll-locked overlay over the page and sticky CTA
+- [x] Replace remaining “Health scores” copy with Quietly Waiting language while preserving meaning
+- [x] Verify desktop and phone-sized layouts, menu behavior, tests, and TypeScript before one complete checkpoint — 21/21 tests and TypeScript pass; desktop and 390px visual views reviewed; menu open state directly confirmed as opaque fixed overlay with body and document scrolling locked
+
 ## Published Book Update
 - [x] Update every Permission to Start marketing-site reference from future release language to "Available now"
 - [x] Add digital and paperback purchase links with required new-tab security attributes

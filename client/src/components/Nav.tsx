@@ -26,6 +26,20 @@ export default function Nav() {
     }
   }, [menuOpen]);
 
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousHtmlOverflow = document.documentElement.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousHtmlOverflow;
+    };
+  }, [menuOpen]);
+
   const navLinks = [
     { label: "How it works", href: "#how-it-works", target: undefined as string | undefined },
     { label: "Rituals", href: "#rituals", target: undefined as string | undefined },
@@ -110,6 +124,8 @@ export default function Nav() {
                 className="hamburger"
                 onClick={() => setMenuOpen(!menuOpen)}
                 aria-label={menuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={menuOpen}
+                aria-controls="mobile-navigation-menu"
                 style={{
                   background: "none",
                   border: "none",
@@ -144,11 +160,22 @@ export default function Nav() {
 
         {/* Mobile menu drawer */}
         <div
+          id="mobile-navigation-menu"
           style={{
-            overflow: "hidden",
-            maxHeight: menuOpen ? "400px" : "0",
-            transition: "max-height 0.3s ease",
+            position: menuOpen ? "fixed" : "static",
+            top: menuOpen ? "4rem" : undefined,
+            right: menuOpen ? 0 : undefined,
+            bottom: menuOpen ? 0 : undefined,
+            left: menuOpen ? 0 : undefined,
+            overflowY: menuOpen ? "auto" : "hidden",
+            overscrollBehavior: "contain",
+            maxHeight: menuOpen ? "calc(100dvh - 4rem)" : "0",
+            opacity: menuOpen ? 1 : 0,
+            visibility: menuOpen ? "visible" : "hidden",
+            transition: "max-height 0.3s ease, opacity 0.2s ease",
             borderTop: menuOpen ? "1px solid oklch(1 0 0 / 8%)" : "none",
+            background: "#080f26",
+            zIndex: 55,
           }}
         >
           <div style={{ padding: "1.25rem 1.5rem 1.5rem", display: "flex", flexDirection: "column", gap: "0.25rem" }}>
@@ -188,6 +215,9 @@ export default function Nav() {
       </nav>
 
       <style>{`
+        @media (min-width: 769px) {
+          .hamburger { display: none !important; }
+        }
         @media (max-width: 768px) {
           .desktop-nav-links { display: none !important; }
           .desktop-cta { display: none !important; }

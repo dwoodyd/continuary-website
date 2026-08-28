@@ -441,6 +441,27 @@
     }
   }
 
+  @media (max-width: 640px) {
+    html {
+      scroll-padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
+    }
+
+    body {
+      padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
+    }
+
+    section[id]:not(#hero):not(#platform-strip) {
+      min-height: auto !important;
+      padding-top: 3.5rem !important;
+      padding-bottom: 3.5rem !important;
+    }
+
+    #footer .container {
+      padding-top: 3.75rem !important;
+      padding-bottom: 3.75rem !important;
+    }
+  }
+
   /* ─── ACCESSIBILITY: Reduced motion ─── */
   /* Also serves as a fallback for environments where IntersectionObserver
      doesn't fire (e.g. headless browsers, bots, prerender). */

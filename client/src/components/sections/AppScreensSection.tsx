@@ -2,7 +2,7 @@
  * AppScreensSection — "What you'll see when you open it."
  *
  * Desktop: 2×2 grid, each mockup max ~28vw wide, portrait 9:16
- * Mobile: horizontal scroll carousel, each card ~70vw
+ * Mobile: one full-width card per row so no screen is clipped at the viewport edge.
  * All mockups lazy-load. Alt text describes screen contents.
  * Background: #080f26 — consistent with the rest of the site.
  */
@@ -148,7 +148,7 @@ export default function AppScreensSection() {
         ))}
       </div>
 
-      {/* Mobile carousel (hidden on desktop via CSS) */}
+      {/* Legacy carousel markup is retained but hidden on mobile in favor of the unclipped stacked grid. */}
       <div id="app-screens-carousel" style={{ display: "none" }}>
         <div
           style={{
@@ -224,9 +224,13 @@ export default function AppScreensSection() {
         #app-screens-carousel::-webkit-scrollbar { display: none; }
 
         @media (max-width: 640px) {
-          #app-screens-grid { display: none !important; }
-          #app-screens-carousel { display: block !important; }
-          #app-screens { padding: 4rem 0 5rem !important; }
+          #app-screens-grid {
+            display: grid !important;
+            grid-template-columns: 1fr !important;
+            gap: 3rem !important;
+          }
+          #app-screens-carousel { display: none !important; }
+          #app-screens { padding: 3.5rem 0 !important; }
         }
       `}</style>
     </section>

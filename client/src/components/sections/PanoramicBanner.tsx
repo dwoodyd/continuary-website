@@ -42,7 +42,7 @@ export default function PanoramicBanner() {
       >
         <img
           src={PANORAMIC_URL}
-          alt="Continuary app composite showing three screens: morning check-in, weekly thread, and project health scores."
+          alt="Continuary app composite showing a morning check-in, weekly thread, and projects quietly waiting."
           loading="eager"
           decoding="async"
           style={{
