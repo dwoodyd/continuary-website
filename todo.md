@@ -251,6 +251,24 @@
 - [x] Tighten remaining phone-only inter-section spacing and prevent the hero eyebrow from overlapping the visible Wren
 - [x] Verify all round-two fixes on phone and desktop, run regression tests and TypeScript, then save one complete publish-ready checkpoint — 22/22 tests and TypeScript pass; final 390px and desktop views reviewed
 
+## iOS Product-App Media and Bottom Navigation Repair
+- [x] Confirm whether this workspace contains the affected Today, Focus Sessions, Evidence Log, Return Brief, and bottom-tab app surfaces — this workspace contains only the marketing site, not the affected product app
+- [ ] If available, diagnose iOS media source URLs, MIME/range support, poster fallbacks, service-worker caching, and safe-area tab-bar styling
+- [ ] Implement and verify H.264 MP4 media fallback, reliable stills, and safe-area-aware bottom navigation without regressing Android
+
+## Revision Brief 9 — ADHD Feature Layer (Product App Required)
+- [ ] Obtain access to the separate Continuary product-app workspace that powers Today, Capture, Focus, Evidence Log, Return Brief, widgets, and onboarding
+- [ ] Audit the existing product against the revised Ground Mode, Time Sense, Surface, and Unstick specifications
+- [ ] Design and implement The Read, Router, Threshold, Register, split Capture model, Court, Collapse Mode, and passive-layer onboarding guidance
+- [ ] Enforce cross-cutting rules: no streaks/consecutive-day counts/completion percentages, mechanism-first second-person copy, ease-first lists, zero-cost re-entry, and no time blocking
+- [ ] Add data migrations, user-flow tests, and iOS/mobile validation for every implemented primitive before product-app checkpoint
+
+## Revision Brief 9 — Marketing-Site Revisions
+- [x] Reposition Continuary’s public value around self-trust evidence, continuity, and failure-tolerant design without claiming unbuilt ADHD tools are already available
+- [x] Remove or revise marketing copy that implies streaks, consecutive-day tracking, completion percentages, character judgment, or priority-sorted work
+- [x] Add accurate public-facing passive-layer and clinical-care framing where it supports the product promise without overstating product capabilities
+- [x] Verify the revised messaging across mobile and desktop, then run tests and TypeScript before checkpointing — 24/24 tests and TypeScript pass; 390px and desktop previews reviewed
+
 ## Published Book Update
 - [x] Update every Permission to Start marketing-site reference from future release language to "Available now"
 - [x] Add digital and paperback purchase links with required new-tab security attributes

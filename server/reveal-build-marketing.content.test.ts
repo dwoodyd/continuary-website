@@ -10,6 +10,9 @@ const homeSource = readSource("client/src/pages/Home.tsx");
 const metadataSource = readSource("client/index.html");
 const appScreensSource = readSource("client/src/components/sections/AppScreensSection.tsx");
 const roadmapSource = readSource("client/src/components/sections/RoadmapTeaser.tsx");
+const nothingBrokenSource = readSource("client/src/components/sections/NothingBroken.tsx");
+const threadStrengthSource = readSource("client/src/components/sections/ThreadStrength.tsx");
+const footerSource = readSource("client/src/components/sections/Footer.tsx");
 
 describe("RevealBuild marketing contract", () => {
   it("shows the scripted re-entry experience and routes its final CTA to OAuth sign-in", () => {
@@ -43,5 +46,21 @@ describe("RevealBuild marketing contract", () => {
     expect(roadmapSource).toContain("Wren Voice Check-ins");
     expect(roadmapSource).not.toContain("chat with Wren in-session");
     expect(roadmapSource).not.toContain("Wren-generated daily prompts");
+  });
+
+  it("frames continuity as self-trust evidence instead of a failable streak or score", () => {
+    expect(heroSource).toContain("evidence you can rely on yourself again");
+    expect(nothingBrokenSource).toContain("another system you can fail");
+    expect(nothingBrokenSource).toContain("No pass/fail state. Your return still counts.");
+    expect(nothingBrokenSource).toContain("Small completions become evidence you can trust.");
+    expect(threadStrengthSource).toContain("Evidence, not evaluation");
+    expect(threadStrengthSource).toContain("A record you can trust.");
+    expect(threadStrengthSource).not.toContain("Most members live in Weaving");
+  });
+
+  it("states passive-support and clinical-care boundaries without claiming unbuilt ADHD tools", () => {
+    expect(appScreensSource).toContain("trouble avoided is a problem solved");
+    expect(footerSource).toContain("not clinical care or a substitute for it");
+    expect(footerSource).toContain("life asks a lot from memory");
   });
 });

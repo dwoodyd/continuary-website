@@ -101,7 +101,7 @@ export default function NothingBroken() {
               marginBottom: "1.5rem",
             }}
           >
-            You don't need another app that judges your streaks. You need a place that holds your story without conditions — one that shows up the same whether you journaled every day this week or haven't opened it in three.
+            You don&apos;t need another system you can fail. You need a place that holds your story without conditions — one that meets you the same way whether you return tomorrow or after a long gap.
           </p>
 
           <p
@@ -114,14 +114,14 @@ export default function NothingBroken() {
               marginBottom: "2.5rem",
             }}
           >
-            Continuary doesn't track your consistency. It tracks your continuity — the thread that runs through all of it, even the gaps.
+            Continuary keeps the thread through the gaps. Each intention you turn into action becomes evidence that you can return, begin again, and keep going at the size today allows.
           </p>
 
           <div className="reveal reveal-delay-4" style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
             {[
-              { label: "No streaks. No shame. No score." },
+              { label: "No pass/fail state. Your return still counts." },
               { label: "Pick up exactly where you left off." },
-              { label: "Wren remembers even when you forget." },
+              { label: "Small completions become evidence you can trust." },
               { label: "And when you're ready to work, she's there — reading, writing, weaving — while you do." },
             ].map(({ label }) => (
               <div key={label} style={{ display: "flex", alignItems: "flex-start", gap: "0.875rem" }}>

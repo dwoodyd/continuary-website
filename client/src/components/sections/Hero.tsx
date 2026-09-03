@@ -97,7 +97,7 @@ export default function Hero() {
               marginBottom: "1.75rem",
             }}
           >
-            Continuary keeps the context of your work, so returning after a day, a month, or longer begins with what still matters — not a rebuild.
+            Continuary keeps the context of your work, so returning after a day, a month, or longer begins with what still matters — not a rebuild. Each small return becomes evidence you can rely on yourself again.
           </p>
 
           <div

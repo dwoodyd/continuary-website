@@ -1,28 +1,28 @@
 /**
- * ThreadStrength — "Not productivity. Continuity."
- * Design: Three qualitative state cards with Wren-voiced descriptions.
- * No numerical score, no progress bar — per voice doctrine: "She remembers, doesn't measure."
+ * ThreadStrength — "Evidence, not evaluation."
+ * Design: Three qualitative ways continuity can be experienced.
+ * No numerical score, no progress bar — the record exists to support self-trust.
  */
 
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const states = [
   {
-    name: "Gathering",
-    wren: "You're here. That's the whole thing.",
-    description: "Just starting, or coming back after time away.",
+    name: "Return",
+    wren: "You’re here. Begin at the size today allows.",
+    description: "Coming back starts with one small, reachable action.",
     active: false,
   },
   {
-    name: "Weaving",
-    wren: "You're finding the cadence. The thread is alive.",
-    description: "Building rhythm, consistent returns.",
+    name: "Action",
+    wren: "You turned one intention into one action. Keep that evidence.",
+    description: "A small completion is still a real deposit in self-trust.",
     active: true,
   },
   {
-    name: "Holding",
-    wren: "You've been with this for a while. Let it carry.",
-    description: "Deep continuity, the thread is taut.",
+    name: "Record",
+    wren: "Your thread remembers where you can continue.",
+    description: "Your notes hold the context so a gap never requires a rebuild.",
     active: false,
   },
 ];
@@ -44,21 +44,21 @@ export default function ThreadStrength() {
             className="reveal-child text-amber-400 text-xs tracking-[0.25em] uppercase font-sans mb-4"
             style={{ transitionDelay: "0ms" }}
           >
-            The Metric That Matters
+            Evidence, not evaluation
           </p>
           <h2
             className="reveal-child font-serif text-4xl md:text-5xl lg:text-6xl text-white leading-tight mb-6"
             style={{ transitionDelay: "60ms" }}
           >
-            Not productivity.
+            Not a score.
             <br />
-            <em className="text-amber-200/90">Continuity.</em>
+            <em className="text-amber-200/90">A record you can trust.</em>
           </h2>
           <p
             className="reveal-child font-sans text-white/60 text-lg max-w-2xl mx-auto leading-relaxed"
             style={{ transitionDelay: "120ms" }}
           >
-            Thread Strength isn't a score. It's a read on where you are in your relationship with your work — and Wren names it in plain language, not digits.
+            Continuary preserves the intentions you turn into action. The point is not to measure you; it is to leave you real evidence that you can come back, choose one thing, and move it.
           </p>
         </div>
 
@@ -105,14 +105,14 @@ export default function ThreadStrength() {
           className="reveal-child text-center font-sans text-lg italic text-white/55 max-w-lg mx-auto"
           style={{ transitionDelay: "460ms" }}
         >
-          Wren reads your thread state and names it. You'll never see a number.
+          Wren helps you find the next reachable move. No number decides whether you are doing well.
         </p>
 
         <p
           className="reveal-child text-center font-sans text-sm text-white/35 max-w-lg mx-auto mt-4"
           style={{ transitionDelay: "520ms" }}
         >
-          Most members live in Weaving. Holding is rare. Both are honored.
+          Every return is useful evidence. The thread does not disappear when life gets loud.
         </p>
       </div>
 

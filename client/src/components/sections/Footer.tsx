@@ -105,6 +105,10 @@ export default function Footer() {
             </a>
           </div>
 
+          <p className="reveal reveal-delay-4" style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.78rem", lineHeight: 1.6, color: "rgba(168,180,204,0.54)", maxWidth: "430px", margin: "-2.25rem 0 2.25rem" }}>
+            Continuary supports reflection, planning, and gentle returns. It is not clinical care or a substitute for it; the tools exist because life asks a lot from memory, not because something is wrong with you.
+          </p>
+
           {/* Footer links */}
           <div
             id="footer-links"

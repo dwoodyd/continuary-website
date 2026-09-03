@@ -13,7 +13,7 @@ import { useScrollReveal } from "../../hooks/useScrollReveal";
 const MOCKUPS = [
   {
     src: "/manus-storage/screenshot_2_checkins_3535fc6e.webp",
-    alt: "Continuary app screen showing morning, midday, and evening check-ins with a weekly thread bar chart.",
+    alt: "Continuary app screen showing morning, midday, and evening check-ins with a weekly continuity overview.",
     headline: "Three check-ins. One thread.",
     subhead: "Morning. Midday. Evening. Keep the day connected.",
   },
@@ -21,7 +21,7 @@ const MOCKUPS = [
     src: "/manus-storage/screenshot_3_projects_5577fa94.webp",
     alt: "Continuary app screen showing project threads — Website Redesign active, with Mobile App Launch and Marketing Campaign quietly waiting.",
     headline: "Nothing important gets lost.",
-    subhead: "Continuary keeps the threads that are quietly waiting in view — without shame, without scoring.",
+    subhead: "Continuary keeps the threads that are quietly waiting in view, so you can decide what still matters when you return.",
   },
   {
     src: "/manus-storage/screenshot_4_compass_aa95f72c.webp",
@@ -82,7 +82,7 @@ export default function AppScreensSection() {
             color: "rgba(168,180,204,0.7)",
           }}
         >
-          Re-entry is where you return. From there, Continuary grows with your work: four daily rituals, a Weekly Compass, Clarity Engine for your daily clarity-pass, Focus Sessions with Wren, Single Focus Mode when you want to go deep, and a view of every project quietly waiting for you.
+          Re-entry is where you return. From there, Continuary grows with your work: four daily rituals, a Weekly Compass, Clarity Engine for your daily clarity-pass, Focus Sessions with Wren, Single Focus Mode when you want to go deep, and a view of every project quietly waiting for you. The deeper layer is built around supports that can still help after a gap — because trouble avoided is a problem solved.
         </p>
       </div>
 
