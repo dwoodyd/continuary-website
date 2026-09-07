@@ -253,15 +253,18 @@
 
 ## iOS Product-App Media and Bottom Navigation Repair
 - [x] Confirm whether this workspace contains the affected Today, Focus Sessions, Evidence Log, Return Brief, and bottom-tab app surfaces — this workspace contains only the marketing site, not the affected product app
-- [ ] If available, diagnose iOS media source URLs, MIME/range support, poster fallbacks, service-worker caching, and safe-area tab-bar styling
-- [ ] Implement and verify H.264 MP4 media fallback, reliable stills, and safe-area-aware bottom navigation without regressing Android
+- [x] Diagnose iOS media source URLs, MIME/range support, poster fallbacks, service-worker caching, and safe-area tab-bar styling — verified in `project-continuity-app` at commit `30d9656`
+- [x] Implement and verify H.264 MP4 media fallback, reliable stills, and safe-area-aware bottom navigation without regressing Android — confirmed by the dedicated iOS media test suite
 
 ## Revision Brief 9 — ADHD Feature Layer (Product App Required)
-- [ ] Obtain access to the separate Continuary product-app workspace that powers Today, Capture, Focus, Evidence Log, Return Brief, widgets, and onboarding
-- [ ] Audit the existing product against the revised Ground Mode, Time Sense, Surface, and Unstick specifications
-- [ ] Design and implement The Read, Router, Threshold, Register, split Capture model, Court, Collapse Mode, and passive-layer onboarding guidance
-- [ ] Enforce cross-cutting rules: no streaks/consecutive-day counts/completion percentages, mechanism-first second-person copy, ease-first lists, zero-cost re-entry, and no time blocking
-- [ ] Add data migrations, user-flow tests, and iOS/mobile validation for every implemented primitive before product-app checkpoint
+- [x] Obtain access to the separate Continuary product-app workspace that powers Today, Capture, Focus, Evidence Log, Return Brief, widgets, and onboarding — cloned `dwoodyd/project-continuity-app`
+- [x] Audit the existing product against the revised Ground Mode, Time Sense, Surface, and Unstick specifications — verified against the dedicated Revision Brief 9 acceptance test
+- [x] Design and implement The Read, Router, Threshold, Register, split Capture model, Court, Collapse Mode, and passive-layer onboarding guidance — present in the current `revisionNine` router and workspace routes
+- [x] Enforce cross-cutting rules: no streaks/consecutive-day counts/completion percentages, mechanism-first second-person copy, ease-first lists, zero-cost re-entry, and no time blocking — covered by the current Revision Brief 9 regression test
+- [x] Add data migrations, user-flow tests, and iOS/mobile validation for every implemented primitive before product-app checkpoint — migration and targeted test coverage confirmed at commit `30d9656`
+
+## Product-App Repository Verification
+- [x] Inspect `dwoodyd/project-continuity-app` against the outstanding iOS media and Revision Brief 9 requirements, then report whether further implementation is needed — confirmed complete in source and targeted test coverage
 
 ## Revision Brief 9 — Marketing-Site Revisions
 - [x] Reposition Continuary’s public value around self-trust evidence, continuity, and failure-tolerant design without claiming unbuilt ADHD tools are already available
