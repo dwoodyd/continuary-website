@@ -101,23 +101,36 @@ export default function Nav() {
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  padding: "0.5rem 1rem",
+                  padding: "0.5rem 0.35rem",
                   fontSize: "0.875rem",
                   fontFamily: "'DM Sans', sans-serif",
                   fontWeight: 500,
                   color: "oklch(0.75 0.02 80)",
                   textDecoration: "none",
-                  border: "1px solid oklch(1 0 0 / 15%)",
+                  border: "1px solid transparent",
                   borderRadius: "0.375rem",
-                  transition: "color 0.2s ease, border-color 0.2s ease",
+                  transition: "color 0.2s ease",
                 }}
-                onMouseEnter={e => { e.currentTarget.style.color = "oklch(0.96 0.02 80)"; e.currentTarget.style.borderColor = "oklch(1 0 0 / 30%)"; }}
-                onMouseLeave={e => { e.currentTarget.style.color = "oklch(0.75 0.02 80)"; e.currentTarget.style.borderColor = "oklch(1 0 0 / 15%)"; }}
+                onMouseEnter={e => { e.currentTarget.style.color = "oklch(0.96 0.02 80)"; }}
+                onMouseLeave={e => { e.currentTarget.style.color = "oklch(0.75 0.02 80)"; }}
               >
                 Sign in
               </a>
-              <a href="https://app.continuary.app/apply" className="btn-amber desktop-cta" target="_blank" rel="noopener noreferrer" style={{ padding: "0.625rem 1.25rem", fontSize: "0.875rem" }}>
-                Apply
+              <a
+                href="https://app.continuary.app/apply"
+                className="btn-amber desktop-cta"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  minHeight: "2.8rem",
+                  padding: "0.75rem 1.45rem",
+                  fontSize: "0.925rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.01em",
+                  boxShadow: "0 8px 22px oklch(0.78 0.16 65 / 28%)",
+                }}
+              >
+                Apply for access <span aria-hidden>→</span>
               </a>
               {/* Hamburger — mobile only */}
               <button

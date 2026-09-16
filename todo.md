@@ -215,6 +215,9 @@
 ## Navigation Icon Polish
 - [x] Remove the visible navigation icon border treatment and increase the monochrome app icon’s scale for a cleaner navy-on-navy presentation
 
+## Navigation Apply CTA Hierarchy
+- [x] Increase the visual prominence of the navigation Apply CTA for first-time visitors while preserving the current navigation structure and destinations
+
 ## Final Roadmap and Pricing Copy Correction
 - [x] Update RoadmapTeaser: removed shipped in-session chat, time-of-day vibe, pop-out/PiP, and Wren-generated prompt items; retained book-ahead, Studios, and Wren Voice Check-ins only
 - [x] Remove unbuilt book-ahead and recurring-session language from current Pro feature copy in Pricing.tsx and FoundingMember.tsx
