@@ -42,6 +42,18 @@ describe("marketing mobile layout safeguards", () => {
     expect(css).toContain("height: clamp(10rem, 46vw, 15rem) !important;");
   });
 
+  it("gives every looping Wren video an accessible pause control and honors reduced-motion preferences", () => {
+    const video = source("client/src/components/WrenVideo.tsx");
+    const css = source("client/src/index.css");
+
+    expect(video).toContain('window.matchMedia("(prefers-reduced-motion: reduce)")');
+    expect(video).toContain("shouldPlayWrenMotion");
+    expect(video).toContain('aria-label={isPlaying ? "Pause Wren motion" : "Play Wren motion"}');
+    expect(video).toContain('>{isPlaying ? "Pause motion" : "Play motion"}</span>');
+    expect(css).toContain(".wren-motion-control");
+    expect(css).toContain(".wren-motion-control:focus-visible");
+  });
+
   it("uses an opaque, scroll-locked mobile navigation overlay and avoids legacy health-score wording", () => {
     const nav = source("client/src/components/Nav.tsx");
     const panoramic = source("client/src/components/sections/PanoramicBanner.tsx");

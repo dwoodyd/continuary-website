@@ -120,7 +120,7 @@ export default function Pricing() {
       {/* WREN — left half of viewport, full height. */}
       <div style={{
         position: "absolute", left: 0, top: 0,
-        width: "55vw", height: "100%", pointerEvents: "none", zIndex: 1, overflow: "hidden",
+        width: "55vw", height: "100%", pointerEvents: "auto", overflow: "hidden",
       }}>
         <WrenVideo src={WREN_VIDEOS.wipesScreen} glow={true} objectPosition="35% center" fadeDir="left" poster={WREN_STILLS.flyingFast} />
       </div>

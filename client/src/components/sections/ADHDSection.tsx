@@ -43,7 +43,7 @@ export default function ADHDSection() {
       <div id="adhd-wren" style={{
         position: "absolute", left: 0, top: 0,
         width: "55vw", height: "100%",
-        pointerEvents: "none", zIndex: 1, overflow: "hidden",
+        pointerEvents: "auto", overflow: "hidden",
       }}>
         <WrenVideo src={WREN_VIDEOS.cornerWaveTrimmed} glow={true} objectPosition="center center" fadeDir="left" poster={WREN_STILLS.neutral} />
       </div>

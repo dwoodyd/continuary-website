@@ -52,8 +52,7 @@ export default function NothingBroken() {
           top: 0,
           width: "55vw",
           height: "100%",
-          pointerEvents: "none",
-          zIndex: 1,
+          pointerEvents: "auto",
           overflow: "hidden",
         }}
       >

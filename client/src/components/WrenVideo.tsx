@@ -22,6 +22,7 @@
  */
 
 import { useEffect, useRef, useState } from "react";
+import { shouldPlayWrenMotion, toggleWrenMotion } from "./wrenMotion";
 
 interface WrenVideoProps {
   src: string;
@@ -54,10 +55,42 @@ export default function WrenVideo({
 }: WrenVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => (
+    typeof window !== "undefined"
+    && typeof window.matchMedia === "function"
+    && window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ));
+  const [isUserPaused, setIsUserPaused] = useState(false);
+  const [isManuallyPlaying, setIsManuallyPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || typeof window.matchMedia !== "function") return;
+
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const syncMotionPreference = () => setPrefersReducedMotion(mediaQuery.matches);
+    syncMotionPreference();
+
+    mediaQuery.addEventListener?.("change", syncMotionPreference);
+    return () => mediaQuery.removeEventListener?.("change", syncMotionPreference);
+  }, []);
+
+  const shouldAutoplay = autoplay && !prefersReducedMotion && !isUserPaused;
+  const shouldPlay = shouldPlayWrenMotion({
+    autoplay,
+    prefersReducedMotion,
+    userPaused: isUserPaused,
+    userRequestedPlay: isManuallyPlaying,
+  });
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video || !autoplay) return;
+    if (!video) return;
+
+    if (!shouldPlay) {
+      video.pause();
+      return;
+    }
 
     let loadStarted = false;
 
@@ -96,7 +129,36 @@ export default function WrenVideo({
     if (inViewport) tryPlay();
 
     return () => observer.disconnect();
-  }, [autoplay]);
+  }, [shouldPlay]);
+
+  const toggleMotion = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const nextMotionState = toggleWrenMotion({ isPlaying, prefersReducedMotion });
+
+    if (isPlaying) {
+      setIsUserPaused(nextMotionState.userPaused);
+      setIsManuallyPlaying(nextMotionState.userRequestedPlay);
+      setHasLoaded(false);
+      video.pause();
+      return;
+    }
+
+    // A deliberate visitor action is allowed even when the device prefers reduced motion.
+    setIsUserPaused(nextMotionState.userPaused);
+    setIsManuallyPlaying(nextMotionState.userRequestedPlay);
+    video.load();
+    video.play()
+      .then(() => {
+        setHasLoaded(true);
+        setIsPlaying(true);
+      })
+      .catch(() => {
+        setHasLoaded(false);
+        setIsPlaying(false);
+      });
+  };
 
   // Vignette gradient: fades the inner edge of the Wren container into the page bg.
   const vignetteGradient =
@@ -143,11 +205,18 @@ export default function WrenVideo({
         loop={loop}
         muted
         playsInline
-        autoPlay
+        autoPlay={shouldAutoplay}
         preload="metadata"
         poster={poster}
-        onPlaying={() => setHasLoaded(true)}
-        onError={() => setHasLoaded(false)}
+        onPlaying={() => {
+          setHasLoaded(true);
+          setIsPlaying(true);
+        }}
+        onPause={() => setIsPlaying(false)}
+        onError={() => {
+          setHasLoaded(false);
+          setIsPlaying(false);
+        }}
         className="wren-video"
         style={{
           position: "absolute",
@@ -167,6 +236,22 @@ export default function WrenVideo({
           ...style,
         }}
       />
+
+      {loop && (
+        <button
+          type="button"
+          className="wren-motion-control"
+          onClick={toggleMotion}
+          aria-label={isPlaying ? "Pause Wren motion" : "Play Wren motion"}
+          aria-pressed={isPlaying}
+          title={isPlaying ? "Pause motion" : "Play motion"}
+        >
+          <span aria-hidden="true" className="wren-motion-control__icon">
+            {isPlaying ? "Ⅱ" : "▶"}
+          </span>
+          <span>{isPlaying ? "Pause motion" : "Play motion"}</span>
+        </button>
+      )}
 
       {/* Cinematic vignette — dissolves Wren into the page on the text-facing edge */}
       {vignetteGradient && (

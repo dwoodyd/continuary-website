@@ -51,8 +51,7 @@ export default function Hero() {
           top: 0,
           width: "52vw",
           height: "100%",
-          pointerEvents: "none",
-          zIndex: 1,
+          pointerEvents: "auto",
           overflow: "hidden",
         }}
       >

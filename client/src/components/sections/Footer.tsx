@@ -40,7 +40,7 @@ export default function Footer() {
       {/* WREN — left half of viewport, full height. sparkleWings is symmetric/forward-facing. */}
       <div id="footer-wren" style={{
         position: "absolute", left: 0, top: 0,
-        width: "55vw", height: "100%", pointerEvents: "none", zIndex: 1, overflow: "hidden",
+        width: "55vw", height: "100%", pointerEvents: "auto", overflow: "hidden",
       }}>
         <WrenVideo src={WREN_VIDEOS.tuggingThread} glow={true} objectPosition="center center" fadeDir="left" poster={WREN_STILLS.tuggingThread} />
       </div>

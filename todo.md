@@ -218,6 +218,11 @@
 ## Navigation Apply CTA Hierarchy
 - [x] Increase the visual prominence of the navigation Apply CTA for first-time visitors while preserving the current navigation structure and destinations
 
+## Motion Accessibility — Looping Wren Videos
+- [x] Add an accessible pause/play control to every looping Wren video through the shared media component
+- [x] Honor prefers-reduced-motion by preventing all Wren video autoplay and retaining the poster image
+- [x] Verify pointer interaction across all Wren wrappers, pause/play state transitions, reduced-motion defaults, desktop, and mobile rendering before checkpointing — direct Chromium verification passed for all 7 controls; 30/30 tests and TypeScript pass; desktop and 390px previews reviewed
+
 ## Final Roadmap and Pricing Copy Correction
 - [x] Update RoadmapTeaser: removed shipped in-session chat, time-of-day vibe, pop-out/PiP, and Wren-generated prompt items; retained book-ahead, Studios, and Wren Voice Check-ins only
 - [x] Remove unbuilt book-ahead and recurring-session language from current Pro feature copy in Pricing.tsx and FoundingMember.tsx
