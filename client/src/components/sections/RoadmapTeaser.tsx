@@ -265,8 +265,6 @@ export default function RoadmapTeaser() {
           Founding members vote on priority.{" "}
           <a
             href="https://app.continuary.app/apply"
-            target="_blank"
-            rel="noopener noreferrer"
             style={{
               color: "#e8a030",
               textDecoration: "none",
@@ -277,7 +275,7 @@ export default function RoadmapTeaser() {
             onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(232,160,48,0.8)")}
             onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(232,160,48,0.35)")}
           >
-            Apply for a founding seat
+            Claim a founding seat
           </a>{" "}
           to help shape what ships first.
         </div>

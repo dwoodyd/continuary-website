@@ -44,6 +44,7 @@ export default function Nav() {
     { label: "How it works", href: "#how-it-works", target: undefined as string | undefined },
     { label: "Rituals", href: "#rituals", target: undefined as string | undefined },
     { label: "Focus Sessions", href: "#focus-sessions", target: undefined as string | undefined },
+    { label: "Pricing", href: "#pricing", target: undefined as string | undefined },
     { label: "Book", href: "#book", target: undefined as string | undefined },
   ];
 
@@ -119,8 +120,6 @@ export default function Nav() {
               <a
                 href="https://app.continuary.app/apply"
                 className="btn-amber desktop-cta"
-                target="_blank"
-                rel="noopener noreferrer"
                 style={{
                   minHeight: "2.8rem",
                   padding: "0.75rem 1.45rem",
@@ -130,7 +129,7 @@ export default function Nav() {
                   boxShadow: "0 8px 22px oklch(0.78 0.16 65 / 28%)",
                 }}
               >
-                Apply for access <span aria-hidden>→</span>
+                Claim a founding seat <span aria-hidden>→</span>
               </a>
               {/* Hamburger — mobile only */}
               <button
@@ -217,11 +216,9 @@ export default function Nav() {
               href="https://app.continuary.app/apply"
               className="btn-amber"
               onClick={() => setMenuOpen(false)}
-              target="_blank"
-              rel="noopener noreferrer"
               style={{ marginTop: "1rem", justifyContent: "center" }}
             >
-              Apply for a slot
+              Claim a founding seat
             </a>
           </div>
         </div>

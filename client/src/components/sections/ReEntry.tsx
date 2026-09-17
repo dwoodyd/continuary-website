@@ -41,7 +41,7 @@ export default function ReEntry() {
         position: "absolute", left: 0, top: 0,
         width: "55vw", height: "100%", pointerEvents: "auto", overflow: "hidden",
       }}>
-        <WrenVideo src={WREN_VIDEOS.memoryOrb} glow={true} objectPosition="center center" fadeDir="left" poster={WREN_STILLS.holdingThread} />
+        <WrenVideo src={WREN_VIDEOS.memoryOrb} glow={true} objectPosition="center center" fadeDir="left" poster={WREN_STILLS.holdingThread} posterAlt="Wren holding a glowing thread of memory." />
       </div>
 
       {/* TEXT — right side */}

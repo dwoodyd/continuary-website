@@ -37,6 +37,8 @@ interface WrenVideoProps {
   fadeDir?: "left" | "right" | "none";
   /** Poster image shown while video loads — use a Wren still from WREN_STILLS */
   poster?: string;
+  /** Concise description for the visible poster fallback image. */
+  posterAlt?: string;
   // Legacy props — accepted but ignored
   sectionBg?: string;
 }
@@ -52,6 +54,7 @@ export default function WrenVideo({
   objectPosition = "left center",
   fadeDir = "none",
   poster,
+  posterAlt = "Wren, the Continuary guide, in a warm amber glow.",
 }: WrenVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -181,8 +184,7 @@ export default function WrenVideo({
       {poster && (
         <img
           src={poster}
-          alt=""
-          aria-hidden="true"
+          alt={posterAlt}
           loading="lazy"
           decoding="async"
           style={{
@@ -206,6 +208,7 @@ export default function WrenVideo({
         muted
         playsInline
         autoPlay={shouldAutoplay}
+        aria-hidden="true"
         preload="metadata"
         poster={poster}
         onPlaying={() => {

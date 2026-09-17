@@ -62,6 +62,7 @@ export default function NothingBroken() {
           objectPosition="center center"
           fadeDir="left"
           poster={WREN_STILLS.lookingDown}
+          posterAlt="Wren looking down thoughtfully in a warm amber glow."
         />
       </div>
 

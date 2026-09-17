@@ -42,7 +42,7 @@ export default function Footer() {
         position: "absolute", left: 0, top: 0,
         width: "55vw", height: "100%", pointerEvents: "auto", overflow: "hidden",
       }}>
-        <WrenVideo src={WREN_VIDEOS.tuggingThread} glow={true} objectPosition="center center" fadeDir="left" poster={WREN_STILLS.tuggingThread} />
+        <WrenVideo src={WREN_VIDEOS.tuggingThread} glow={true} objectPosition="center center" fadeDir="left" poster={WREN_STILLS.tuggingThread} posterAlt="Wren gently tugging a glowing thread." />
       </div>
 
       {/* FINAL CTA — right side */}
@@ -93,12 +93,12 @@ export default function Footer() {
               lineHeight: 1.75, color: "rgba(168,180,204,0.9)", marginBottom: "2.5rem",
             }}
           >
-            Apply for a founding member slot. Wren will be here when you're ready.
+            Claim a founding seat. Wren will be here when you're ready.
           </p>
 
           <div id="footer-cta-row" className="reveal reveal-delay-3" style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "4rem" }}>
-            <a href="https://app.continuary.app/apply" className="btn-amber" target="_blank" rel="noopener noreferrer" style={{ fontSize: "1rem", padding: "0.875rem 2rem" }}>
-              Apply for a slot
+            <a href="https://app.continuary.app/apply" className="btn-amber" style={{ fontSize: "1rem", padding: "0.875rem 2rem" }}>
+              Claim a founding seat
             </a>
             <a href="#pricing" className="btn-ghost" style={{ fontSize: "1rem", padding: "0.875rem 2rem" }}>
               See what's included
@@ -182,8 +182,8 @@ export default function Footer() {
         zIndex: 40,
         display: "none",
       }} id="mobile-cta">
-        <a href="https://app.continuary.app/apply" className="btn-amber" target="_blank" rel="noopener noreferrer" style={{ width: "100%", textAlign: "center", display: "block" }}>
-          Apply for a founding member slot
+        <a href="https://app.continuary.app/apply" className="btn-amber" style={{ width: "100%", textAlign: "center", display: "block" }}>
+          Claim a founding seat
         </a>
       </div>
 

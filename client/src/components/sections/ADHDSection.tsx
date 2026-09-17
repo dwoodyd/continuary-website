@@ -45,7 +45,7 @@ export default function ADHDSection() {
         width: "55vw", height: "100%",
         pointerEvents: "auto", overflow: "hidden",
       }}>
-        <WrenVideo src={WREN_VIDEOS.cornerWaveTrimmed} glow={true} objectPosition="center center" fadeDir="left" poster={WREN_STILLS.neutral} />
+        <WrenVideo src={WREN_VIDEOS.cornerWaveTrimmed} glow={true} objectPosition="center center" fadeDir="left" poster={WREN_STILLS.neutral} posterAlt="Wren waving in a warm amber glow." />
       </div>
 
       {/* TEXT — right side */}

@@ -44,7 +44,7 @@ const PLANS: Plan[] = [
       "Focus Sessions — 1 session per week, chat with Wren, all session lengths (25/50/90)",
       "Capacity Today, basic Compass",
     ],
-    cta: "Start Free",
+    cta: "Claim a founding seat",
     ctaHref: "https://app.continuary.app/apply",
     featured: false,
   },
@@ -66,7 +66,7 @@ const PLANS: Plan[] = [
       "Full Compass · Weekly Review · Re-Entry Card",
       "7-day chat history retention",
     ],
-    cta: "Apply for a slot",
+    cta: "Claim a founding seat",
     ctaHref: "https://app.continuary.app/apply",
     featured: true,
     badge: "Most popular",
@@ -85,7 +85,7 @@ const PLANS: Plan[] = [
       "Full chat history retention across all sessions",
       "Priority support during founding member period",
     ],
-    cta: "Apply for a slot",
+    cta: "Claim a founding seat",
     ctaHref: "https://app.continuary.app/apply",
     featured: false,
   },
@@ -238,8 +238,6 @@ export default function Pricing() {
 
                   <a
                     href={ctaHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     style={{
                       display: "block",
                       textAlign: "center",

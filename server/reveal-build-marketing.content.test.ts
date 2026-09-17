@@ -15,7 +15,7 @@ const threadStrengthSource = readSource("client/src/components/sections/ThreadSt
 const footerSource = readSource("client/src/components/sections/Footer.tsx");
 
 describe("RevealBuild marketing contract", () => {
-  it("shows the scripted re-entry experience and routes its final CTA to OAuth sign-in", () => {
+  it("shows the scripted re-entry experience and routes its final CTA to the founding-seat application", () => {
     expect(heroSource).toContain("You haven't been here in");
     expect(heroSource).toContain("Nothing is broken.");
     expect(heroSource).toContain("Show me where I was →");
@@ -25,7 +25,7 @@ describe("RevealBuild marketing contract", () => {
     expect(heroSource).toContain("Your next move:");
     expect(heroSource).toContain("Open the draft and delete the first paragraph. Just that.");
     expect(heroSource).toContain("That&apos;s <em");
-    expect(heroSource).toContain('href="https://app.continuary.app/signin"');
+    expect(heroSource).toContain('href="https://app.continuary.app/apply"');
   });
 
   it("positions continuity and re-entry ahead of product-depth sections", () => {

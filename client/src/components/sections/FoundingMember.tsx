@@ -29,7 +29,7 @@ const benefits = [
   },
   {
     headline: "A real seat at the table",
-    body: "Direct line to the founder. One short feedback form per month. First access to Lifewoven and Operator House when they launch. A Founding Member badge in your app.",
+    body: "Direct line to the founder. One short feedback form per month. Early access to Operator House when it launches. A Founding Member badge in your app.",
   },
 ];
 
@@ -116,7 +116,7 @@ export default function FoundingMember() {
             className="reveal-child font-serif text-5xl md:text-6xl lg:text-7xl text-white leading-tight mb-6"
             style={{ transitionDelay: "60ms" }}
           >
-            Apply for a
+            Claim a
             <br />
             <em className="text-amber-200">founding seat.</em>
           </h2>
@@ -163,12 +163,10 @@ export default function FoundingMember() {
               Access is instant while founding seats remain. Start in the Continuary app, sign in, and your founding rate is locked in.
             </p>
             <a
-              href="https://app.continuary.app/signin"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="https://app.continuary.app/apply"
               className="inline-flex items-center justify-center bg-amber-400 hover:bg-amber-300 text-[#080f26] font-sans font-semibold text-base px-7 py-4 rounded-xl transition-all duration-200 hover:shadow-[0_0_24px_rgba(245,158,11,0.4)]"
             >
-              Claim your founding seat →
+              Claim a founding seat →
             </a>
             <p className="font-sans text-xs italic text-white/35 mt-5">
               When all 100 founding seats are claimed, you can join the waitlist for the next opening.

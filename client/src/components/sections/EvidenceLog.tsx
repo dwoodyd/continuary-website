@@ -47,7 +47,7 @@ export default function EvidenceLog() {
         position: "absolute", right: 0, top: 0,
         width: "60vw", height: "100%", pointerEvents: "auto", overflow: "hidden",
       }}>
-        <WrenVideo src={WREN_VIDEOS.blobJournal} glow={true} objectPosition="center center" fadeDir="right" poster={WREN_STILLS.journalingBook} />
+        <WrenVideo src={WREN_VIDEOS.blobJournal} glow={true} objectPosition="center center" fadeDir="right" poster={WREN_STILLS.journalingBook} posterAlt="Wren writing in a journal beside a book." />
       </div>
 
       {/* TEXT — left side */}

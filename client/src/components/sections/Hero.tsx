@@ -61,6 +61,7 @@ export default function Hero() {
           objectPosition="44% center"
           fadeDir="right"
           poster={WREN_STILLS.neutral}
+          posterAlt="Wren floating in a warm amber light."
         />
       </div>
 
@@ -93,10 +94,14 @@ export default function Hero() {
               lineHeight: 1.7,
               color: "rgba(168,180,204,0.88)",
               maxWidth: "500px",
-              marginBottom: "1.75rem",
+              marginBottom: "0.6rem",
             }}
           >
             Continuary keeps the context of your work, so returning after a day, a month, or longer begins with what still matters — not a rebuild. Each small return becomes evidence you can rely on yourself again.
+          </p>
+
+          <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.9rem", fontWeight: 700, letterSpacing: "0.025em", color: "rgba(232,160,48,0.9)", marginBottom: "1.75rem" }}>
+            Built for ADHD and interrupted minds.
           </p>
 
           <div
@@ -162,7 +167,7 @@ export default function Hero() {
                 <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.94rem", lineHeight: 1.65, color: "rgba(168,180,204,0.84)", marginBottom: "1.35rem" }}>
                   It remembers enough that coming back doesn&apos;t require rebuilding context.
                 </p>
-                <a href="https://app.continuary.app/signin" target="_blank" rel="noopener noreferrer" className="btn-amber">Claim your founding seat →</a>
+                <a href="https://app.continuary.app/apply" className="btn-amber">Claim a founding seat →</a>
               </div>
             )}
           </div>
