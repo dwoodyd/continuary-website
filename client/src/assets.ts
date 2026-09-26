@@ -41,18 +41,19 @@ export const WREN_VIDEOS = {
   // Section 7 — bouncy cartwheels (pricing delight)
   cartwheels: '/manus-storage/Wren_does_bouncy_cartwheels_202605061326_640338a3.mp4',
   // New clips — forward-facing, large, symmetric
-  luminousFloats: '/manus-storage/Luminous_silicone_bird_floats_202605061227_6b51d9b8.mp4',
+  // Active landing-page scenes: H.264 MP4, video/mp4 metadata, Fast Start, and CDN-backed storage.
+  luminousFloats: '/manus-storage/wren-hero-luminous_d6a61523.mp4',
   dropsHovers: '/manus-storage/Bird_mascot_drops_and_hovers_202605061143_14d6eb5a.mp4',
-  memoryOrb: '/manus-storage/WrenMemoryOrb_df3144bf.mp4',
+  memoryOrb: '/manus-storage/wren-reentry-thread_4a142e47.mp4',
   cornerWave: '/manus-storage/WrenCornerWave_a333e802.mp4',
-  cornerWaveTrimmed: '/manus-storage/WrenCornerWave_trimmed_abd63c34.mp4',
-  premium3d: '/manus-storage/A_premium_D_character_mascot_4a8cdc59.mp4',
+  cornerWaveTrimmed: '/manus-storage/wren-adhd-guide_8d0338e1.mp4',
+  premium3d: '/manus-storage/wren-nothing-broken_f2f06651.mp4',
   // New batch 2
   ridingWave: '/manus-storage/WrenRidingWave_e28c12bd.mp4',
-  blobJournal: '/manus-storage/WrenBlobJournal_3cb9d6d4.mp4',
+  blobJournal: '/manus-storage/wren-evidence-log_e0d6321f.mp4',
   wipesScreen: '/manus-storage/WrenWipesScreenPointsandDances_dd2e35eb.mp4',
   sparkleWingsNew: '/manus-storage/Bird_spreads_wings_emits_sparkles_202605071533_9b4346a6.mp4',
-  tuggingThread: '/manus-storage/Wren_tugging_golden_thread_202605061343_ef17955d.mp4',
+  tuggingThread: '/manus-storage/wren-footer-thread_25f35d34.mp4',
   // Additional
   amberGold: '/manus-storage/A_small_luminous_amber_gold_bi_f14024c2.mp4',
   untitled49: '/manus-storage/Untitledvideo(49)_b23d73b8.mp4',
@@ -66,6 +67,6 @@ export const BOOK = {
   // Wren perched on the glowing book — primary book section video
   wrenPerched: '/manus-storage/Bird_perched_on_luminous_book_202605080740_f2154b47.mp4',
   // Wren looking at open book — two variants
-  wrenLooking1: '/manus-storage/Bird_looking_at_open_book_202605080758_43457ffb.mp4',
+  wrenLooking1: '/manus-storage/wren-book-companion_aeea218b.mp4',
   wrenLooking2: '/manus-storage/Bird_looking_at_open_book_202605080801_073dd275.mp4',
 };

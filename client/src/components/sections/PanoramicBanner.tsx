@@ -64,7 +64,7 @@ export default function PanoramicBanner() {
         <img
           src={PANORAMIC_URL}
           alt="Continuary app composite showing a morning check-in, weekly thread, and projects quietly waiting."
-          loading="eager"
+          loading="lazy"
           decoding="async"
           style={{
             width: "100%",

@@ -62,9 +62,17 @@ try {
   const controlCount = await standardPage.locator(".wren-motion-control").count();
   assert(controlCount === 7, `Expected 7 looping-video controls, received ${controlCount}`);
 
+  const initialMediaState = await standardPage.locator(".wren-video").evaluateAll((videos) => videos.map((video) => ({
+    currentSrc: video.currentSrc,
+    preload: video.preload,
+  })));
+  assert(initialMediaState.every((video) => video.currentSrc === ""), "A Wren MP4 loaded before a visitor pressed Play");
+  assert(initialMediaState.every((video) => video.preload === "none"), "Wren videos must use preload=none");
+
   const heroControl = standardPage.locator("#hero-wren-container .wren-motion-control");
   const heroVideo = standardPage.locator("#hero-wren-container video");
   await verifyToggle(heroControl, heroVideo, "hero Wren");
+  assert(await heroVideo.evaluate((video) => video.currentSrc.includes("wren-hero-luminous")), "Hero Wren did not load only after Play");
 
   const evidenceControl = standardPage.locator("#evidence-wren .wren-motion-control");
   const evidenceVideo = standardPage.locator("#evidence-wren video");

@@ -9,7 +9,8 @@ export type WrenMotionControlState = Pick<WrenMotionState, "userPaused" | "userR
 
 /**
  * Automatic looping is suppressed for reduced-motion visitors and after a
- * visitor presses pause. A direct Play action always remains available.
+ * visitor presses pause. The public marketing site defaults autoplay to false,
+ * so a direct Play action is the normal way to load a Wren clip.
  */
 export function shouldPlayWrenMotion({
   autoplay,
@@ -33,7 +34,8 @@ export function toggleWrenMotion({
 
   return {
     userPaused: false,
-    // A deliberate play request overrides a reduced-motion default only for this clip.
-    userRequestedPlay: prefersReducedMotion,
+    // A deliberate play request is the sole opt-in for deferred marketing media
+    // and also overrides a reduced-motion default for this one clip.
+    userRequestedPlay: true,
   };
 }

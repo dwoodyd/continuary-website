@@ -33,7 +33,9 @@ describe("marketing mobile layout safeguards", () => {
     const video = source("client/src/components/WrenVideo.tsx");
     const css = source("client/src/index.css");
 
-    expect(video).toContain("preload=\"metadata\"");
+    expect(video).toContain("preload=\"none\"");
+    expect(video).toContain("autoplay = false");
+    expect(video).toContain('src={hasRequestedMedia ? src : undefined}');
     expect(video).toContain("muted");
     expect(video).toContain("playsInline");
     expect(video).toContain("poster && (");

@@ -101,6 +101,8 @@ export default function BookSection() {
             <img
               src={BOOK.cover}
               alt="Permission to Start book cover"
+              loading="lazy"
+              decoding="async"
               style={{
                 width: "180px",
                 borderRadius: "0.5rem",

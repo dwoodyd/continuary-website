@@ -13,12 +13,13 @@
  *   "left"  = Wren is on the left  → fade from #080f26 (left edge) to transparent (right)
  *
  * PERFORMANCE & iOS NOTES:
- * - preload="metadata" fetches only enough data for resilient mobile playback.
- * - IntersectionObserver handles play/pause. On iOS Safari, .load() is called before
- *   .play() to satisfy the browser's media loading requirement.
+ * - Media is poster-first and play-on-tap: no Wren MP4 is requested during the initial
+ *   page load. This keeps the landing page responsive on cellular connections.
+ * - IntersectionObserver only resumes a visitor-started clip while it is visible. On
+ *   iOS Safari, .load() is called before .play() to satisfy media-loading requirements.
  * - A real image element, not just the native video poster attribute, remains underneath
  *   the video so a still is visible even if playback or the video request fails.
- * - autoplay is always muted + playsInline to satisfy iOS autoplay policy.
+ * - When a visitor opts in, playback is muted + playsInline for dependable iOS Safari behavior.
  */
 
 import { useEffect, useRef, useState } from "react";
@@ -39,6 +40,8 @@ interface WrenVideoProps {
   poster?: string;
   /** Concise description for the visible poster fallback image. */
   posterAlt?: string;
+  /** Loads the hero poster immediately; offscreen scenes load their poster near the viewport. */
+  priorityPoster?: boolean;
   // Legacy props — accepted but ignored
   sectionBg?: string;
 }
@@ -49,15 +52,17 @@ export default function WrenVideo({
   glow = true,
   style,
   loop = true,
-  autoplay = true,
+  autoplay = false,
   flip = false,
   objectPosition = "left center",
   fadeDir = "none",
   poster,
   posterAlt = "Wren, the Continuary guide, in a warm amber glow.",
+  priorityPoster = false,
 }: WrenVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [shouldLoadPoster, setShouldLoadPoster] = useState(priorityPoster);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => (
     typeof window !== "undefined"
     && typeof window.matchMedia === "function"
@@ -78,13 +83,33 @@ export default function WrenVideo({
     return () => mediaQuery.removeEventListener?.("change", syncMotionPreference);
   }, []);
 
-  const shouldAutoplay = autoplay && !prefersReducedMotion && !isUserPaused;
+  useEffect(() => {
+    if (!poster || priorityPoster || shouldLoadPoster) return;
+
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setShouldLoadPoster(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" },
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, [poster, priorityPoster, shouldLoadPoster]);
+
   const shouldPlay = shouldPlayWrenMotion({
     autoplay,
     prefersReducedMotion,
     userPaused: isUserPaused,
     userRequestedPlay: isManuallyPlaying,
   });
+  const hasRequestedMedia = shouldPlay || isPlaying;
 
   useEffect(() => {
     const video = videoRef.current;
@@ -98,7 +123,7 @@ export default function WrenVideo({
     let loadStarted = false;
 
     const tryPlay = () => {
-      // iOS Safari requires .load() before .play() when preload="none"
+      // iOS Safari requires .load() before .play() when the source was deferred.
       if (!loadStarted) {
         loadStarted = true;
         video.load();
@@ -151,6 +176,8 @@ export default function WrenVideo({
     // A deliberate visitor action is allowed even when the device prefers reduced motion.
     setIsUserPaused(nextMotionState.userPaused);
     setIsManuallyPlaying(nextMotionState.userRequestedPlay);
+    // Set the deferred source inside the visitor gesture so iOS Safari can start it inline.
+    video.src = src;
     video.load();
     video.play()
       .then(() => {
@@ -183,9 +210,10 @@ export default function WrenVideo({
       >
       {poster && (
         <img
-          src={poster}
+          src={shouldLoadPoster ? poster : undefined}
           alt={posterAlt}
-          loading="lazy"
+          loading={priorityPoster ? "eager" : "lazy"}
+          fetchPriority={priorityPoster ? "high" : "auto"}
           decoding="async"
           style={{
             position: "absolute",
@@ -196,21 +224,21 @@ export default function WrenVideo({
             objectFit: "cover",
             objectPosition,
             transform: flip ? "scaleX(-1)" : undefined,
-            opacity: hasLoaded ? 0 : 1,
+            opacity: shouldLoadPoster && !hasLoaded ? 1 : 0,
             transition: "opacity 0.4s ease",
           }}
         />
       )}
       <video
         ref={videoRef}
-        src={src}
+        src={hasRequestedMedia ? src : undefined}
         loop={loop}
         muted
         playsInline
-        autoPlay={shouldAutoplay}
+        autoPlay={false}
         aria-hidden="true"
-        preload="metadata"
-        poster={poster}
+        preload="none"
+        poster={shouldLoadPoster ? poster : undefined}
         onPlaying={() => {
           setHasLoaded(true);
           setIsPlaying(true);
