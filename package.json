@@ -12,6 +12,7 @@
     "test": "vitest run",
     "verify:initial-load": "node scripts/verify-initial-load-budget.mjs",
     "verify:wren-cdn": "node scripts/verify-wren-cdn-delivery.mjs",
+    "verify:wren-mobile": "node scripts/verify-wren-mobile-autoplay.mjs",
     "db:push": "drizzle-kit generate && drizzle-kit migrate"
   },
   "dependencies": {

@@ -13,13 +13,14 @@
  *   "left"  = Wren is on the left  → fade from #080f26 (left edge) to transparent (right)
  *
  * PERFORMANCE & iOS NOTES:
- * - Media is poster-first and play-on-tap: no Wren MP4 is requested during the initial
- *   page load. This keeps the landing page responsive on cellular connections.
- * - IntersectionObserver only resumes a visitor-started clip while it is visible. On
- *   iOS Safari, .load() is called before .play() to satisfy media-loading requirements.
+ * - The hero MP4 is eligible immediately; lower Wren scenes receive their MP4 source only
+ *   after entering the viewport. This preserves inline autoplay without loading all seven clips.
+ * - IntersectionObserver pauses a clip outside the viewport and restarts it on return. On
+ *   iOS Safari, muted + playsInline are required for autoplay, and .load() runs before .play().
  * - A real image element, not just the native video poster attribute, remains underneath
  *   the video so a still is visible even if playback or the video request fails.
- * - When a visitor opts in, playback is muted + playsInline for dependable iOS Safari behavior.
+ * - A visitor can pause any scene; reduced-motion visitors remain on poster stills unless they
+ *   explicitly choose Play for an individual clip.
  */
 
 import { useEffect, useRef, useState } from "react";
@@ -42,6 +43,8 @@ interface WrenVideoProps {
   posterAlt?: string;
   /** Loads the hero poster immediately; offscreen scenes load their poster near the viewport. */
   priorityPoster?: boolean;
+  /** Gives the hero its MP4 source immediately; lower scenes wait for viewport entry. */
+  priorityMedia?: boolean;
   // Legacy props — accepted but ignored
   sectionBg?: string;
 }
@@ -52,17 +55,19 @@ export default function WrenVideo({
   glow = true,
   style,
   loop = true,
-  autoplay = false,
+  autoplay = true,
   flip = false,
   objectPosition = "left center",
   fadeDir = "none",
   poster,
   posterAlt = "Wren, the Continuary guide, in a warm amber glow.",
   priorityPoster = false,
+  priorityMedia = false,
 }: WrenVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [hasLoaded, setHasLoaded] = useState(false);
   const [shouldLoadPoster, setShouldLoadPoster] = useState(priorityPoster);
+  const [isMediaEligible, setIsMediaEligible] = useState(priorityMedia);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => (
     typeof window !== "undefined"
     && typeof window.matchMedia === "function"
@@ -103,13 +108,33 @@ export default function WrenVideo({
     return () => observer.disconnect();
   }, [poster, priorityPoster, shouldLoadPoster]);
 
+  useEffect(() => {
+    if (priorityMedia || isMediaEligible) return;
+
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setIsMediaEligible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.02 },
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, [isMediaEligible, priorityMedia]);
+
   const shouldPlay = shouldPlayWrenMotion({
     autoplay,
     prefersReducedMotion,
     userPaused: isUserPaused,
     userRequestedPlay: isManuallyPlaying,
   });
-  const hasRequestedMedia = shouldPlay || isPlaying;
+  const hasRequestedMedia = isMediaEligible && (!prefersReducedMotion || isManuallyPlaying);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -176,6 +201,7 @@ export default function WrenVideo({
     // A deliberate visitor action is allowed even when the device prefers reduced motion.
     setIsUserPaused(nextMotionState.userPaused);
     setIsManuallyPlaying(nextMotionState.userRequestedPlay);
+    setIsMediaEligible(true);
     // Set the deferred source inside the visitor gesture so iOS Safari can start it inline.
     video.src = src;
     video.load();
@@ -235,7 +261,7 @@ export default function WrenVideo({
         loop={loop}
         muted
         playsInline
-        autoPlay={false}
+        autoPlay={autoplay && isMediaEligible && !prefersReducedMotion}
         aria-hidden="true"
         preload="none"
         poster={shouldLoadPoster ? poster : undefined}

@@ -34,7 +34,9 @@ describe("marketing mobile layout safeguards", () => {
     const css = source("client/src/index.css");
 
     expect(video).toContain("preload=\"none\"");
-    expect(video).toContain("autoplay = false");
+    expect(video).toContain("autoplay = true");
+    expect(video).toContain("priorityMedia = false");
+    expect(video).toContain("setIsMediaEligible(true)");
     expect(video).toContain('src={hasRequestedMedia ? src : undefined}');
     expect(video).toContain("muted");
     expect(video).toContain("playsInline");

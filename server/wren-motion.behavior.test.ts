@@ -25,7 +25,7 @@ describe("Wren looping-video motion behavior", () => {
     })).toBe(false);
   });
 
-  it("keeps deferred marketing media unloaded until a visitor asks to play it", () => {
+  it("defers only below-fold media until it reaches the viewport", () => {
     expect(shouldPlayWrenMotion({
       autoplay: false,
       prefersReducedMotion: false,
@@ -50,11 +50,16 @@ describe("Wren looping-video motion behavior", () => {
     expect(shouldPlayWrenMotion({ autoplay: true, prefersReducedMotion: true, ...explicitlyPlayed })).toBe(true);
   });
 
-  it("keeps MP4 source assignment and preload deferred in the shared component", () => {
+  it("autoplays eligible media while deferring lower-scene source assignment", () => {
     const componentSource = source("client/src/components/WrenVideo.tsx");
-    expect(componentSource).toContain("autoplay = false");
+    expect(componentSource).toContain("autoplay = true");
+    expect(componentSource).toContain("priorityMedia = false");
+    expect(componentSource).toContain("setIsMediaEligible(true)");
     expect(componentSource).toContain('src={hasRequestedMedia ? src : undefined}');
+    expect(componentSource).toContain("autoPlay={autoplay && isMediaEligible && !prefersReducedMotion}");
     expect(componentSource).toContain('preload="none"');
+    expect(componentSource).toContain("muted");
+    expect(componentSource).toContain("playsInline");
   });
 
   it("maps every active landing-page scene to the optimized CDN MP4 set", () => {

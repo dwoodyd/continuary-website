@@ -66,18 +66,20 @@ try {
     currentSrc: video.currentSrc,
     preload: video.preload,
   })));
-  assert(initialMediaState.every((video) => video.currentSrc === ""), "A Wren MP4 loaded before a visitor pressed Play");
+  assert(initialMediaState[0]?.currentSrc.includes("wren-hero-luminous"), "Hero Wren did not receive its MP4 source immediately");
+  assert(initialMediaState.slice(1).every((video) => video.currentSrc === ""), "A below-fold Wren MP4 loaded before viewport entry");
   assert(initialMediaState.every((video) => video.preload === "none"), "Wren videos must use preload=none");
 
   const heroControl = standardPage.locator("#hero-wren-container .wren-motion-control");
   const heroVideo = standardPage.locator("#hero-wren-container video");
+  await waitForPausedState(heroVideo, false, "hero Wren autoplay");
   await verifyToggle(heroControl, heroVideo, "hero Wren");
-  assert(await heroVideo.evaluate((video) => video.currentSrc.includes("wren-hero-luminous")), "Hero Wren did not load only after Play");
+  assert(await heroVideo.evaluate((video) => video.currentSrc.includes("wren-hero-luminous")), "Hero Wren lost its optimized MP4 source");
 
   const evidenceControl = standardPage.locator("#evidence-wren .wren-motion-control");
   const evidenceVideo = standardPage.locator("#evidence-wren video");
   await evidenceControl.scrollIntoViewIfNeeded();
-  await standardPage.waitForTimeout(300);
+  await waitForPausedState(evidenceVideo, false, "evidence-log Wren autoplay");
   await verifyToggle(evidenceControl, evidenceVideo, "evidence-log Wren");
 
   const reducedMotionPage = await browser.newPage({ viewport: { width: 390, height: 844 } });
@@ -91,10 +93,12 @@ try {
     const poster = container.querySelector("img");
     return {
       paused: video?.paused,
+      currentSrc: video?.currentSrc,
       posterOpacity: poster ? Number.parseFloat(getComputedStyle(poster).opacity) : 0,
     };
   });
   assert(reducedMotionHero.paused === true, "Reduced-motion hero video started automatically");
+  assert(reducedMotionHero.currentSrc === "", "Reduced-motion hero video requested its MP4 automatically");
   assert(reducedMotionHero.posterOpacity > 0.9, "Reduced-motion hero poster is not visible");
 
   const reducedMotionControl = reducedMotionPage.locator("#hero-wren-container .wren-motion-control");

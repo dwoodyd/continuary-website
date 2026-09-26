@@ -65,10 +65,11 @@ try {
     .slice(0, 10)
     .map((response) => `${formatMiB(response.contentLength)} ${response.contentType || "unknown"} ${response.url}`);
 
-  console.log(`Initial observed transfer: ${formatMiB(observedResponseBytes)} (${observedResponses.length} responses, 0 MP4 requests).`);
+  console.log(`Initial observed transfer: ${formatMiB(observedResponseBytes)} (${observedResponses.length} responses, ${initialVideoRequests.length} MP4 request${initialVideoRequests.length === 1 ? "" : "s"}).`);
   console.log("Largest resources:\n" + largestResources.join("\n"));
 
-  assert(initialVideoRequests.length === 0, `Initial page load requested MP4 media: ${initialVideoRequests.map((entry) => entry.url).join(", ")}`);
+  assert(initialVideoRequests.length === 1, `Expected only the hero MP4 on initial load, received: ${initialVideoRequests.map((entry) => entry.url).join(", ")}`);
+  assert(initialVideoRequests[0].url.includes("wren-hero-luminous"), `Initial MP4 must be the hero scene, received: ${initialVideoRequests[0].url}`);
   assert(observedResponseBytes < maxInitialBytes, `Initial observed transfer ${formatMiB(observedResponseBytes)} exceeds the 3 MiB budget`);
 } finally {
   await browser.close();
