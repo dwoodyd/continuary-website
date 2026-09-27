@@ -29,7 +29,7 @@ describe("marketing mobile layout safeguards", () => {
     expect(panoramic).toContain("#mobile-app-previews");
   });
 
-  it("keeps a poster still beneath every mobile Wren video and removes desktop-size reserved scene space", () => {
+  it("uses a still only as a reduced-motion or error fallback and removes desktop-size reserved scene space", () => {
     const video = source("client/src/components/WrenVideo.tsx");
     const css = source("client/src/index.css");
 
@@ -40,7 +40,8 @@ describe("marketing mobile layout safeguards", () => {
     expect(video).toContain('src={hasRequestedMedia ? src : undefined}');
     expect(video).toContain("muted");
     expect(video).toContain("playsInline");
-    expect(video).toContain("poster && (");
+    expect(video).toContain("showStillFallback && poster && (");
+    expect(video).toContain("hasPlaybackError || (prefersReducedMotion && !isManuallyPlaying)");
     expect(video).toContain("<img");
     expect(css).toContain("Every former desktop Wren scene becomes a compact, in-flow mobile media block.");
     expect(css).toContain("height: clamp(10rem, 46vw, 15rem) !important;");

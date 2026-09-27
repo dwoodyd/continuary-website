@@ -61,6 +61,7 @@ try {
 
   const controlCount = await standardPage.locator(".wren-motion-control").count();
   assert(controlCount === 7, `Expected 7 looping-video controls, received ${controlCount}`);
+  assert(await standardPage.locator(".wren-video").evaluateAll((videos) => videos.every((video) => !video.parentElement?.querySelector("img"))), "Normal-motion Wren scenes should not layer still images beneath video");
 
   const initialMediaState = await standardPage.locator(".wren-video").evaluateAll((videos) => videos.map((video) => ({
     currentSrc: video.currentSrc,
@@ -80,6 +81,7 @@ try {
   const evidenceVideo = standardPage.locator("#evidence-wren video");
   await evidenceControl.scrollIntoViewIfNeeded();
   await waitForPausedState(evidenceVideo, false, "evidence-log Wren autoplay");
+  assert(await evidenceVideo.evaluate((video) => !video.parentElement?.querySelector("img")), "Viewport autoplay should remain video-only");
   await verifyToggle(evidenceControl, evidenceVideo, "evidence-log Wren");
 
   const reducedMotionPage = await browser.newPage({ viewport: { width: 390, height: 844 } });
@@ -99,7 +101,7 @@ try {
   });
   assert(reducedMotionHero.paused === true, "Reduced-motion hero video started automatically");
   assert(reducedMotionHero.currentSrc === "", "Reduced-motion hero video requested its MP4 automatically");
-  assert(reducedMotionHero.posterOpacity > 0.9, "Reduced-motion hero poster is not visible");
+  assert(reducedMotionHero.posterOpacity > 0.9, "Reduced-motion hero still fallback is not visible");
 
   const reducedMotionControl = reducedMotionPage.locator("#hero-wren-container .wren-motion-control");
   const reducedMotionVideo = reducedMotionPage.locator("#hero-wren-container video");

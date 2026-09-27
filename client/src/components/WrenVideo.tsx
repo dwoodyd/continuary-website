@@ -17,10 +17,10 @@
  *   after entering the viewport. This preserves inline autoplay without loading all seven clips.
  * - IntersectionObserver pauses a clip outside the viewport and restarts it on return. On
  *   iOS Safari, muted + playsInline are required for autoplay, and .load() runs before .play().
- * - A real image element, not just the native video poster attribute, remains underneath
- *   the video so a still is visible even if playback or the video request fails.
- * - A visitor can pause any scene; reduced-motion visitors remain on poster stills unless they
- *   explicitly choose Play for an individual clip.
+ * - Normal motion renders the MP4 directly—no static image is layered beneath it. A real image
+ *   fallback is rendered only for reduced-motion visitors or a genuine media failure.
+ * - A visitor can pause any scene; reduced-motion visitors remain on a still unless they
+ *   explicitly choose Play for that individual clip.
  */
 
 import { useEffect, useRef, useState } from "react";
@@ -37,12 +37,10 @@ interface WrenVideoProps {
   objectPosition?: string;
   /** Direction of the cinematic vignette fade — toward which edge the video dissolves */
   fadeDir?: "left" | "right" | "none";
-  /** Poster image shown while video loads — use a Wren still from WREN_STILLS */
+  /** Still image used only for reduced-motion and media-error fallback states. */
   poster?: string;
   /** Concise description for the visible poster fallback image. */
   posterAlt?: string;
-  /** Loads the hero poster immediately; offscreen scenes load their poster near the viewport. */
-  priorityPoster?: boolean;
   /** Gives the hero its MP4 source immediately; lower scenes wait for viewport entry. */
   priorityMedia?: boolean;
   // Legacy props — accepted but ignored
@@ -61,12 +59,9 @@ export default function WrenVideo({
   fadeDir = "none",
   poster,
   posterAlt = "Wren, the Continuary guide, in a warm amber glow.",
-  priorityPoster = false,
   priorityMedia = false,
 }: WrenVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [hasLoaded, setHasLoaded] = useState(false);
-  const [shouldLoadPoster, setShouldLoadPoster] = useState(priorityPoster);
   const [isMediaEligible, setIsMediaEligible] = useState(priorityMedia);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => (
     typeof window !== "undefined"
@@ -76,6 +71,7 @@ export default function WrenVideo({
   const [isUserPaused, setIsUserPaused] = useState(false);
   const [isManuallyPlaying, setIsManuallyPlaying] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [hasPlaybackError, setHasPlaybackError] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined" || typeof window.matchMedia !== "function") return;
@@ -87,26 +83,6 @@ export default function WrenVideo({
     mediaQuery.addEventListener?.("change", syncMotionPreference);
     return () => mediaQuery.removeEventListener?.("change", syncMotionPreference);
   }, []);
-
-  useEffect(() => {
-    if (!poster || priorityPoster || shouldLoadPoster) return;
-
-    const video = videoRef.current;
-    if (!video) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) {
-          setShouldLoadPoster(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: "200px" },
-    );
-
-    observer.observe(video);
-    return () => observer.disconnect();
-  }, [poster, priorityPoster, shouldLoadPoster]);
 
   useEffect(() => {
     if (priorityMedia || isMediaEligible) return;
@@ -135,6 +111,9 @@ export default function WrenVideo({
     userRequestedPlay: isManuallyPlaying,
   });
   const hasRequestedMedia = isMediaEligible && (!prefersReducedMotion || isManuallyPlaying);
+  const showStillFallback = Boolean(poster) && (
+    hasPlaybackError || (prefersReducedMotion && !isManuallyPlaying)
+  );
 
   useEffect(() => {
     const video = videoRef.current;
@@ -154,10 +133,11 @@ export default function WrenVideo({
         video.load();
       }
       video.play()
-        .then(() => setHasLoaded(true))
+        .then(() => {
+          setHasPlaybackError(false);
+        })
         .catch(() => {
-          // Keep the poster visible if autoplay is blocked or the clip fails.
-          setHasLoaded(false);
+          // A blocked autoplay attempt is not a media failure; keep the video surface ready.
         });
     };
 
@@ -193,7 +173,6 @@ export default function WrenVideo({
     if (isPlaying) {
       setIsUserPaused(nextMotionState.userPaused);
       setIsManuallyPlaying(nextMotionState.userRequestedPlay);
-      setHasLoaded(false);
       video.pause();
       return;
     }
@@ -207,11 +186,10 @@ export default function WrenVideo({
     video.load();
     video.play()
       .then(() => {
-        setHasLoaded(true);
         setIsPlaying(true);
+        setHasPlaybackError(false);
       })
       .catch(() => {
-        setHasLoaded(false);
         setIsPlaying(false);
       });
   };
@@ -234,12 +212,12 @@ export default function WrenVideo({
         overflow: "hidden",
       }}
       >
-      {poster && (
+      {showStillFallback && poster && (
         <img
-          src={shouldLoadPoster ? poster : undefined}
+          src={poster}
           alt={posterAlt}
-          loading={priorityPoster ? "eager" : "lazy"}
-          fetchPriority={priorityPoster ? "high" : "auto"}
+          loading="eager"
+          fetchPriority="high"
           decoding="async"
           style={{
             position: "absolute",
@@ -250,8 +228,7 @@ export default function WrenVideo({
             objectFit: "cover",
             objectPosition,
             transform: flip ? "scaleX(-1)" : undefined,
-            opacity: shouldLoadPoster && !hasLoaded ? 1 : 0,
-            transition: "opacity 0.4s ease",
+            opacity: 1,
           }}
         />
       )}
@@ -264,15 +241,14 @@ export default function WrenVideo({
         autoPlay={autoplay && isMediaEligible && !prefersReducedMotion}
         aria-hidden="true"
         preload="none"
-        poster={shouldLoadPoster ? poster : undefined}
+        poster={showStillFallback ? poster : undefined}
         onPlaying={() => {
-          setHasLoaded(true);
           setIsPlaying(true);
         }}
         onPause={() => setIsPlaying(false)}
         onError={() => {
-          setHasLoaded(false);
           setIsPlaying(false);
+          setHasPlaybackError(true);
         }}
         className="wren-video"
         style={{
@@ -287,9 +263,7 @@ export default function WrenVideo({
           filter: glow
             ? "drop-shadow(0 0 80px rgba(232,160,48,0.6)) drop-shadow(0 0 200px rgba(232,160,48,0.3)) brightness(1.1)"
             : "none",
-          // Fade in once video is ready to avoid flash from poster → video
-          opacity: hasLoaded ? 1 : (poster ? 0 : 1),
-          transition: "opacity 0.4s ease",
+          opacity: showStillFallback ? 0 : 1,
           ...style,
         }}
       />

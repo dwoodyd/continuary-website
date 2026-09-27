@@ -536,7 +536,7 @@
     }
 
     /* Every former desktop Wren scene becomes a compact, in-flow mobile media block.
-       This removes reserved desktop space while preserving a video or its poster still. */
+       Normal motion is continuous video; a still appears only for reduced motion or a media error. */
     #how-it-works,
     #evidence,
     #re-entry,

@@ -62,7 +62,6 @@ export default function Hero() {
           fadeDir="right"
           poster={WREN_STILLS.neutral}
           posterAlt="Wren floating in a warm amber light."
-          priorityPoster
           priorityMedia
         />
       </div>

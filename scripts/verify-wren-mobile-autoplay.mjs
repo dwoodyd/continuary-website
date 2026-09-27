@@ -43,12 +43,14 @@ try {
     loop: video.loop,
     autoplay: video.autoplay,
     currentSrc: video.currentSrc,
+    hasStillOverlay: Boolean(video.parentElement?.querySelector("img")),
   }));
   assert(heroAttributes.muted, "Hero Wren is not muted for iOS autoplay");
   assert(heroAttributes.playsInline, "Hero Wren is not configured to play inline");
   assert(heroAttributes.loop, "Hero Wren is not configured to loop");
   assert(heroAttributes.autoplay, "Hero Wren is not configured to autoplay");
   assert(heroAttributes.currentSrc.includes("wren-hero-luminous"), "Hero did not load the optimized MP4");
+  assert(!heroAttributes.hasStillOverlay, "Hero autoplay should not have a still overlay");
 
   const evidence = page.locator("#evidence-wren video");
   await evidence.scrollIntoViewIfNeeded();
@@ -59,9 +61,11 @@ try {
     loop: video.loop,
     autoplay: video.autoplay,
     currentSrc: video.currentSrc,
+    hasStillOverlay: Boolean(video.parentElement?.querySelector("img")),
   }));
   assert(evidenceAttributes.muted && evidenceAttributes.playsInline && evidenceAttributes.loop && evidenceAttributes.autoplay, "Below-fold Wren lacks iOS inline-autoplay attributes");
   assert(evidenceAttributes.currentSrc.includes("wren-evidence-log"), "Evidence scene did not load its optimized MP4 on viewport entry");
+  assert(!evidenceAttributes.hasStillOverlay, "Viewport autoplay should not have a still overlay");
 
   console.log("iPhone-sized autoplay emulation verified for hero and a lower Wren scene.");
 } finally {

@@ -16,7 +16,7 @@ describe("Wren looping-video motion behavior", () => {
     })).toBe(true);
   });
 
-  it("keeps the poster still visible by default for reduced-motion visitors", () => {
+  it("uses a still fallback by default for reduced-motion visitors", () => {
     expect(shouldPlayWrenMotion({
       autoplay: true,
       prefersReducedMotion: true,
@@ -50,7 +50,7 @@ describe("Wren looping-video motion behavior", () => {
     expect(shouldPlayWrenMotion({ autoplay: true, prefersReducedMotion: true, ...explicitlyPlayed })).toBe(true);
   });
 
-  it("autoplays eligible media while deferring lower-scene source assignment", () => {
+  it("autoplays eligible media while reserving stills for fallback states", () => {
     const componentSource = source("client/src/components/WrenVideo.tsx");
     expect(componentSource).toContain("autoplay = true");
     expect(componentSource).toContain("priorityMedia = false");
@@ -60,6 +60,11 @@ describe("Wren looping-video motion behavior", () => {
     expect(componentSource).toContain('preload="none"');
     expect(componentSource).toContain("muted");
     expect(componentSource).toContain("playsInline");
+    expect(componentSource).toContain("const showStillFallback");
+    expect(componentSource).toContain("hasPlaybackError || (prefersReducedMotion && !isManuallyPlaying)");
+    expect(componentSource).toContain("{showStillFallback && poster && (");
+    expect(componentSource).toContain("setHasPlaybackError(true)");
+    expect(componentSource).not.toContain("priorityPoster");
   });
 
   it("maps every active landing-page scene to the optimized CDN MP4 set", () => {
